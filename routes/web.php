@@ -42,8 +42,13 @@ Route::group(["middleware" => ["auth"]], function() {
 //        return Inertia::render("Post/Index");
 //    }) ;
 
-    Route::get("/posts", [PostController::class, "index"])->name('index');
+    //HomePage
+    Route::get("/posts", [PostController::class, "index"])->name("index");
     
+    //CreatePage
+    Route::get("/posts/create", [PostController::class, "create"])->name("create");
+    
+    //RoutePage
     Route::get("/posts/{post}", [PostController::class, "show"]);
 
 });
