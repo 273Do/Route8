@@ -17,6 +17,7 @@ const Index = (props: Auth) => {
                 </h2>
             }
         >
+        <Link href="/posts/create">Create</Link>
             <div className="p-12">
                 <h1>Blog Name</h1>
 
