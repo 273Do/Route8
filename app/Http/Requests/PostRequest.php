@@ -22,7 +22,7 @@ class PostRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {
+    {   //バリデーションチェック
         return [
             'title' => 'required|string|max:20',
             'body' => 'required|string|max:300',
