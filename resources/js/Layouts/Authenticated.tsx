@@ -34,11 +34,17 @@ export default function Authenticated({ auth, header, children }: Props) {
                                 >
                                     Dashboard
                                 </NavLink>
-                                  <NavLink
+                                <NavLink
                                     href={route("index")}
                                     active={route().current("index")}
                                 >
                                     PostPage
+                                </NavLink>
+                                <NavLink
+                                    href={route("create")}
+                                    active={route().current("create")}
+                                >
+                                    CreatePage
                                 </NavLink>
                             </div>
                         </div>
