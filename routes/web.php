@@ -48,6 +48,9 @@ Route::group(["middleware" => ["auth"]], function() {
     //CreatePage
     Route::get("/posts/create", [PostController::class, "create"])->name("create");
     
+    //Post
+    Route::post("/posts",[PostController::class, "store"]);
+    
     //RoutePage
     Route::get("/posts/{post}", [PostController::class, "show"]);
 
