@@ -4,8 +4,10 @@ export interface Auth {
     auth: any;
 }
 
-export interface  Post {
-    post:any;
+export interface Post {
+    auth: any;
+    post: any;
+    errors: any;
     id: number;
     title: string;
     body: string;
