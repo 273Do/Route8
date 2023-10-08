@@ -82,8 +82,6 @@ const Create = (props: Post) => {
                     <div>
                         <input
                             type="checkbox"
-                        
-
                             name="bicycle_available"
                             onChange={(e) =>
                                 setData("bicycle_available", e.target.checked)
