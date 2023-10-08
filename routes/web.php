@@ -53,6 +53,12 @@ Route::group(["middleware" => ["auth"]], function() {
     
     //RoutePage
     Route::get("/posts/{post}", [PostController::class, "show"]);
+    
+    //EditPage
+    Route::get('/posts/{post}/edit', [PostController::class, "edit"]);
+    
+    //Update
+    Route::put('/posts/{post}', [PostController::class, "update"]);
 
 });
 

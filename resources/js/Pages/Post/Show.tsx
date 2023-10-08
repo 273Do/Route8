@@ -1,7 +1,7 @@
 import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Link } from '@inertiajs/inertia-react';
-import { Auth, Post } from "../Types"
+import { Post } from "../Types"
 
 // RoutePage
 const Show = (props:Post) => {
@@ -31,6 +31,10 @@ const Show = (props:Post) => {
                     <p>{ post.plane_available }</p>
                     <p>{ post.ship_available }</p>
                     <p>{ post.created_at }</p>
+                    
+                    <div>
+                        <Link href={`/posts/${post.id}/edit`}>編集</Link>
+                    </div>
                 </div>
                 
                 <div>

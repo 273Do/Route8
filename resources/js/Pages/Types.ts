@@ -5,6 +5,7 @@ export interface Auth {
 }
 
 export interface  Post {
+    auth:any;
     post:any;
     id: number;
     title: string;

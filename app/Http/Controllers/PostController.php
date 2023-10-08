@@ -40,4 +40,18 @@ class PostController extends Controller
         return redirect("/posts/" . $post->id);
         //保存した投稿のidの表示を行う．
     }
+    
+    //EditPage
+    public function edit(Post $post)
+    {
+        return Inertia::render("Post/Edit", ["post" => $post]);
+    }
+    
+    //Update
+    public function update(PostRequest $request, Post $post)
+    {
+        $input = $request->all();
+        $post->fill($input)->save();
+        return redirect("/posts/" . $post->id);
+    }
 }
