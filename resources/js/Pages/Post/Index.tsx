@@ -1,12 +1,19 @@
 import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Link } from "@inertiajs/inertia-react";
+import { router } from "@inertiajs/react";
 import { Auth, Post } from "../Types";
 
 // HomePage
 const Index = (props: Auth) => {
     const { posts } = props;
     console.log(props);
+
+    const handleDeletePost = (id: number) => {
+        router.delete(`/posts/${id}`, {
+            onBefore: () => confirm("本当に削除しますか？"),
+        });
+    };
 
     return (
         <Authenticated
@@ -38,6 +45,12 @@ const Index = (props: Auth) => {
                         <p>{post.plane_available}</p>
                         <p>{post.ship_available}</p>
                         <p>{post.created_at}</p>
+                        <button
+                            className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
+                            onClick={() => handleDeletePost(post.id)}
+                        >
+                            delete
+                        </button>
                     </div>
                 ))}
             </div>
