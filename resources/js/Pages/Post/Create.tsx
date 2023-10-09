@@ -18,7 +18,7 @@ const Create = (props: Post) => {
         ship_available: false,
     });
 
-    console.log(data); // 確認用に追加
+    // console.log(data); // 確認用に追加
 
     const handleSendPosts = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -126,7 +126,7 @@ const Create = (props: Post) => {
                             onChange={(e) =>
                                 setData(
                                     "shinkansen_available",
-                                    e.target.checked
+                                    e.target.checked,
                                 )
                             }
                         />
