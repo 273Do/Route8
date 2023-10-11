@@ -45,6 +45,10 @@ const Index = (props: Auth) => {
                         <p>{post.plane_available}</p>
                         <p>{post.ship_available}</p>
                         <p>{post.created_at}</p>
+                        <p>{post.map_url}</p>
+                        <p>{post.category.category_name}</p>
+                        <p>{post.user.name}</p>
+
                         <button
                             className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
                             onClick={() => handleDeletePost(post.id)}

@@ -33,6 +33,8 @@ const Show = (props: Post) => {
                     <p>{post.plane_available}</p>
                     <p>{post.ship_available}</p>
                     <p>{post.created_at}</p>
+                    <p>{post.category.category_name}</p>
+                    <p>{post.user.name}</p>
 
                     <div>
                         <Link href={`/posts/${post.id}/edit`}>編集</Link>

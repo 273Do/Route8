@@ -21,4 +21,9 @@ export interface Post {
     plane_available: boolean;
     ship_available: boolean;
     created_at: any;
+    map_url: string;
+    users: any;
+    user: any;
+    categories: any;
+    category: any;
 }

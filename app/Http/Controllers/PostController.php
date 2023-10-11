@@ -4,28 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
+use App\Models\Category;
 use Inertia\Inertia;
-use App\Models\Post; 
+use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
     //HomePage
-     public function index(Post $post)
+     public function index()
     {
         // return Inertia::render("Post/Index");
-         return Inertia::render("Post/Index",["posts" => $post->get()]);
+        //  return Inertia::render("Post/Index",["posts" => $post->get()]);
+         return Inertia::render("Post/Index",["posts" => Post::with(["category", "user"])->get()]);
     }
     
     //RoutePage
-    public function show(Post $post)
+    public function show(Post $post, User $user)
     {
-        return Inertia::render("Post/Show", ["post" => $post]);
+         // Eagerローディングを使って、Controller内でリレーション先のデータを紐付ける
+        return Inertia::render("Post/Show", ["post" => $post->load(["category", "user"])]);
     }
     
     //CreatePage
-    public function create()
+    public function create(Category $category)
     {
-        return Inertia::render("Post/Create"); 
+        return Inertia::render("Post/Create",["categories" => $category->get()]);
     }
     
     //Post

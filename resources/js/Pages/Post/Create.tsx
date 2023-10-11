@@ -4,6 +4,7 @@ import Authenticated from "@/Layouts/Authenticated";
 import { Post } from "../Types";
 
 const Create = (props: Post) => {
+    const { categories } = props;
     const { data, setData, post } = useForm({
         title: "",
         body: "",
@@ -16,6 +17,9 @@ const Create = (props: Post) => {
         shinkansen_available: false,
         plane_available: false,
         ship_available: false,
+        map_url: "",
+        category_id: categories[0].id,
+        user_id: props.auth.user.id,
     });
 
     // console.log(data); // 確認用に追加
@@ -58,6 +62,19 @@ const Create = (props: Post) => {
                             {props.errors.body}
                         </span>
                     </div>
+
+                    <div>
+                        <h2>Map_url</h2>
+                        <input
+                            type="text"
+                            placeholder="マップURLを入力してください．"
+                            onChange={(e) => setData("map_url", e.target.value)}
+                        />
+                        <span className="text-red-600">
+                            {props.errors.map_url}
+                        </span>
+                    </div>
+
                     <div>
                         <input
                             type="checkbox"
@@ -152,6 +169,22 @@ const Create = (props: Post) => {
                         />
                         <label htmlFor="ship_available">Ship</label>
                     </div>
+
+                    <div>
+                        <h2>Category</h2>
+                        <select
+                            onChange={(e) =>
+                                setData("category_id", e.target.value)
+                            }
+                        >
+                            {categories.map((category: any) => (
+                                <option value={category.id}>
+                                    {category.category_name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
                     {/* このbuttonをクリックすると、onSubmitに設定してあるhandleSendPosts関数が発火する*/}
                     <button
                         type="submit"
