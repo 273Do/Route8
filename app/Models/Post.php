@@ -27,6 +27,13 @@ class Post extends Model
     ];
 
 
+    public function user()
+    {
+
+        return $this->belongsTo(User::class);
+
+    }
+
     public function category()
     {
 
@@ -34,10 +41,17 @@ class Post extends Model
 
     }
 
-     public function user()
+    public function vehicle()
     {
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Vehicle::class);
 
-    }   
+    }
+
+    public function situation()
+    {
+
+        return $this->belongsTo(Situation::class);
+
+    }
 }

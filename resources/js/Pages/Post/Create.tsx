@@ -5,10 +5,12 @@ import { Post } from "../Types";
 
 const Create = (props: Post) => {
     const { categories } = props;
+    console.log(props);
     const { data, setData, post } = useForm({
         title: "",
         body: "",
         is_public: true,
+        map_url: "",
         walk_available: false,
         bicycle_available: false,
         car_available: false,
@@ -17,7 +19,6 @@ const Create = (props: Post) => {
         shinkansen_available: false,
         plane_available: false,
         ship_available: false,
-        map_url: "",
         category_id: categories[0].id,
         user_id: props.auth.user.id,
     });
