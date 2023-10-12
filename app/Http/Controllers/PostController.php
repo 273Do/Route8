@@ -16,14 +16,16 @@ class PostController extends Controller
     {
         // return Inertia::render("Post/Index");
         //  return Inertia::render("Post/Index",["posts" => $post->get()]);
-         return Inertia::render("Post/Index",["posts" => Post::with(["category", "user"])->get()]);
-    }
+        return Inertia::render("Post/Index",["posts" => Post::with(["category", "user"])->get()]);
+        // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
+        }
     
     //RoutePage
-    public function show(Post $post, User $user)
+    public function show(Post $post)
     {
          // Eagerローディングを使って、Controller内でリレーション先のデータを紐付ける
         return Inertia::render("Post/Show", ["post" => $post->load(["category", "user"])]);
+        // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
     }
     
     //CreatePage
