@@ -37,6 +37,12 @@ class PostController extends Controller
     //Post
     public function store(PostRequest $request, Post $post)
     {
+
+
+        //先にリレーション先を登録して，FKにリレーション先のIDを登録する．
+        //postsが登録されるのは最後．
+
+
         $input = $request->all();
         //$requestにはリクエストパラメータが含まれており，
         //それを$inputに代入．
