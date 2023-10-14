@@ -13,17 +13,11 @@ class Post extends Model
         "title",
         "body",
         "is_public",
-        "walk_available",
-        "bicycle_available",
-        "car_available",
-        "bus_available",
-        "train_available",
-        "shinkansen_available",
-        "plane_available",
-        "ship_available",
         "map_url",
+        "user_id",
+        "situation_id",
+        "vehicle_id",
         "category_id",
-        "user_id"
     ];
 
 
