@@ -110,7 +110,7 @@ const Create = (props: Post) => {
                             }
                         />
                         <span className="text-red-600">
-                            {props.errors.title}
+                            {props.errors.start_point}
                         </span>
                     </div>
 
@@ -124,7 +124,7 @@ const Create = (props: Post) => {
                             }
                         />
                         <span className="text-red-600">
-                            {props.errors.title}
+                            {props.errors.goal_point}
                         </span>
                     </div>
 

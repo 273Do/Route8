@@ -24,6 +24,8 @@ export interface Post {
     map_url: string;
     users: any;
     user: any;
+    vehicle: any;
+    situation: any;
     categories: any;
     category: any;
 }
