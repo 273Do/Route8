@@ -43,11 +43,7 @@ class PostController extends Controller
 
         //先にリレーション先を登録して，FKにリレーション先のIDを登録する．
         //postsが登録されるのは最後．
-        
-
-
-
-        
+      
         $input = $request->all();
         //$requestにはリクエストパラメータが含まれており，
         //それを$inputに代入．
@@ -71,8 +67,6 @@ class PostController extends Controller
         $vehicle -> ship_available = $input["ship_available"];
         $vehicle -> save();
 
-
-
         //posts
         $post -> title = $input["title"];
         $post -> body = $input["body"];
@@ -84,7 +78,6 @@ class PostController extends Controller
         $post -> vehicle_id = $vehicle -> id;
         $post -> category_id = $input["category_id"];
         $post -> save();
-
 
         // $post->fill($input)->save();
         //空のPostインスタンスにそれぞれのパラメータを全て挿入．
@@ -100,7 +93,7 @@ class PostController extends Controller
     }
     
     //Update
-    public function update(PostRequest $request, Post $post, Situation $situation, Vehicle $vehicle)
+    public function update(PostRequest $request, Post $post)
     {
 
         $input = $request->all();
@@ -126,8 +119,6 @@ class PostController extends Controller
         $post -> vehicle -> ship_available = $input["ship_available"];
         $post -> vehicle -> save();
 
-
-
         //posts
         $post -> title = $input["title"];
         $post -> body = $input["body"];
@@ -138,8 +129,6 @@ class PostController extends Controller
         // $post -> situation_id = $situation -> id;
         // $post -> vehicle_id = $vehicle -> id;
         $post -> save();
-
-
 
         // $input = $request->all();
         // $post->fill($input)->save();
