@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->foreignId('situation_id')->constrained("situations")->nullable();
+            $table->foreignId('situation_id')->constrained("situations")->nullable()->cascadeOnDelete();
         });
     }
 

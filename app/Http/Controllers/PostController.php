@@ -96,7 +96,7 @@ class PostController extends Controller
     //EditPage
     public function edit(Post $post)
     {
-        return Inertia::render("Post/Edit", ["post" => $post]);
+        return Inertia::render("Post/Edit",  ["post" => $post->load(["category", "vehicle", "situation",  "user"])]);
     }
     
     //Update
@@ -108,9 +108,11 @@ class PostController extends Controller
     }
 
     //Delete
-    public function delete(Post $post)
+    public function delete(Post $post, Situation $situation, Vehicle $vehicle)
     {
-        $post->delete();
+        $post -> situation() -> delete();
+        $post -> vehicle() -> delete();
+        $post -> delete();
         return redirect("/posts");
     }
 }

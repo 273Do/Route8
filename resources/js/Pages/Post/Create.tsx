@@ -236,6 +236,7 @@ const Create = (props: Post) => {
                         <input
                             type="checkbox"
                             name="is_running"
+                            checked={data.is_running}
                             onChange={(e) =>
                                 setData("is_running", e.target.checked)
                             }

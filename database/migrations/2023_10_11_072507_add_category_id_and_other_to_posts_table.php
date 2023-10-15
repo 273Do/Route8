@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('map_url', 600);
             $table->foreignId('user_id')->constrained("users");
             $table->foreignId('category_id')->constrained("categories");
+            // ->cascadeOnDelete()
         });
     }
 

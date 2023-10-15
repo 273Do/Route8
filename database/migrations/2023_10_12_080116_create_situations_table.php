@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('start_point', 80);
             $table->string('goal_point', 80);
-            $table->integer('weather_before_id');
-            $table->integer('weather_after_id');
+            $table->string('weather_before_id',10);
+            $table->string('weather_after_id',10);
             $table->boolean('is_running'); 
             // $table->foreignId('weather_before_id ')->constrained("weathers");
             // $table->foreignId('weather_after_id')->constrained("weathers");
