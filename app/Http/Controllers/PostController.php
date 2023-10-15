@@ -100,10 +100,49 @@ class PostController extends Controller
     }
     
     //Update
-    public function update(PostRequest $request, Post $post)
+    public function update(PostRequest $request, Post $post, Situation $situation, Vehicle $vehicle)
     {
+
         $input = $request->all();
-        $post->fill($input)->save();
+        //$requestにはリクエストパラメータが含まれており，
+        //それを$inputに代入．
+
+        //situations
+        $post -> situation -> start_point = $input["start_point"];
+        $post -> situation -> goal_point = $input["goal_point"];
+        $post -> situation -> weather_before_id = $input["weather_before_id"];
+        $post -> situation -> weather_after_id = $input["weather_after_id"];
+        $post -> situation -> is_running = $input["is_running"];
+        $post -> situation -> save();
+
+        //vehicles
+        $post -> vehicle -> walk_available = $input["walk_available"];
+        $post -> vehicle -> bicycle_available = $input["bicycle_available"];
+        $post -> vehicle -> car_available = $input["car_available"];
+        $post -> vehicle -> bus_available = $input["bus_available"];
+        $post -> vehicle  -> train_available = $input["train_available"];
+        $post -> vehicle -> shinkansen_available = $input["shinkansen_available"];
+        $post -> vehicle -> plane_available = $input["plane_available"];
+        $post -> vehicle -> ship_available = $input["ship_available"];
+        $post -> vehicle -> save();
+
+
+
+        //posts
+        $post -> title = $input["title"];
+        $post -> body = $input["body"];
+        $post -> is_public = $input["is_public"];
+        $post -> map_url = $input["map_url"];
+
+        // $post -> user_id = $input["user_id"];
+        // $post -> situation_id = $situation -> id;
+        // $post -> vehicle_id = $vehicle -> id;
+        $post -> save();
+
+
+
+        // $input = $request->all();
+        // $post->fill($input)->save();
         return redirect("/posts/" . $post->id);
     }
 
