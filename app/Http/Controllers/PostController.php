@@ -89,7 +89,7 @@ class PostController extends Controller
     //EditPage
     public function edit(Post $post)
     {
-        return Inertia::render("Post/Edit",  ["post" => $post->load(["category", "vehicle", "situation",  "user"])]);
+        return Inertia::render("Post/Edit",  ["post" => $post->load(["category", "vehicle", "situation"])]);
     }
     
     //Update
