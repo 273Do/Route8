@@ -1,0 +1,27 @@
+@import "../../scss/variables.scss";
+
+.contents {
+    header,
+    main {
+        background-color: map-get($light_theme, "bg");
+        margin: -10px;
+    }
+    header {
+        div {
+            img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        .search_button {
+            background-color: map-get($light_theme, "input_bg");
+            color: map-get($light_theme, "input_text");
+            height: 15px;
+            border-radius: 20px;
+            &:focus {
+                outline: none !important;
+            }
+        }
+    }
+}

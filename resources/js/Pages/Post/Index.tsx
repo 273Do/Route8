@@ -16,14 +16,7 @@ const Index = (props: Auth) => {
     };
 
     return (
-        <Authenticated
-            auth={props.auth}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Index
-                </h2>
-            }
-        >
+        <Authenticated auth={props.auth} header={<h2>Index</h2>}>
             <Link href="/posts/create">Create</Link>
             <div className="p-12">
                 <h1>Blog Name</h1>
