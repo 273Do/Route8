@@ -24,15 +24,25 @@ const Show = (props: Post) => {
                     <h3>本文</h3>
                     <p>{post.body}</p>
                     <p>{post.is_public}</p>
-                    <p>{post.walk_available}</p>
-                    <p>{post.bicycle_available}</p>
-                    <p>{post.car_available}</p>
-                    <p>{post.bus_available}</p>
-                    <p>{post.train_available}</p>
-                    <p>{post.shinkansen_available}</p>
-                    <p>{post.plane_available}</p>
-                    <p>{post.ship_available}</p>
                     <p>{post.created_at}</p>
+                    <p>{post.map_url}</p>
+                    <p>{post.category.category_name}</p>
+                    <p>{post.user.name}</p>
+
+                    <p>{post.situation.start_point}</p>
+                    <p>{post.situation.goal_point}</p>
+                    <p>{post.situation.weather_before_id}</p>
+                    <p>{post.situation.weather_after_id}</p>
+                    <p>{post.situation.is_running}</p>
+
+                    <p>{post.vehicle.walk_available}</p>
+                    <p>{post.vehicle.bicycle_available}</p>
+                    <p>{post.vehicle.car_available}</p>
+                    <p>{post.vehicle.bus_available}</p>
+                    <p>{post.vehicle.train_available}</p>
+                    <p>{post.vehicle.shinkansen_available}</p>
+                    <p>{post.vehicle.plane_available}</p>
+                    <p>{post.vehicle.ship_available}</p>
 
                     <div>
                         <Link href={`/posts/${post.id}/edit`}>編集</Link>
