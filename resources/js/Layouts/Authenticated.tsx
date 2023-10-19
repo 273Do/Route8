@@ -185,45 +185,17 @@ export default function Authenticated({ auth, header, children }: Props) {
                 <div>
                     <img src={R8Logo} alt="Route8Logo" />
                 </div>
-                <form action="#">
-                    <input type="text" className="search_button" />
-                    <button type="submit" onclick="registerBtn()">
-                        search
-                    </button>
+                <form action="#" className="search_form">
+                    <input type="text" className="search_area" />
                 </form>
-                <nav>
-                    <ul>
-                        <li>
-                            <NavLink
-                                href={route("dashboard")}
-                                active={route().current("dashboard")}
-                            >
-                                Dashboard
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                href={route("index")}
-                                active={route().current("index")}
-                            >
-                                PostPage
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                href={route("create")}
-                                active={route().current("create")}
-                            >
-                                CreatePage
-                            </NavLink>
-                        </li>
-                    </ul>
-                </nav>
                 <div>
                     <button type="button">{auth.user.name}</button>
                 </div>
             </header>
             <main>{children}</main>
+            <footer>
+                <h1>Footer</h1>
+            </footer>
         </div>
     );
 }

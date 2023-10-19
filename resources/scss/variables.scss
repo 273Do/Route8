@@ -1,3 +1,14 @@
+@font-face {
+    font-family: "Objective-Medium";
+    src: url("../font/Objective-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "NotoSansJP-Medium";
+    src: url("../font/NotoSansJP-Medium.otf") format("opentype");
+}
+
+$font: "Objective-Medium", "NotoSansJP-Medium";
+
 $light_theme: (
     bg: #f4ede4,
     text: #222222,
