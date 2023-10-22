@@ -4,6 +4,7 @@ import { Link } from "@inertiajs/inertia-react";
 import { router } from "@inertiajs/react";
 import { Auth, Post } from "../Types";
 import NavLink from "@/Components/NavLink";
+import { LordIcon } from "../Common/lord-icon";
 
 // HomePage
 const Index = (props: Auth) => {
@@ -28,7 +29,12 @@ const Index = (props: Auth) => {
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
                                 >
-                                    D
+                                    <LordIcon
+                                        src="https://cdn.lordicon.com/cnpvyndp.json"
+                                        trigger="hover"
+                                        colors={{ primary: "#222222" }}
+                                        size={28}
+                                    />
                                 </NavLink>
                             </li>
                             <li>
@@ -36,7 +42,12 @@ const Index = (props: Auth) => {
                                     href={route("index")}
                                     active={route().current("index")}
                                 >
-                                    P
+                                    <LordIcon
+                                        src="https://cdn.lordicon.com/yxyampao.json"
+                                        trigger="hover"
+                                        colors={{ primary: "#222222" }}
+                                        size={28}
+                                    />
                                 </NavLink>
                             </li>
                             <li>
@@ -44,13 +55,18 @@ const Index = (props: Auth) => {
                                     href={route("create")}
                                     active={route().current("create")}
                                 >
-                                    C
+                                    <LordIcon
+                                        src="https://cdn.lordicon.com/prjooket.json"
+                                        trigger="hover"
+                                        colors={{ primary: "#222222" }}
+                                        size={28}
+                                    />
                                 </NavLink>
                             </li>
                         </ul>
                     </nav>
                 </div>
-                <div className="route_card">
+                <div className="route_list">
                     {posts.map((post: Post) => (
                         <div key={post.id}>
                             <h2>

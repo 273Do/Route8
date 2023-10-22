@@ -14,7 +14,7 @@ body {
 
     // scroll
     ::-webkit-scrollbar {
-        width: 7.5px;
+        width: 5px;
     }
     ::-webkit-scrollbar-track {
         background: transparent;
@@ -27,7 +27,7 @@ body {
     // header
     header {
         display: flex;
-        justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
+        justify-content: space-between;
         align-items: center;
         background-color: map-get($light_theme, "bg");
         height: 80px;
@@ -64,6 +64,17 @@ body {
                 &:focus {
                     outline: none;
                 }
+            }
+        }
+
+        .user_button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover {
+                opacity: 0.5;
             }
         }
     }

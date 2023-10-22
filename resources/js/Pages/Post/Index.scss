@@ -10,12 +10,15 @@
         margin-top: 40px;
         position: "fixed";
         z-index: 10;
-        .h1 {
+        h1 {
             margin: 0;
+            font-size: 2.5em;
             font-family: $font;
         }
         nav {
             ul {
+                margin-right: -10px;
+
                 li {
                     list-style: none;
                     display: inline-block;
@@ -32,12 +35,12 @@
         }
     }
 
-    .route_card {
+    .route_list {
         position: relative;
         pointer-events: auto;
         height: calc(108vh - 380px);
         //1080px未満
-        //height: calc(114vh - 420px);
+        // height: calc(114vh - 420px);
         overflow-y: scroll;
         overflow-x: hidden;
     }

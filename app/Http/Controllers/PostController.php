@@ -14,13 +14,13 @@ use App\Models\User;
 class PostController extends Controller
 {
     //HomePage
-     public function index()
+    public function index()
     {
         // return Inertia::render("Post/Index");
         //  return Inertia::render("Post/Index",["posts" => $post->get()]);
         return Inertia::render("Post/Index",["posts" => Post::with(["category", "vehicle", "situation",  "user"])->get()]);
         // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
-        }
+    }
     
     //RoutePage
     public function show(Post $post)
