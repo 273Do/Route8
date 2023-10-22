@@ -39,9 +39,11 @@
         position: relative;
         pointer-events: auto;
         height: calc(108vh - 380px);
-        //1080px未満
-        // height: calc(114vh - 420px);
         overflow-y: scroll;
         overflow-x: hidden;
+
+        @media (max-height: ($pc_small)) {
+            height: calc(114vh - 420px);
+        }
     }
 }
