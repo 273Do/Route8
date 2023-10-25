@@ -42,6 +42,7 @@ type LordIconTrigger =
 
 type LordIconProps = {
     src?: string;
+    state?: string;
     trigger?: LordIconTrigger;
     colors?: string;
     delay?: string | number;

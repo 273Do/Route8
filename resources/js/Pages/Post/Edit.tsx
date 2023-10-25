@@ -62,6 +62,13 @@ const Edit = (props: Post) => {
             }
         >
             <div className="p-12">
+                <iframe
+                    src={data.map_url}
+                    width="600"
+                    height="450"
+                    allowfullscreen
+                    loading="lazy"
+                ></iframe>
                 <form onSubmit={handleSendPosts}>
                     <div>
                         <h2>Title</h2>

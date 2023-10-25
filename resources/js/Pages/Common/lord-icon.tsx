@@ -21,6 +21,7 @@ export type LordIconColors = {
 export type LordIconProps = {
     src?: string;
     trigger?: LordIconTrigger;
+    state?: string;
     colors?: LordIconColors;
     delay?: number;
     size?: number;
@@ -30,6 +31,7 @@ export const LordIcon = ({
     colors,
     src,
     size,
+    state,
     trigger,
     delay,
 }: LordIconProps) => {
@@ -37,6 +39,7 @@ export const LordIcon = ({
         <lord-icon
             colors={`primary:${colors?.primary},secondary:${colors?.secondary}`}
             src={src}
+            state={state}
             trigger={trigger}
             delay={delay}
             style={{

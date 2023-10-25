@@ -51,6 +51,13 @@ const Create = (props: Post) => {
                 </h2>
             }
         >
+            <iframe
+                src={data.map_url}
+                width="600"
+                height="450"
+                allowfullscreen
+                loading="lazy"
+            ></iframe>
             <div className="p-12">
                 <form onSubmit={handleSendPosts}>
                     <div>

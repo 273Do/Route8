@@ -6,6 +6,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/inertia-react";
 import R8Logo from "../../img/Route8.png";
 import { LordIcon } from "../Pages/Common/lord-icon";
+import  Footer  from "./Footer";
 interface Props {
     auth: any;
     header: React.ReactNode;
@@ -200,9 +201,7 @@ export default function Authenticated({ auth, header, children }: Props) {
                 </div>
             </header>
             <main>{children}</main>
-            <footer>
-                <h1>Footer</h1>
-            </footer>
+            <Footer />
         </div>
     );
 }

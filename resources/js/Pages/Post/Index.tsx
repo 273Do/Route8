@@ -21,6 +21,7 @@ const Index = (props: Auth) => {
         <Authenticated auth={props.auth} header={<h2>Index</h2>}>
             <div className="main_contents">
                 <div className="title_bar">
+                    {/* {props.auth.user.name} */}
                     <h1>Route</h1>
                     <nav>
                         <ul>
@@ -67,42 +68,102 @@ const Index = (props: Auth) => {
                     </nav>
                 </div>
                 <div className="route_list">
+                    {/* <Link href="/posts/create">Create</Link> */}
                     {posts.map((post: Post) => (
-                        <div key={post.id}>
-                            <h2>
-                                <Link href={`/posts/${post.id}`}>
-                                    {post.title}
-                                </Link>
-                            </h2>
-                            <Link href="/posts/create">Create</Link>
-                            <p>{post.body}</p>
-                            <p>{post.is_public}</p>
-                            <p>{post.created_at}</p>
-                            <p>{post.map_url}</p>
-                            <p>{post.category.category_name}</p>
-                            <p>{post.user.name}</p>
-
-                            <p>{post.situation.start_point}</p>
-                            <p>{post.situation.goal_point}</p>
-                            <p>{post.situation.weather_before_id}</p>
-                            <p>{post.situation.weather_after_id}</p>
-                            <p>{post.situation.is_running}</p>
-
-                            <p>{post.vehicle.walk_available}</p>
-                            <p>{post.vehicle.bicycle_available}</p>
-                            <p>{post.vehicle.car_available}</p>
-                            <p>{post.vehicle.bus_available}</p>
-                            <p>{post.vehicle.train_available}</p>
-                            <p>{post.vehicle.shinkansen_available}</p>
-                            <p>{post.vehicle.plane_available}</p>
-                            <p>{post.vehicle.ship_available}</p>
-
-                            <button
-                                className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
-                                onClick={() => handleDeletePost(post.id)}
+                        <div className="route_board" key={post.id}>
+                            <Link
+                                className="link_no_underline"
+                                href={`/posts/${post.id}`}
                             >
-                                delete
-                            </button>
+                                <div className="route_card">
+                                    {/* <button
+                                        onClick={() =>
+                                            handleDeletePost(post.id)
+                                        }
+                                    >
+                                        delete
+                                    </button> */}
+                                    <div className="route_header">
+                                        <p>
+                                            {post.situation.start_point} →{" "}
+                                            {post.situation.goal_point}
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <Link
+                                                    href={`/posts/${post.id}/edit`}
+                                                >
+                                                    <LordIcon
+                                                        src="https://cdn.lordicon.com/uwbjfiwe.json"
+                                                        trigger="hover"
+                                                        colors={{
+                                                            primary: "#f4ede4",
+                                                        }}
+                                                        size={25}
+                                                    />
+                                                </Link>
+                                            </li>
+                                            <li
+                                                onClick={() =>
+                                                    handleDeletePost(post.id)
+                                                }
+                                            >
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/wpyrrmcq.json"
+                                                    trigger="morph"
+                                                    state="morph-trash-full"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li>
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/prjooket.json"
+                                                    trigger="hover"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    {/* <p>{post.body}</p> */}
+                                    {/* <p>{post.is_public}</p> */}
+                                    <iframe
+                                        src={post.map_url}
+                                        width="480"
+                                        height="260"
+                                        allowFullScreen
+                                        loading="lazy"
+                                        frameborder="0"
+                                    ></iframe>
+                                    <p>{post.created_at}</p>
+                                    {/* <p>{post.map_url}</p> */}
+                                    <p>{post.category.category_name}</p>
+                                    <p>{post.user.name}</p>
+                                    {/* <p>
+                                            {post.situation.weather_before_id}
+                                        </p>
+                                        <p>{post.situation.weather_after_id}</p>
+                                        <p>{post.situation.is_running}</p>
+
+                                        <p>{post.vehicle.walk_available}</p>
+                                        <p>{post.vehicle.bicycle_available}</p>
+                                        <p>{post.vehicle.car_available}</p>
+                                        <p>{post.vehicle.bus_available}</p>
+                                        <p>{post.vehicle.train_available}</p>
+                                        <p>
+                                            {post.vehicle.shinkansen_available}
+                                        </p>
+                                        <p>{post.vehicle.plane_available}</p>
+                                        <p>{post.vehicle.ship_available}</p> */}
+                                </div>
+                            </Link>
+                            <p className="card_title">{post.title}</p>
                         </div>
                     ))}
                 </div>
