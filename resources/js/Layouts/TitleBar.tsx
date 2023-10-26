@@ -7,7 +7,6 @@ import { LordIcon } from "../Pages/Common/lord-icon";
 const TitleBar = ({ title }: TitleBar) => {
     return (
         <div className="title_bar">
-            {/* {props.auth.user.name} */}
             <h1>{title}</h1>
             <nav>
                 <ul>

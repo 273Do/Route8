@@ -35,7 +35,6 @@ const Index = (props: Auth) => {
             <div className="main_contents">
                 <TitleBar title={"Route"} />
                 <div className="route_list">
-                    {/* <Link href="/posts/create">Create</Link> */}
                     {posts.map((post: Post) => (
                         <div className="route_board" key={post.id}>
                             <Link
@@ -43,13 +42,6 @@ const Index = (props: Auth) => {
                                 href={`/posts/${post.id}`}
                             >
                                 <div className="route_card">
-                                    {/* <button
-                                        onClick={() =>
-                                            handleDeletePost(post.id)
-                                        }
-                                    >
-                                        delete
-                                    </button> */}
                                     <div className="route_header">
                                         <p>
                                             {post.situation.start_point} →{" "}
@@ -98,9 +90,6 @@ const Index = (props: Auth) => {
                                             </li>
                                         </ul>
                                     </div>
-
-                                    {/* <p>{post.body}</p> */}
-                                    {/* <p>{post.is_public}</p> */}
                                     <iframe
                                         src={post.map_url}
                                         width="480"
@@ -291,26 +280,6 @@ const Index = (props: Auth) => {
                                             </li>
                                         </ul>
                                     </div>
-                                    {/* <p>{post.created_at}</p> */}
-                                    {/* <p>{post.map_url}</p> */}
-                                    {/* <p>{post.category.category_name}</p> */}
-                                    {/* <p>{post.user.name}</p> */}
-                                    {/* <p>
-                                            {post.situation.weather_before_id}
-                                        </p>
-                                        <p>{post.situation.weather_after_id}</p>
-                                        <p>{post.situation.is_running}</p>
-
-                                        <p>{post.vehicle.walk_available}</p>
-                                        <p>{post.vehicle.bicycle_available}</p>
-                                        <p>{post.vehicle.car_available}</p>
-                                        <p>{post.vehicle.bus_available}</p>
-                                        <p>{post.vehicle.train_available}</p>
-                                        <p>
-                                            {post.vehicle.shinkansen_available}
-                                        </p>
-                                        <p>{post.vehicle.plane_available}</p>
-                                        <p>{post.vehicle.ship_available}</p> */}
                                 </div>
                             </Link>
                             <p className="card_title">{post.title}</p>
