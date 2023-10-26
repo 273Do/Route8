@@ -7,7 +7,7 @@ import NavLink from "@/Components/NavLink";
 import { LordIcon } from "../Common/lord-icon";
 import TitleBar from "../../Layouts/TitleBar";
 
-// HomePage
+// IndexPage
 const Index = (props: Auth) => {
     const { posts } = props;
     console.log(props);
