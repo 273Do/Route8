@@ -14,13 +14,14 @@ use App\Models\User;
 class PostController extends Controller
 {
     //HomePage
-     public function index()
+    public function index()
     {
         // return Inertia::render("Post/Index");
         //  return Inertia::render("Post/Index",["posts" => $post->get()]);
-        return Inertia::render("Post/Index",["posts" => Post::with(["category", "vehicle", "situation",  "user"])->get()]);
+        return Inertia::render("Post/Index",["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("is_public", 1)->get()]);
         // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
-        }
+        // ->where("is_public", 1)でis_publicが1(true)のもののみ返す．
+    }
     
     //RoutePage
     public function show(Post $post)

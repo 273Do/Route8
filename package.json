@@ -28,6 +28,10 @@
     },
     "dependencies": {
         "@inertiajs/inertia-react": "^0.8.1",
-        "@inertiajs/progress": "^0.2.7"
+        "@inertiajs/progress": "^0.2.7",
+        "@lordicon/element": "^1.1.0",
+        "@lordicon/react": "^1.1.0",
+        "lord-icon-element": "^4.1.2",
+        "lottie-web": "^5.12.2"
     }
 }

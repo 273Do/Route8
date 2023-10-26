@@ -1,7 +1,6 @@
+// ここにScssファイルをインポートする．
+@import "./variables.scss";
+@import "../resources/js/Layouts/Header.scss";
+@import "../resources/js/Layouts/Footer.scss";
+@import "../resources/js/Layouts/TitleBar.scss";
 @import "../resources/js/Pages/Post/Index.scss";
-
-.text-red {
-    color: red;
-    font-size: 50px;
-    font-weight: bold;
-}

@@ -29,3 +29,42 @@ export interface Post {
     categories: any;
     category: any;
 }
+
+export interface TitleBar {
+    title: string;
+}
+
+import "react";
+
+type LordIconTrigger =
+    | "in"
+    | "hover"
+    | "click"
+    | "loop"
+    | "loop-on-hover"
+    | "morph"
+    | "morph-two-way";
+
+type LordIconProps = {
+    src?: string;
+    state?: string;
+    stroke?: string;
+    trigger?: LordIconTrigger;
+    colors?: string;
+    delay?: string | number;
+};
+
+type LordIconElement = React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLElement>,
+    HTMLElement
+> &
+    LordIconProps;
+
+declare global {
+    // eslint-disable-next-line @typescript-eslint/no-namespace
+    namespace JSX {
+        interface IntrinsicElements {
+            "lord-icon": LordIconElement;
+        }
+    }
+}

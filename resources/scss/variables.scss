@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "Objective-Medium";
+    src: url("../font/Objective-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "NotoSansJP-Medium";
+    src: url("../font/NotoSansJP-Medium.otf") format("opentype");
+}
+
+$font: "Objective-Medium", "NotoSansJP-Medium";
+
+// height
+$pc_small: 1080px; // PC：小さいウィンドウ
+$sp: 450px; // スマホ
+
+$light_theme: (
+    bg: #f4ede4,
+    sub_bg: #222222,
+    text: #222222,
+    sub_text: #f4ede4,
+    input_bg: #222222,
+    input_text: #f4ede4,
+);
+
+$dark_theme: (
+    bg: #222222,
+    sub_bg: #f4ede4,
+    text: #f4ede4,
+    sub_text: #222222,
+    input_bg: #f4ede4,
+    input_text: #222222,
+);
