@@ -189,7 +189,7 @@ const Index = (props: Auth) => {
                                                 />
                                             </li>
                                         </ul>
-                                        {/* 移動手段 */}
+                                        {/* 移動手段2 */}
                                         <ul className="route_vehicle">
                                             <li>
                                                 <LordIcon
