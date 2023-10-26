@@ -28,7 +28,8 @@
                     image-rendering: -webkit-optimize-contrast;
 
                     &:hover {
-                        transform: scale(1.15);
+                        // transform: scale(1.15);
+                        transform: translateY(-5px);
                     }
                 }
             }
@@ -76,7 +77,9 @@
                 transition: all 0.3s;
 
                 &:hover {
-                    transform: scale(1.03);
+                    // transform: scale(1.03);
+                    // opacity: 0.9;
+                    transform: translateY(-5px);
                 }
 
                 .route_header {
@@ -100,7 +103,8 @@
                             image-rendering: -webkit-optimize-contrast;
 
                             &:hover {
-                                transform: scale(1.15);
+                                // transform: scale(1.15);
+                                transform: translateY(-5px);
                             }
                         }
                     }
@@ -145,7 +149,8 @@
                         image-rendering: -webkit-optimize-contrast;
 
                         &:hover {
-                            transform: scale(1.15);
+                            // transform: scale(1.15);
+                            transform: translateY(-5px);
                         }
 
                         p {
@@ -175,7 +180,8 @@
                         image-rendering: -webkit-optimize-contrast;
 
                         &:hover {
-                            transform: scale(1.15);
+                            // transform: scale(1.15);
+                            transform: translateY(-5px);
                         }
                     }
                 }
@@ -185,7 +191,7 @@
                 text-align: center;
                 font-size: 1.5rem;
                 margin: 0 auto;
-                margin-top: 5px;
+                // margin-top: 5px;
             }
         }
     }

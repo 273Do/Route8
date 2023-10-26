@@ -17,6 +17,18 @@ const Index = (props: Auth) => {
         });
     };
 
+    const putWeatherState = (weather: string): string => {
+        let url: string = "";
+        if (weather == "sunny") url = "https://cdn.lordicon.com/ingirgpt.json";
+        else if (weather == "cloudy")
+            url = "https://cdn.lordicon.com/zawvkqfy.json";
+        else if (weather == "rainy")
+            url = "https://cdn.lordicon.com/jtslwgho.json";
+        else if (weather == "snowy")
+            url = "https://cdn.lordicon.com/fyhyivaa.json";
+        return url;
+    };
+
     return (
         <Authenticated auth={props.auth} header={<h2>Index</h2>}>
             <div className="main_contents">
@@ -32,7 +44,8 @@ const Index = (props: Auth) => {
                                 >
                                     <LordIcon
                                         src="https://cdn.lordicon.com/cnpvyndp.json"
-                                        trigger="hover"
+                                        trigger="morph"
+                                        state="morph-home-1"
                                         colors={{ primary: "#222222" }}
                                         size={28}
                                     />
@@ -58,7 +71,8 @@ const Index = (props: Auth) => {
                                 >
                                     <LordIcon
                                         src="https://cdn.lordicon.com/prjooket.json"
-                                        trigger="hover"
+                                        trigger="morph"
+                                        state="morph-marked-bookmark"
                                         colors={{ primary: "#222222" }}
                                         size={28}
                                     />
@@ -121,7 +135,8 @@ const Index = (props: Auth) => {
                                             <li>
                                                 <LordIcon
                                                     src="https://cdn.lordicon.com/prjooket.json"
-                                                    trigger="hover"
+                                                    trigger="morph"
+                                                    state="morph-marked-bookmark"
                                                     colors={{
                                                         primary: "#f4ede4",
                                                     }}
@@ -145,7 +160,10 @@ const Index = (props: Auth) => {
                                         <ul className="route_weather">
                                             <li>
                                                 <LordIcon
-                                                    src="https://cdn.lordicon.com/ingirgpt.json"
+                                                    src={putWeatherState(
+                                                        post.situation
+                                                            .weather_before_id,
+                                                    )}
                                                     trigger="hover"
                                                     stroke="bold"
                                                     colors={{
@@ -155,12 +173,12 @@ const Index = (props: Auth) => {
                                                     size={25}
                                                 />
                                             </li>
-                                            {/* <li>
-                                                <p> → </p>
-                                            </li> */}
                                             <li>
                                                 <LordIcon
-                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    src={putWeatherState(
+                                                        post.situation
+                                                            .weather_after_id,
+                                                    )}
                                                     trigger="hover"
                                                     stroke="bold"
                                                     colors={{

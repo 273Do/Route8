@@ -83,7 +83,8 @@ body {
             image-rendering: -webkit-optimize-contrast;
 
             &:hover {
-                transform: scale(1.15);
+                // transform: scale(1.15);
+                transform: translateY(-5px);
             }
         }
     }
