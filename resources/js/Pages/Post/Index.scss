@@ -1,42 +1,8 @@
 .main_contents {
     height: 100%;
 
-    .title_bar {
-        display: flex;
-        justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
-        align-items: center;
-        background-color: map-get($light_theme, "bg");
-        height: 100px;
-        margin-top: 40px;
-        position: "fixed";
-        z-index: 10;
-
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-family: $font;
-        }
-        nav {
-            ul {
-                margin-right: -10px;
-
-                li {
-                    list-style: none;
-                    display: inline-block;
-                    margin-right: 10px;
-                    transition: all 0.3s;
-                    image-rendering: -webkit-optimize-contrast;
-
-                    &:hover {
-                        // transform: scale(1.15);
-                        transform: translateY(-5px);
-                    }
-                }
-            }
-        }
-    }
-
-    .route_list {
+    .route_list,
+    .route_page {
         position: relative;
         pointer-events: auto;
         display: flex;
@@ -117,6 +83,7 @@
                 margin-left: 10px;
                 pointer-events: none;
                 justify-content: space-between;
+                align-items: center;
 
                 border-radius: 20px;
                 -webkit-border-radius: 20px;
@@ -185,7 +152,7 @@
                         }
                     }
 
-                    .not_riding_vehicle {
+                    .display_none {
                         display: none;
                     }
                 }

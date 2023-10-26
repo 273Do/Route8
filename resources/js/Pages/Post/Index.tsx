@@ -137,7 +137,7 @@ const Index = (props: Auth) => {
                                                 className={`${
                                                     post.vehicle
                                                         .walk_available == 0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >
@@ -155,7 +155,7 @@ const Index = (props: Auth) => {
                                                 className={`${
                                                     post.vehicle
                                                         .bicycle_available == 0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >
@@ -173,7 +173,7 @@ const Index = (props: Auth) => {
                                                 className={`${
                                                     post.vehicle
                                                         .car_available == 0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >
@@ -191,7 +191,7 @@ const Index = (props: Auth) => {
                                                 className={`${
                                                     post.vehicle
                                                         .bus_available == 0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >
@@ -209,7 +209,7 @@ const Index = (props: Auth) => {
                                                 className={`${
                                                     post.vehicle
                                                         .train_available == 0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >
@@ -228,7 +228,7 @@ const Index = (props: Auth) => {
                                                     post.vehicle
                                                         .shinkansen_available ==
                                                     0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >
@@ -246,7 +246,7 @@ const Index = (props: Auth) => {
                                                 className={`${
                                                     post.vehicle
                                                         .plane_available == 0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >
@@ -264,7 +264,7 @@ const Index = (props: Auth) => {
                                                 className={`${
                                                     post.vehicle
                                                         .ship_available == 0
-                                                        ? "not_riding_vehicle"
+                                                        ? "display_none"
                                                         : ""
                                                 }`}
                                             >

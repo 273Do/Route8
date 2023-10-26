@@ -1,0 +1,49 @@
+.route_page {
+    @media (max-width: ($pc_small_width)) {
+        // height: calc(114vh - 420px);
+        // flex-flow: column;
+    }
+
+    iframe,
+    .route_detail {
+        width: 45%;
+        height: 99%;
+        min-width: 580px;
+        border-radius: 20px;
+
+        @media (max-width: ($pc_small_width)) {
+            width: 80%;
+            height: 50%;
+        }
+    }
+
+    iframe {
+        // margin-right: 10px;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+
+        border: 2px map-get($light_theme, "sub_bg") solid;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+
+        // 色フィルター
+        filter: grayscale(60%) sepia(25%);
+
+        @media (max-width: ($pc_small_width)) {
+            margin-right: 0px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .route_detail {
+        margin-left: 10px;
+        background-color: map-get($light_theme, "sub_bg");
+
+        @media (max-width: ($pc_small_width)) {
+            margin-left: 0px;
+            margin-top: 10px;
+        }
+    }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Link } from "@inertiajs/inertia-react";
 import { Post } from "../Types";
+import TitleBar from "../../Layouts/TitleBar";
 
 // RoutePage
 const Show = (props: Post) => {
@@ -9,15 +10,24 @@ const Show = (props: Post) => {
     console.log(post);
 
     return (
-        <Authenticated
-            auth={props.auth}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Index
-                </h2>
-            }
-        >
-            <div className="p-12">
+        <Authenticated auth={props.auth} header={<h2>Index</h2>}>
+            <div className="main_contents">
+                <TitleBar
+                    title={post.category.category_name + "/" + post.title}
+                />
+                <div className="route_page">
+                    <iframe
+                        src={post.map_url}
+                        width="480"
+                        height="260"
+                        allowFullScreen
+                        loading="lazy"
+                        frameborder="0"
+                    ></iframe>
+                    <div className="route_detail"></div>
+                </div>
+            </div>
+            {/* <div>
                 <h1>{post.title}</h1>
 
                 <div>
@@ -52,7 +62,7 @@ const Show = (props: Post) => {
                 <div>
                     <Link href="/posts">戻る</Link>
                 </div>
-            </div>
+            </div> */}
         </Authenticated>
     );
 };
