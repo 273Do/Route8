@@ -150,7 +150,7 @@
 
                         &:hover {
                             // transform: scale(1.15);
-                            transform: translateY(-5px);
+                            transform: translateY(-3px);
                         }
 
                         p {
@@ -181,8 +181,12 @@
 
                         &:hover {
                             // transform: scale(1.15);
-                            transform: translateY(-5px);
+                            transform: translateY(-3px);
                         }
+                    }
+
+                    .not_riding_vehicle {
+                        display: none;
                     }
                 }
             }
@@ -191,7 +195,7 @@
                 text-align: center;
                 font-size: 1.5rem;
                 margin: 0 auto;
-                // margin-top: 5px;
+                margin-top: 5px;
             }
         }
     }

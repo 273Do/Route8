@@ -5,6 +5,7 @@ import { router } from "@inertiajs/react";
 import { Auth, Post } from "../Types";
 import NavLink from "@/Components/NavLink";
 import { LordIcon } from "../Common/lord-icon";
+import TitleBar from "../../Layouts/TitleBar";
 
 // HomePage
 const Index = (props: Auth) => {
@@ -25,62 +26,14 @@ const Index = (props: Auth) => {
         else if (weather == "rainy")
             url = "https://cdn.lordicon.com/jtslwgho.json";
         else if (weather == "snowy")
-            url = "https://cdn.lordicon.com/fyhyivaa.json";
+            url = "https://cdn.lordicon.com/sjtzcwfd.json";
         return url;
     };
 
     return (
         <Authenticated auth={props.auth} header={<h2>Index</h2>}>
             <div className="main_contents">
-                <div className="title_bar">
-                    {/* {props.auth.user.name} */}
-                    <h1>Route</h1>
-                    <nav>
-                        <ul>
-                            <li>
-                                <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    <LordIcon
-                                        src="https://cdn.lordicon.com/cnpvyndp.json"
-                                        trigger="morph"
-                                        state="morph-home-1"
-                                        colors={{ primary: "#222222" }}
-                                        size={28}
-                                    />
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    href={route("index")}
-                                    active={route().current("index")}
-                                >
-                                    <LordIcon
-                                        src="https://cdn.lordicon.com/yxyampao.json"
-                                        trigger="hover"
-                                        colors={{ primary: "#222222" }}
-                                        size={28}
-                                    />
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    href={route("create")}
-                                    active={route().current("create")}
-                                >
-                                    <LordIcon
-                                        src="https://cdn.lordicon.com/prjooket.json"
-                                        trigger="morph"
-                                        state="morph-marked-bookmark"
-                                        colors={{ primary: "#222222" }}
-                                        size={28}
-                                    />
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                <TitleBar title={"Route"} />
                 <div className="route_list">
                     {/* <Link href="/posts/create">Create</Link> */}
                     {posts.map((post: Post) => (
@@ -189,13 +142,19 @@ const Index = (props: Auth) => {
                                                 />
                                             </li>
                                         </ul>
-                                        {/* 移動手段2 */}
+
                                         <ul className="route_vehicle">
-                                            <li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .walk_available == 0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
                                                 <LordIcon
-                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    src="https://cdn.lordicon.com/oxbjzlrk.json"
                                                     trigger="hover"
-                                                    stroke="bold"
                                                     colors={{
                                                         primary: "#f4ede4",
                                                         secondary: "#f4ede4",
@@ -203,11 +162,17 @@ const Index = (props: Auth) => {
                                                     size={25}
                                                 />
                                             </li>
-                                            <li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .bicycle_available == 0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
                                                 <LordIcon
-                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    src="https://cdn.lordicon.com/mknljqhi.json"
                                                     trigger="hover"
-                                                    stroke="bold"
                                                     colors={{
                                                         primary: "#f4ede4",
                                                         secondary: "#f4ede4",
@@ -215,11 +180,108 @@ const Index = (props: Auth) => {
                                                     size={25}
                                                 />
                                             </li>
-                                            <li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .car_available == 0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
                                                 <LordIcon
-                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    src="https://cdn.lordicon.com/cqjfxkgf.json"
                                                     trigger="hover"
-                                                    stroke="bold"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .bus_available == 0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/yiothpas.json"
+                                                    trigger="hover"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .train_available == 0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/eomzkbrc.json"
+                                                    trigger="hover"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .shinkansen_available ==
+                                                    0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/dpwabcjy.json"
+                                                    trigger="hover"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .plane_available == 0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/rpcdmsys.json"
+                                                    trigger="hover"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li
+                                                className={`${
+                                                    post.vehicle
+                                                        .ship_available == 0
+                                                        ? "not_riding_vehicle"
+                                                        : ""
+                                                }`}
+                                            >
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/pgofwoue.json"
+                                                    trigger="hover"
                                                     colors={{
                                                         primary: "#f4ede4",
                                                         secondary: "#f4ede4",

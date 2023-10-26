@@ -30,6 +30,10 @@ export interface Post {
     category: any;
 }
 
+export interface TitleBar {
+    title: string;
+}
+
 import "react";
 
 type LordIconTrigger =
