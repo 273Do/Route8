@@ -33,6 +33,7 @@ export interface Post {
 import "react";
 
 type LordIconTrigger =
+    | "in"
     | "hover"
     | "click"
     | "loop"
@@ -43,6 +44,7 @@ type LordIconTrigger =
 type LordIconProps = {
     src?: string;
     state?: string;
+    stroke?: string;
     trigger?: LordIconTrigger;
     colors?: string;
     delay?: string | number;

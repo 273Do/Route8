@@ -141,10 +141,79 @@ const Index = (props: Auth) => {
                                         loading="lazy"
                                         frameborder="0"
                                     ></iframe>
-                                    <p>{post.created_at}</p>
+                                    <div className="route_footer">
+                                        <ul className="route_weather">
+                                            <li>
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/ingirgpt.json"
+                                                    trigger="hover"
+                                                    stroke="bold"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            {/* <li>
+                                                <p> → </p>
+                                            </li> */}
+                                            <li>
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    trigger="hover"
+                                                    stroke="bold"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                        </ul>
+                                        <ul className="route_vehicle">
+                                            <li>
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    trigger="hover"
+                                                    stroke="bold"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li>
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    trigger="hover"
+                                                    stroke="bold"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                            <li>
+                                                <LordIcon
+                                                    src="https://cdn.lordicon.com/jtslwgho.json"
+                                                    trigger="hover"
+                                                    stroke="bold"
+                                                    colors={{
+                                                        primary: "#f4ede4",
+                                                        secondary: "#f4ede4",
+                                                    }}
+                                                    size={25}
+                                                />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {/* <p>{post.created_at}</p> */}
                                     {/* <p>{post.map_url}</p> */}
-                                    <p>{post.category.category_name}</p>
-                                    <p>{post.user.name}</p>
+                                    {/* <p>{post.category.category_name}</p> */}
+                                    {/* <p>{post.user.name}</p> */}
                                     {/* <p>
                                             {post.situation.weather_before_id}
                                         </p>

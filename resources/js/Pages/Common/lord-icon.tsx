@@ -6,6 +6,7 @@ import { defineElement } from "@lordicon/element";
 defineElement(lottie.loadAnimation);
 
 export type LordIconTrigger =
+    | "in"
     | "hover"
     | "click"
     | "loop"
@@ -22,6 +23,7 @@ export type LordIconProps = {
     src?: string;
     trigger?: LordIconTrigger;
     state?: string;
+    stroke?: string;
     colors?: LordIconColors;
     delay?: number;
     size?: number;
@@ -32,6 +34,7 @@ export const LordIcon = ({
     src,
     size,
     state,
+    stroke,
     trigger,
     delay,
 }: LordIconProps) => {
@@ -40,6 +43,7 @@ export const LordIcon = ({
             colors={`primary:${colors?.primary},secondary:${colors?.secondary}`}
             src={src}
             state={state}
+            stroke={stroke}
             trigger={trigger}
             delay={delay}
             style={{
