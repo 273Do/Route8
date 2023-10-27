@@ -5,16 +5,29 @@ const Footer = () => {
     return (
         <footer>
             <p className="copy_light">273DoWorks</p>
-
-            <div className="theme_icon">
-                <LordIcon
-                    src="https://cdn.lordicon.com/nktbqhlt.json"
-                    trigger="morph"
-                    state="morph-bulb-OFF" //"morph-bulb-ON"
-                    colors={{ primary: "#222222" }}
-                    size={28}
-                />
-            </div>
+            <ul>
+                <li>
+                    <LordIcon
+                        // src="https://cdn.lordicon.com/ygumtulo.json"
+                        // trigger="morph"
+                        // state="morph-slider"
+                        src="https://cdn.lordicon.com/sqopewut.json"
+                        trigger="hover"
+                        colors={{ primary: "#222222" }}
+                        size={28}
+                    />
+                </li>
+                <li>
+                    <LordIcon
+                        src="https://cdn.lordicon.com/nktbqhlt.json"
+                        trigger="morph"
+                        state="morph-bulb-OFF" //"morph-bulb-ON"
+                        colors={{ primary: "#222222" }}
+                        size={28}
+                    />
+                </li>
+            </ul>
+            <div className="theme_icon"></div>
         </footer>
     );
 };

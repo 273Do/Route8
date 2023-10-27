@@ -6,22 +6,29 @@ footer {
     margin-top: 10px;
     margin-left: 25px;
     margin-right: 25px;
-}
 
-.copy_light {
-    text-align: center; /* テキストを中央に配置 */
-    flex-grow: 1;
-    pointer-events: none;
-    color: map-get($light_theme, "text");
-}
+    .copy_light {
+        text-align: center; /* テキストを中央に配置 */
+        flex-grow: 1;
+        pointer-events: none;
+        color: map-get($light_theme, "text");
+    }
 
-.theme_icon {
-    cursor: pointer;
-    transition: all 0.3s;
-    image-rendering: -webkit-optimize-contrast;
+    ul {
+        margin-left: 10px;
 
-    &:hover {
-        // transform: scale(1.15);
-        transform: translateY(-5px);
+        li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            image-rendering: -webkit-optimize-contrast;
+
+            &:hover {
+                // transform: scale(1.15);
+                transform: translateY(-5px);
+            }
+        }
     }
 }
