@@ -40,7 +40,10 @@
     .route_detail {
         margin-left: 10px;
         // background-color: map-get($light_theme, "sub_bg");
-        background-color: gray;
+        // background-color: gray;
+
+        display: flex;
+        flex-direction: column; /* コンテンツを縦に配置 */
 
         @media (max-width: ($pc_small_width)) {
             margin-left: 0px;
@@ -48,59 +51,134 @@
 
         .route_explanation {
             width: 100%;
-            height: 55%;
-            margin-bottom: 10px;
+            // height: 55%;
+            // margin-bottom: 10px;
             // background-color: map-get($light_theme, "sub_bg");
-            background-color: darkgray;
+            // background-color: darkgray;
 
-            .route_weather {
-                align-items: center;
-                justify-content: center;
-                // padding: 0;
+            .explanation_header {
+                display: flex;
+                justify-content: right;
 
-                li {
-                    list-style: none;
-                    display: inline-block;
-                    // margin-right: 5px;
-                    transition: all 0.3s;
-                    image-rendering: -webkit-optimize-contrast;
-
-                    &:hover {
-                        // transform: scale(1.15);
-                        transform: translateY(-3px);
-                    }
+                p {
+                    margin-left: 20px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    font-size: 20px;
                 }
             }
 
-            .route_vehicle {
-                align-items: center;
-                justify-content: center;
-                // padding: 0;
-
-                li {
-                    list-style: none;
-                    display: inline-block;
-                    // margin-left: 10px;
-                    transition: all 0.3s;
-                    image-rendering: -webkit-optimize-contrast;
-
-                    &:hover {
-                        // transform: scale(1.15);
-                        transform: translateY(-3px);
-                    }
+            .explanation_start_goal {
+                p {
+                    font-size: 30px;
+                    margin: 0px;
                 }
+            }
+
+            .body {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding: 10px;
+                font-size: 20px;
+            }
+            .route_state {
+                display: flex;
+                justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
+                align-items: center;
+                height: 35px;
+                margin: 10px 0px 10px 0px;
+                position: "fixed";
+                z-index: 10;
 
                 .display_none {
                     display: none;
+                }
+
+                .route_weather {
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+
+                    li {
+                        list-style: none;
+                        display: inline-block;
+                        // margin-right: 5px;
+                        transition: all 0.3s;
+                        image-rendering: -webkit-optimize-contrast;
+
+                        &:hover {
+                            // transform: scale(1.15);
+                            transform: translateY(-3px);
+                        }
+                    }
+                }
+
+                .route_vehicle {
+                    align-items: center;
+                    justify-content: center;
+                    // padding: 0;
+
+                    li {
+                        list-style: none;
+                        display: inline-block;
+                        // margin-left: 10px;
+                        transition: all 0.3s;
+                        image-rendering: -webkit-optimize-contrast;
+
+                        &:hover {
+                            // transform: scale(1.15);
+                            transform: translateY(-3px);
+                        }
+                    }
+
+                    .display_none {
+                        display: none;
+                    }
+                }
+
+                .isnot_running {
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                    // margin-left: 10px;
+
+                    transition: all 0.3s;
+                    image-rendering: -webkit-optimize-contrast;
+
+                    // &:hover {
+                    //     // transform: scale(1.15);
+                    //     transform: translateY(-3px);
+                    // }
+
+                    li {
+                        list-style: none;
+                        display: inline-block;
+                        margin: 0px;
+
+                        p {
+                            // margin-top: 10px;
+                            margin: 0px 10px 0px 10px;
+                            font-size: 25px;
+                        }
+                    }
                 }
             }
         }
 
         .chat_area {
             width: 100%;
-            height: 40%;
+            // height: 40%;
+            flex: 1;
+            min-height: 380px;
             border-radius: 20px;
             background-color: map-get($light_theme, "sub_bg");
+            transition: all 0.3s;
+            image-rendering: -webkit-optimize-contrast;
+
+            &:hover {
+                transform: scale(1.01);
+                // transform: translateY(-5px);
+            }
         }
     }
 }

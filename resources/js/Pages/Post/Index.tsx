@@ -99,186 +99,249 @@ const Index = (props: Auth) => {
                                         frameborder="0"
                                     ></iframe>
                                     <div className="route_footer">
-                                        <ul className="route_weather">
-                                            <li>
-                                                <LordIcon
-                                                    src={putWeatherState(
-                                                        post.situation
-                                                            .weather_before_id,
+                                        {post.situation.is_running == 1 ? (
+                                            <>
+                                                <ul className="route_weather">
+                                                    {post.category
+                                                        .category_name ==
+                                                    "Facility" ? (
+                                                        <>
+                                                            <li>
+                                                                <LordIcon
+                                                                    src="https://cdn.lordicon.com/pfdotuzr.json"
+                                                                    trigger="hover"
+                                                                    colors={{
+                                                                        primary:
+                                                                            "#f4ede4",
+                                                                        secondary:
+                                                                            "#f4ede4",
+                                                                    }}
+                                                                    size={25}
+                                                                />
+                                                            </li>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <li>
+                                                                <LordIcon
+                                                                    src={putWeatherState(
+                                                                        post
+                                                                            .situation
+                                                                            .weather_before_id,
+                                                                    )}
+                                                                    trigger="hover"
+                                                                    stroke="bold"
+                                                                    colors={{
+                                                                        primary:
+                                                                            "#f4ede4",
+                                                                        secondary:
+                                                                            "#f4ede4",
+                                                                    }}
+                                                                    size={25}
+                                                                />
+                                                            </li>
+                                                            <li>
+                                                                <LordIcon
+                                                                    src={putWeatherState(
+                                                                        post
+                                                                            .situation
+                                                                            .weather_after_id,
+                                                                    )}
+                                                                    trigger="hover"
+                                                                    stroke="bold"
+                                                                    colors={{
+                                                                        primary:
+                                                                            "#f4ede4",
+                                                                        secondary:
+                                                                            "#f4ede4",
+                                                                    }}
+                                                                    size={25}
+                                                                />
+                                                            </li>
+                                                        </>
                                                     )}
-                                                    trigger="hover"
-                                                    stroke="bold"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li>
-                                                <LordIcon
-                                                    src={putWeatherState(
-                                                        post.situation
-                                                            .weather_after_id,
-                                                    )}
-                                                    trigger="hover"
-                                                    stroke="bold"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                        </ul>
+                                                </ul>
 
-                                        <ul className="route_vehicle">
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .walk_available == 0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/oxbjzlrk.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .bicycle_available == 0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/mknljqhi.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .car_available == 0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/cqjfxkgf.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .bus_available == 0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/yiothpas.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .train_available == 0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/eomzkbrc.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .shinkansen_available ==
-                                                    0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/dpwabcjy.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .plane_available == 0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/rpcdmsys.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                            <li
-                                                className={`${
-                                                    post.vehicle
-                                                        .ship_available == 0
-                                                        ? "display_none"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <LordIcon
-                                                    src="https://cdn.lordicon.com/pgofwoue.json"
-                                                    trigger="hover"
-                                                    colors={{
-                                                        primary: "#f4ede4",
-                                                        secondary: "#f4ede4",
-                                                    }}
-                                                    size={25}
-                                                />
-                                            </li>
-                                        </ul>
+                                                <ul className="route_vehicle">
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .walk_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/oxbjzlrk.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .bicycle_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/mknljqhi.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .car_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/cqjfxkgf.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .bus_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/yiothpas.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .train_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/eomzkbrc.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .shinkansen_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/dpwabcjy.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .plane_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/rpcdmsys.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                    <li
+                                                        className={`${
+                                                            post.vehicle
+                                                                .ship_available ==
+                                                            0
+                                                                ? "display_none"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        <LordIcon
+                                                            src="https://cdn.lordicon.com/pgofwoue.json"
+                                                            trigger="hover"
+                                                            colors={{
+                                                                primary:
+                                                                    "#f4ede4",
+                                                                secondary:
+                                                                    "#f4ede4",
+                                                            }}
+                                                            size={25}
+                                                        />
+                                                    </li>
+                                                </ul>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <ul className="isnot_running">
+                                                    <li>
+                                                        <p>未走行</p>
+                                                    </li>
+                                                </ul>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </Link>

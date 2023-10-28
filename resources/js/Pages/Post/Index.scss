@@ -102,6 +102,10 @@
                 position: "fixed";
                 z-index: 10;
 
+                .display_none {
+                    display: none;
+                }
+
                 .route_weather {
                     align-items: center;
                     justify-content: center;
@@ -145,6 +149,31 @@
 
                     .display_none {
                         display: none;
+                    }
+                }
+
+                .isnot_running {
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                    // margin-left: 10px;
+
+                    transition: all 0.3s;
+                    image-rendering: -webkit-optimize-contrast;
+
+                    // &:hover {
+                    //     // transform: scale(1.15);
+                    //     transform: translateY(-3px);
+                    // }
+
+                    li {
+                        list-style: none;
+                        display: inline-block;
+                        margin-right: 5px;
+
+                        p {
+                            margin-top: 10px;
+                        }
                     }
                 }
             }
