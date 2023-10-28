@@ -18,11 +18,6 @@
     }
 
     iframe {
-        // margin-right: 10px;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
-
         border: 2px map-get($light_theme, "sub_bg") solid;
         border-radius: 20px;
         -webkit-border-radius: 20px;
@@ -39,11 +34,9 @@
 
     .route_detail {
         margin-left: 10px;
-        // background-color: map-get($light_theme, "sub_bg");
-        // background-color: gray;
 
         display: flex;
-        flex-direction: column; /* コンテンツを縦に配置 */
+        flex-direction: column;
 
         @media (max-width: ($pc_small_width)) {
             margin-left: 0px;
@@ -51,10 +44,6 @@
 
         .route_explanation {
             width: 100%;
-            // height: 55%;
-            // margin-bottom: 10px;
-            // background-color: map-get($light_theme, "sub_bg");
-            // background-color: darkgray;
 
             .explanation_header {
                 display: flex;
