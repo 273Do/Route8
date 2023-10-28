@@ -11,7 +11,10 @@ $font: "Objective-Medium", "NotoSansJP-Medium";
 
 // height
 $pc_small: 1080px; // PC：小さいウィンドウ
-$sp: 450px; // スマホ
+
+//width
+$pc_small_width: 1234px;
+$sp-w: 450px; // スマホ
 
 $light_theme: (
     bg: #f4ede4,

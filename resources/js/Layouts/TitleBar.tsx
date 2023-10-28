@@ -4,7 +4,8 @@ import { TitleBar } from "../Pages/Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 
 // HomePage
-const TitleBar = ({ title }: TitleBar) => {
+const TitleBar = ({ title, post_id }: TitleBar) => {
+    console.log(title, post_id);
     return (
         <div className="title_bar">
             <h1>{title}</h1>
