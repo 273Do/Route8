@@ -1,6 +1,7 @@
 body {
-    margin: 0;
+    margin: 0px;
     overscroll-behavior-y: none;
+    overflow-y: hidden;
     font-family: $font;
 
     background-color: map-get($light_theme, "bg");
@@ -9,6 +10,7 @@ body {
 .contents {
     background-color: map-get($light_theme, "bg");
     overflow-x: hidden;
+
     width: 100%;
     height: 100%;
 
@@ -75,9 +77,14 @@ body {
             }
         }
 
+        .link_no_underline {
+            text-decoration: none;
+        }
+
         .user_button {
             display: flex;
             align-items: center;
+            color: map-get($light_theme, "text");
             cursor: pointer;
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;

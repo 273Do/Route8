@@ -1,75 +1,133 @@
 import React from "react";
 import NavLink from "@/Components/NavLink";
+import { Link } from "@inertiajs/inertia-react";
+import { router } from "@inertiajs/react";
 import { TitleBar } from "../Pages/Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 
 // HomePage
-const TitleBar = ({ title, post_id }: TitleBar) => {
-    console.log(title, post_id);
-    return (
-        <div className="title_bar">
-            <h1>{title}</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <NavLink
-                            href={route("dashboard")}
-                            active={route().current("dashboard")}
+const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
+    console.log(page, title, post_id, edit);
+
+    const handleDeletePost = (id: number) => {
+        router.delete(`/posts/${id}`, {
+            onBefore: () => confirm("本当に削除しますか？"),
+        });
+    };
+
+    if (page == "Route") {
+        return (
+            <div className="title_bar">
+                <h1>{title}</h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <NavLink
+                                href={route("dashboard")}
+                                active={route().current("dashboard")}
+                            >
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/cnpvyndp.json"
+                                    trigger="morph"
+                                    state="morph-home-1"
+                                    colors={{ primary: "#222222" }}
+                                    size={28}
+                                />
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                href={route("index")}
+                                active={route().current("index")}
+                            >
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/yxyampao.json"
+                                    trigger="hover"
+                                    colors={{ primary: "#222222" }}
+                                    size={28}
+                                />
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                href={route("create")}
+                                active={route().current("create")}
+                            >
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/prjooket.json"
+                                    trigger="morph"
+                                    state="morph-marked-bookmark"
+                                    colors={{ primary: "#222222" }}
+                                    size={28}
+                                />
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                href={route("create")}
+                                active={route().current("create")}
+                            >
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/yymhadbu.json"
+                                    trigger="hover"
+                                    state="hover-jump"
+                                    colors={{ primary: "#222222" }}
+                                    size={28}
+                                />
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        );
+    } else if (page == "show") {
+        return (
+            <div className="title_bar">
+                <h1>{title}</h1>
+                <nav>
+                    <ul>
+                        <li className={`${edit ? "" : "display_none"}`}>
+                            <Link href={`/posts/${post_id}/edit`}>
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/uwbjfiwe.json"
+                                    trigger="hover"
+                                    colors={{
+                                        primary: "#222222",
+                                    }}
+                                    size={28}
+                                />
+                            </Link>
+                        </li>
+                        <li
+                            className={`${edit ? "" : "display_none"}`}
+                            onClick={() => handleDeletePost(post_id)}
                         >
                             <LordIcon
-                                src="https://cdn.lordicon.com/cnpvyndp.json"
+                                src="https://cdn.lordicon.com/wpyrrmcq.json"
                                 trigger="morph"
-                                state="morph-home-1"
-                                colors={{ primary: "#222222" }}
+                                state="morph-trash-full"
+                                colors={{
+                                    primary: "#222222",
+                                }}
                                 size={28}
                             />
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            href={route("index")}
-                            active={route().current("index")}
-                        >
-                            <LordIcon
-                                src="https://cdn.lordicon.com/yxyampao.json"
-                                trigger="hover"
-                                colors={{ primary: "#222222" }}
-                                size={28}
-                            />
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            href={route("create")}
-                            active={route().current("create")}
-                        >
+                        </li>
+                        <li>
                             <LordIcon
                                 src="https://cdn.lordicon.com/prjooket.json"
                                 trigger="morph"
                                 state="morph-marked-bookmark"
-                                colors={{ primary: "#222222" }}
+                                colors={{
+                                    primary: "#222222",
+                                }}
                                 size={28}
                             />
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            href={route("create")}
-                            active={route().current("create")}
-                        >
-                            <LordIcon
-                                src="https://cdn.lordicon.com/yymhadbu.json"
-                                trigger="hover"
-                                state="hover-jump"
-                                colors={{ primary: "#222222" }}
-                                size={28}
-                            />
-                        </NavLink>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    );
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        );
+    }
 };
 
 export default TitleBar;

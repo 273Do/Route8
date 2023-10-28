@@ -6,7 +6,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/inertia-react";
 import R8Logo from "../../img/Route8.png";
 import { LordIcon } from "../Pages/Common/lord-icon";
-import  Footer  from "./Footer";
+import Footer from "./Footer";
 interface Props {
     auth: any;
     header: React.ReactNode;
@@ -190,15 +190,21 @@ export default function Authenticated({ auth, header, children }: Props) {
                 <form action="#" className="search_form">
                     <input type="text" className="search_area" />
                 </form>
-                <div className="user_button">
-                    <LordIcon
-                        src="https://cdn.lordicon.com/kthelypq.json"
-                        trigger="hover"
-                        colors={{ primary: "#222222" }}
-                        size={28}
-                    />
-                    <p>{auth.user.name}</p>
-                </div>
+                <Link
+                    className="link_no_underline"
+                    method="post"
+                    href={route("logout")}
+                >
+                    <div className="user_button">
+                        <LordIcon
+                            src="https://cdn.lordicon.com/kthelypq.json"
+                            trigger="hover"
+                            colors={{ primary: "#222222" }}
+                            size={28}
+                        />
+                        <p>{auth.user.name}</p>
+                    </div>
+                </Link>
             </header>
             <main>{children}</main>
             <Footer />

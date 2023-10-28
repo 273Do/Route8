@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Link } from "@inertiajs/inertia-react";
 import { Post } from "../Types";
@@ -8,6 +8,7 @@ import TitleBar from "../../Layouts/TitleBar";
 // RoutePage
 const Show = (props: Post) => {
     const { post } = props;
+    console.log(props.auth);
     console.log(post);
 
     const FormattedDate = (date: string) => {
@@ -33,7 +34,12 @@ const Show = (props: Post) => {
     return (
         <Authenticated auth={props.auth} header={<h2>Index</h2>}>
             <div className="main_contents">
-                <TitleBar title={post.title} post_id={post.id} />
+                <TitleBar
+                    page={"show"}
+                    title={post.title}
+                    post_id={post.id}
+                    edit={props.auth.user.id == post.user.id ? true : false}
+                />
                 <div className="route_page">
                     <iframe
                         src={post.map_url}

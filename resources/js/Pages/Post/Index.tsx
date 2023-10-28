@@ -33,7 +33,7 @@ const Index = (props: Auth) => {
     return (
         <Authenticated auth={props.auth} header={<h2>Index</h2>}>
             <div className="main_contents">
-                <TitleBar title={"Route"} />
+                <TitleBar page={"Route"} title={"Route"} edit={false} />
                 <div className="route_list">
                     {posts.map((post: Post) => (
                         <div className="route_board" key={post.id}>
@@ -48,7 +48,14 @@ const Index = (props: Auth) => {
                                             {post.situation.goal_point}
                                         </p>
                                         <ul>
-                                            <li>
+                                            <li
+                                                className={`${
+                                                    props.auth.user.id ==
+                                                    post.user.id
+                                                        ? ""
+                                                        : "display_none"
+                                                }`}
+                                            >
                                                 <Link
                                                     href={`/posts/${post.id}/edit`}
                                                 >
@@ -63,6 +70,12 @@ const Index = (props: Auth) => {
                                                 </Link>
                                             </li>
                                             <li
+                                                className={`${
+                                                    props.auth.user.id ==
+                                                    post.user.id
+                                                        ? ""
+                                                        : "display_none"
+                                                }`}
                                                 onClick={() =>
                                                     handleDeletePost(post.id)
                                                 }

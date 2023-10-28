@@ -25,7 +25,7 @@ export default function Register() {
             event.target.name as "email" | "password" | "name",
             event.target.type === "checkbox"
                 ? event.target.checked + ""
-                : event.target.value
+                : event.target.value,
         );
     };
 
