@@ -30,7 +30,7 @@ export default function Login({ status, canResetPassword }: Props) {
             event.target.name as "email" | "password" | "remember",
             event.target.type === "checkbox"
                 ? event.target.checked
-                : event.target.value
+                : event.target.value,
         );
     };
 

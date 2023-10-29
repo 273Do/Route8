@@ -31,8 +31,10 @@ export interface Post {
 }
 
 export interface TitleBar {
+    page: string;
     title: string;
     post_id: number;
+    edit: boolean;
 }
 
 import "react";
