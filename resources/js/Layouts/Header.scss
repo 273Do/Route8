@@ -79,6 +79,7 @@ body {
 
         .link_no_underline {
             text-decoration: none;
+            color: map-get($light_theme, "text");
         }
 
         .user_button {
