@@ -89,6 +89,28 @@ const Show = (props: Post) => {
                                                     </>
                                                 ) : (
                                                     <>
+                                                        <li
+                                                            className={`${
+                                                                post.category
+                                                                    .category_name ==
+                                                                "Scenery"
+                                                                    ? ""
+                                                                    : "display_none"
+                                                            }`}
+                                                        >
+                                                            <LordIcon
+                                                                src="https://cdn.lordicon.com/esrfxuri.json"
+                                                                trigger="hover"
+                                                                stroke="bold"
+                                                                colors={{
+                                                                    primary:
+                                                                        "#222222",
+                                                                    secondary:
+                                                                        "#222222",
+                                                                }}
+                                                                size={52}
+                                                            />
+                                                        </li>
                                                         <li>
                                                             <LordIcon
                                                                 src={putWeatherState(

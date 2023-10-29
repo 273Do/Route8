@@ -21,27 +21,14 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
                 <h1>{title}</h1>
                 <nav>
                     <ul>
+                        {/* MyRoute */}
                         <li>
                             <NavLink
                                 href={route("dashboard")}
                                 active={route().current("dashboard")}
                             >
                                 <LordIcon
-                                    src="https://cdn.lordicon.com/cnpvyndp.json"
-                                    trigger="morph"
-                                    state="morph-home-1"
-                                    colors={{ primary: "#222222" }}
-                                    size={28}
-                                />
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                href={route("index")}
-                                active={route().current("index")}
-                            >
-                                <LordIcon
-                                    src="https://cdn.lordicon.com/yxyampao.json"
+                                    src="https://cdn.lordicon.com/ziafkkwv.json"
                                     trigger="hover"
                                     colors={{ primary: "#222222" }}
                                     size={28}
@@ -64,13 +51,26 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
                         </li>
                         <li>
                             <NavLink
+                                href={route("index")}
+                                active={route().current("index")}
+                            >
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/yxyampao.json"
+                                    trigger="hover"
+                                    colors={{ primary: "#222222" }}
+                                    size={28}
+                                />
+                            </NavLink>
+                        </li>
+
+                        <li className="create_icon">
+                            <NavLink
                                 href={route("create")}
                                 active={route().current("create")}
                             >
                                 <LordIcon
-                                    src="https://cdn.lordicon.com/yymhadbu.json"
+                                    src="https://cdn.lordicon.com/qtynovng.json"
                                     trigger="hover"
-                                    state="hover-jump"
                                     colors={{ primary: "#222222" }}
                                     size={28}
                                 />

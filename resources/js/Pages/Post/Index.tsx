@@ -135,6 +135,29 @@ const Index = (props: Auth) => {
                                                         </>
                                                     ) : (
                                                         <>
+                                                            <li
+                                                                className={`${
+                                                                    post
+                                                                        .category
+                                                                        .category_name ==
+                                                                    "Scenery"
+                                                                        ? ""
+                                                                        : "display_none"
+                                                                }`}
+                                                            >
+                                                                <LordIcon
+                                                                    src="https://cdn.lordicon.com/esrfxuri.json"
+                                                                    trigger="hover"
+                                                                    stroke="bold"
+                                                                    colors={{
+                                                                        primary:
+                                                                            "#f4ede4",
+                                                                        secondary:
+                                                                            "#f4ede4",
+                                                                    }}
+                                                                    size={25}
+                                                                />
+                                                            </li>
                                                             <li>
                                                                 <LordIcon
                                                                     src={putWeatherState(
