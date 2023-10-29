@@ -21,7 +21,6 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
                 <h1>{title}</h1>
                 <nav>
                     <ul>
-                        {/* MyRoute */}
                         <li>
                             <NavLink
                                 href={route("dashboard")}
