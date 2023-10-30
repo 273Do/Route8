@@ -12,6 +12,7 @@ footer {
         flex-grow: 1;
         pointer-events: none;
         color: map-get($light_theme, "text");
+        margin-left:8%;
     }
 
     ul {

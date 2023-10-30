@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useForm } from "@inertiajs/inertia-react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Post } from "../Types";
+import TitleBar from "../../Layouts/TitleBar";
 
 const Create = (props: Post) => {
     const { categories } = props;
@@ -34,6 +35,19 @@ const Create = (props: Post) => {
         category_id: categories[0].id,
         user_id: props.auth.user.id,
     });
+    
+    const extractGoogleMapsSrc = (iframeSrc: string): string => {
+    // 正規表現を使用して src 属性の値を抜き出す
+    const srcRegex = /src="([^"]+)"/;
+    const matches = iframeSrc.match(srcRegex);
+
+    if (matches && matches.length > 1 && matches[1].startsWith("https://www.google.com/maps/")) {
+        // マッチした部分が条件を満たす場合にのみ返す
+        return matches[1];
+    } else {
+        return '';
+    }
+}
 
     // console.log(data); // 確認用に追加
 
@@ -43,300 +57,36 @@ const Create = (props: Post) => {
     };
 
     return (
-        <Authenticated
-            auth={props.auth}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Create
-                </h2>
-            }
-        >
-            <iframe
-                src={data.map_url}
-                width="600"
-                height="450"
-                allowfullscreen
-                loading="lazy"
-            ></iframe>
-            <div className="p-12">
-                <form onSubmit={handleSendPosts}>
-                    <div>
-                        <h2>Title</h2>
+        <Authenticated auth={props.auth} header={<h2>Create</h2>}>
+            <div className="main_contents">
+                <TitleBar page={"create"} title={"Create"} />
+                {/* <div className="route_page"> */}
+                <form className="route_page" onSubmit={handleSendPosts}>
+                    <div className="create_map">
+                        <iframe
+                            src={data.map_url}
+                            width="600"
+                            height="450"
+                            allowfullscreen
+                            loading="lazy"
+                        ></iframe>
+                        <input
+                            className="input_map_url"
+                            type="text"
+                            placeholder="マップURLを入力してください．"
+                            onChange={(e) => setData("map_url", extractGoogleMapsSrc(e.target.value))}
+                        />
+                    </div>
+                    {/* <span>{props.errors.map_url}</span> */}
+                    <div className="route_detail">
                         <input
                             type="text"
                             placeholder="タイトルを入力してください．"
                             onChange={(e) => setData("title", e.target.value)}
                         />
-                        <span className="text-red-600">
-                            {props.errors.title}
-                        </span>
-                    </div>
-
-                    <div>
-                        <h2>Body</h2>
-                        <textarea
-                            placeholder="内容を入力してください．"
-                            onChange={(e) => setData("body", e.target.value)}
-                        ></textarea>
-                        <span className="text-red-600">
-                            {props.errors.body}
-                        </span>
-                    </div>
-
-                    <div>
-                        <h2>Map_url</h2>
-                        <input
-                            type="text"
-                            placeholder="マップURLを入力してください．"
-                            onChange={(e) => setData("map_url", e.target.value)}
-                        />
-                        <span className="text-red-600">
-                            {props.errors.map_url}
-                        </span>
-                    </div>
-
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="is_public"
-                            checked={data.is_public}
-                            onChange={(e) =>
-                                setData("is_public", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="is_public">is_public</label>
-                    </div>
-
-                    <div>
-                        <h2>start_point</h2>
-                        <input
-                            type="text"
-                            placeholder="出発地点"
-                            onChange={(e) =>
-                                setData("start_point", e.target.value)
-                            }
-                        />
-                        <span className="text-red-600">
-                            {props.errors.start_point}
-                        </span>
-                    </div>
-
-                    <div>
-                        <h2>goal_point</h2>
-                        <input
-                            type="text"
-                            placeholder="到着地点"
-                            onChange={(e) =>
-                                setData("goal_point", e.target.value)
-                            }
-                        />
-                        <span className="text-red-600">
-                            {props.errors.goal_point}
-                        </span>
-                    </div>
-
-                    <div>
-                        <legend>weather_before_id</legend>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="before"
-                                value="sunny"
-                                onChange={(e) =>
-                                    setData("weather_before_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="sunny">sunny</label>
-                        </div>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="before"
-                                value="cloudy"
-                                onChange={(e) =>
-                                    setData("weather_before_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="cloudy">cloudy</label>
-                        </div>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="before"
-                                value="rainy"
-                                onChange={(e) =>
-                                    setData("weather_before_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="rainy">rainy</label>
-                        </div>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="before"
-                                value="snowy"
-                                onChange={(e) =>
-                                    setData("weather_before_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="snowy">snowy</label>
-                        </div>
-                    </div>
-
-                    <div>
-                        <legend>weather_after_id</legend>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="after"
-                                value="sunny"
-                                onChange={(e) =>
-                                    setData("weather_after_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="sunny">sunny</label>
-                        </div>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="after"
-                                value="cloudy"
-                                onChange={(e) =>
-                                    setData("weather_after_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="cloudy">cloudy</label>
-                        </div>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="after"
-                                value="rainy"
-                                onChange={(e) =>
-                                    setData("weather_after_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="rainy">rainy</label>
-                        </div>
-
-                        <div>
-                            <input
-                                type="radio"
-                                name="after"
-                                value="snowy"
-                                onChange={(e) =>
-                                    setData("weather_after_id", e.target.value)
-                                }
-                            />
-                            <label htmlFor="snowy">snowy</label>
-                        </div>
-                    </div>
-
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="is_running"
-                            checked={data.is_running}
-                            onChange={(e) =>
-                                setData("is_running", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="is_running">is_running</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="walk_available"
-                            onChange={(e) =>
-                                setData("walk_available", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="walk_available">Walk</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="bicycle_available"
-                            onChange={(e) =>
-                                setData("bicycle_available", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="bicycle_available">Bicycle</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="car_available"
-                            onChange={(e) =>
-                                setData("car_available", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="car_available">Car</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="bus_available"
-                            onChange={(e) =>
-                                setData("bus_available", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="bus_available">Bus</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="train_available"
-                            onChange={(e) =>
-                                setData("train_available", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="train_available">Train</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="shinkansen_available"
-                            onChange={(e) =>
-                                setData(
-                                    "shinkansen_available",
-                                    e.target.checked,
-                                )
-                            }
-                        />
-                        <label htmlFor="shinkansen_available">Shinkansen</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="plane_available"
-                            onChange={(e) =>
-                                setData("plane_available", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="plane_available">Plane</label>
-                    </div>
-                    <div>
-                        <input
-                            type="checkbox"
-                            name="ship_available"
-                            onChange={(e) =>
-                                setData("ship_available", e.target.checked)
-                            }
-                        />
-                        <label htmlFor="ship_available">Ship</label>
-                    </div>
-
-                    <div>
-                        <h2>Category</h2>
+                        <span>{props.errors.title}</span>
+                        
+                        
                         <select
                             onChange={(e) =>
                                 setData("category_id", e.target.value)
@@ -348,18 +98,245 @@ const Create = (props: Post) => {
                                 </option>
                             ))}
                         </select>
+
+                        <textarea
+                            placeholder="内容を入力してください．"
+                            onChange={(e) => setData("body", e.target.value)}
+                        ></textarea>
+                        <span>{props.errors.body}</span>
+
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="is_public"
+                                checked={data.is_public}
+                                onChange={(e) =>
+                                    setData("is_public", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="is_public">is_public</label>
+                        </div>
+
+                        <input
+                            type="text"
+                            placeholder="出発地点"
+                            onChange={(e) =>
+                                setData("start_point", e.target.value)
+                            }
+                        />
+                        <span>{props.errors.start_point}</span>
+
+                        <input
+                            type="text"
+                            placeholder="到着地点"
+                            onChange={(e) =>
+                                setData("goal_point", e.target.value)
+                            }
+                        />
+                        <span>{props.errors.goal_point}</span>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="before"
+                                value="sunny"
+                                onChange={(e) =>
+                                    setData("weather_before_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="sunny">sunny</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="before"
+                                value="cloudy"
+                                onChange={(e) =>
+                                    setData("weather_before_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="cloudy">cloudy</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="before"
+                                value="rainy"
+                                onChange={(e) =>
+                                    setData("weather_before_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="rainy">rainy</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="before"
+                                value="snowy"
+                                onChange={(e) =>
+                                    setData("weather_before_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="snowy">snowy</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="after"
+                                value="sunny"
+                                onChange={(e) =>
+                                    setData("weather_after_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="sunny">sunny</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="after"
+                                value="cloudy"
+                                onChange={(e) =>
+                                    setData("weather_after_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="cloudy">cloudy</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="after"
+                                value="rainy"
+                                onChange={(e) =>
+                                    setData("weather_after_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="rainy">rainy</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                name="after"
+                                value="snowy"
+                                onChange={(e) =>
+                                    setData("weather_after_id", e.target.value)
+                                }
+                            />
+                            <label htmlFor="snowy">snowy</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="is_running"
+                                checked={data.is_running}
+                                onChange={(e) =>
+                                    setData("is_running", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="is_running">is_running</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="walk_available"
+                                onChange={(e) =>
+                                    setData("walk_available", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="walk_available">Walk</label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="bicycle_available"
+                                onChange={(e) =>
+                                    setData(
+                                        "bicycle_available",
+                                        e.target.checked,
+                                    )
+                                }
+                            />
+                            <label htmlFor="bicycle_available">Bicycle</label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="car_available"
+                                onChange={(e) =>
+                                    setData("car_available", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="car_available">Car</label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="bus_available"
+                                onChange={(e) =>
+                                    setData("bus_available", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="bus_available">Bus</label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="train_available"
+                                onChange={(e) =>
+                                    setData("train_available", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="train_available">Train</label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="shinkansen_available"
+                                onChange={(e) =>
+                                    setData(
+                                        "shinkansen_available",
+                                        e.target.checked,
+                                    )
+                                }
+                            />
+                            <label htmlFor="shinkansen_available">
+                                Shinkansen
+                            </label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="plane_available"
+                                onChange={(e) =>
+                                    setData("plane_available", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="plane_available">Plane</label>
+                        </div>
+                        <div>
+                            <input
+                                type="checkbox"
+                                name="ship_available"
+                                onChange={(e) =>
+                                    setData("ship_available", e.target.checked)
+                                }
+                            />
+                            <label htmlFor="ship_available">Ship</label>
+                        </div>
+
+                        {/* このbuttonをクリックすると、onSubmitに設定してあるhandleSendPosts関数が発火する*/}
+                        <button type="submit">send</button>
                     </div>
-
-                    {/* このbuttonをクリックすると、onSubmitに設定してあるhandleSendPosts関数が発火する*/}
-                    <button
-                        type="submit"
-                        className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md"
-                    >
-                        send
-                    </button>
                 </form>
-
-                <Link href="/posts">戻る</Link>
+                {/* </div> */}
             </div>
         </Authenticated>
     );

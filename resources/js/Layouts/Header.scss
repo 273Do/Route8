@@ -51,6 +51,7 @@ body {
             align-items: center;
             justify-content: center;
             flex: 1;
+            // flex-direction: column;
 
             .search_area {
                 background-color: map-get($light_theme, "input_bg");

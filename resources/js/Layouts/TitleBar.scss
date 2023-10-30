@@ -16,6 +16,15 @@
     nav {
         ul {
             margin-right: -10px;
+            
+            .back_arrow{
+                  transform: rotate(180deg);
+                   transition: all 0.3s;
+                  
+                  &:hover{
+                      transform: rotate(180deg) translateY(5px);
+                  }
+            }
 
             li {
                 list-style: none;

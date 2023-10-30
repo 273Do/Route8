@@ -85,6 +85,18 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
                 <h1>{title}</h1>
                 <nav>
                     <ul>
+                        <li className="back_arrow">
+                            <Link href={`/posts`}>
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/vduvxizq.json"
+                                    trigger="hover"
+                                    colors={{
+                                        primary: "#222222",
+                                    }}
+                                    size={28}
+                                />
+                            </Link>
+                        </li>
                         <li className={`${edit ? "" : "display_none"}`}>
                             <Link href={`/posts/${post_id}/edit`}>
                                 <LordIcon
@@ -121,6 +133,28 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
                                 }}
                                 size={28}
                             />
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        );
+    } else if (page == "create") {
+        return (
+            <div className="title_bar">
+                <h1>{title}</h1>
+                <nav>
+                    <ul>
+                       <li className="back_arrow">
+                            <Link href={`/posts`}>
+                                <LordIcon
+                                    src="https://cdn.lordicon.com/vduvxizq.json"
+                                    trigger="hover"
+                                    colors={{
+                                        primary: "#222222",
+                                    }}
+                                    size={28}
+                                />
+                            </Link>
                         </li>
                     </ul>
                 </nav>
