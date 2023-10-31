@@ -144,7 +144,7 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
                 <h1>{title}</h1>
                 <nav>
                     <ul>
-                       <li className="back_arrow">
+                        <li className="back_arrow">
                             <Link href={`/posts`}>
                                 <LordIcon
                                     src="https://cdn.lordicon.com/vduvxizq.json"
