@@ -267,7 +267,15 @@ const Index = (props: Auth) => {
                       <>
                         <ul className="isnot_running">
                           <li>
-                            <p>未走行</p>
+                            <LordIcon
+                              src="https://cdn.lordicon.com/muyjobwf.json"
+                              trigger="hover"
+                              colors={{
+                                primary: '#f4ede4',
+                                secondary: '#f4ede4',
+                              }}
+                              size={25}
+                            />
                           </li>
                         </ul>
                       </>

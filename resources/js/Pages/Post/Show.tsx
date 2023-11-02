@@ -233,7 +233,15 @@ const Show = (props: Post) => {
                   <>
                     <ul className="isnot_running">
                       <li>
-                        <p>未走行</p>
+                        <LordIcon
+                          src="https://cdn.lordicon.com/muyjobwf.json"
+                          trigger="hover"
+                          colors={{
+                            primary: '#222222',
+                            secondary: '#222222',
+                          }}
+                          size={52}
+                        />
                       </li>
                     </ul>
                   </>
