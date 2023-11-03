@@ -46,9 +46,29 @@
 
   .route_detail {
     // border: 2px map-get($light_theme, 'sub_bg') solid;
+    @media (max-width: ($pc_small_width)) {
+      width: 80%;
+      height: 86%;
+    }
 
     textarea {
+      background-color: map-get($light_theme, "input_bg");
+      color: map-get($light_theme, "input_text");
+      font-size: 20px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      padding: 10px;
+      resize: none;
       flex: 1;
+      transition: all 0.3s;
+
+      &:hover {
+        transform: scale(1.01);
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
 
     .create_header {
