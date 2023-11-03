@@ -1,172 +1,175 @@
 .route_page {
+  @media (max-width: ($pc_small_width)) {
+    // height: calc(114vh - 420px);
+    // flex-flow: column;
+  }
+
+  iframe,
+  .route_detail {
+    width: 45%;
+    height: 99%;
+    min-width: 580px;
+    border-radius: 20px;
+
     @media (max-width: ($pc_small_width)) {
-        // height: calc(114vh - 420px);
-        // flex-flow: column;
+      width: 80%;
+      height: 50%;
+    }
+  }
+
+  iframe {
+    border: 2px map-get($light_theme, "sub_bg") solid;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+
+    // 色フィルター
+    filter: grayscale(60%) sepia(25%);
+
+    @media (max-width: ($pc_small_width)) {
+      margin-right: 0px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .route_detail {
+    margin-left: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: ($pc_small_width)) {
+      margin-left: 0px;
     }
 
-    iframe,
-    .route_detail {
-        width: 45%;
-        height: 99%;
-        min-width: 580px;
-        border-radius: 20px;
+    .route_explanation {
+      width: 100%;
 
-        @media (max-width: ($pc_small_width)) {
-            width: 80%;
-            height: 50%;
-        }
-    }
-
-    iframe {
-        border: 2px map-get($light_theme, "sub_bg") solid;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-
-        // 色フィルター
-        filter: grayscale(60%) sepia(25%);
-
-        @media (max-width: ($pc_small_width)) {
-            margin-right: 0px;
-            margin-bottom: 10px;
-        }
-    }
-
-    .route_detail {
-        margin-left: 10px;
-
+      .explanation_header {
         display: flex;
-        flex-direction: column;
+        justify-content: right;
 
-        @media (max-width: ($pc_small_width)) {
-            margin-left: 0px;
+        p {
+          margin-left: 20px;
+          margin-top: 0px;
+          margin-bottom: 0px;
+          font-size: 20px;
+        }
+      }
+
+      .explanation_start_goal {
+        p {
+          font-size: 30px;
+          margin: 0px;
+        }
+      }
+
+      .body {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 10px;
+        font-size: 20px;
+      }
+
+      .route_state {
+        display: flex;
+        justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
+        align-items: center;
+        height: 35px;
+        margin: 0px 0px 10px 0px;
+        position: "fixed";
+        z-index: 10;
+
+        .display_none {
+          display: none;
         }
 
-        .route_explanation {
-            width: 100%;
+        .route_weather {
+          align-items: center;
+          justify-content: center;
+          padding: 0;
 
-            .explanation_header {
-                display: flex;
-                justify-content: right;
-
-                p {
-                    margin-left: 20px;
-                    margin-top: 0px;
-                    margin-bottom: 0px;
-                    font-size: 20px;
-                }
-            }
-
-            .explanation_start_goal {
-                p {
-                    font-size: 30px;
-                    margin: 0px;
-                }
-            }
-
-            .body {
-                margin-top: 0px;
-                margin-bottom: 0px;
-                padding: 10px;
-                font-size: 20px;
-            }
-            .route_state {
-                display: flex;
-                justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
-                align-items: center;
-                height: 35px;
-                margin: 10px 0px 10px 0px;
-                position: "fixed";
-                z-index: 10;
-
-                .display_none {
-                    display: none;
-                }
-
-                .route_weather {
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0;
-
-                    li {
-                        list-style: none;
-                        display: inline-block;
-                        // margin-right: 5px;
-                        transition: all 0.3s;
-                        image-rendering: -webkit-optimize-contrast;
-
-                        &:hover {
-                            // transform: scale(1.15);
-                            transform: translateY(-3px);
-                        }
-                    }
-                }
-
-                .route_vehicle {
-                    align-items: center;
-                    justify-content: center;
-                    // padding: 0;
-
-                    li {
-                        list-style: none;
-                        display: inline-block;
-                        // margin-left: 10px;
-                        transition: all 0.3s;
-                        image-rendering: -webkit-optimize-contrast;
-
-                        &:hover {
-                            // transform: scale(1.15);
-                            transform: translateY(-3px);
-                        }
-                    }
-
-                    .display_none {
-                        display: none;
-                    }
-                }
-
-                .isnot_running {
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0;
-                    // margin-left: 10px;
-
-                    transition: all 0.3s;
-                    image-rendering: -webkit-optimize-contrast;
-
-                    // &:hover {
-                    //     // transform: scale(1.15);
-                    //     transform: translateY(-3px);
-                    // }
-
-                    li {
-                        list-style: none;
-                        display: inline-block;
-                        margin: 0px;
-
-                        p {
-                            margin: 0px 10px 0px 10px;
-                            font-size: 25px;
-                        }
-                    }
-                }
-            }
-        }
-
-        .chat_area {
-            width: 100%;
-            // height: 40%;
-            flex: 1;
-            min-height: 380px;
-            border-radius: 20px;
-            background-color: map-get($light_theme, "sub_bg");
+          li {
+            list-style: none;
+            display: inline-block;
+            // margin-right: 5px;
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 
             &:hover {
-                transform: scale(1.01);
-                // transform: translateY(-5px);
+              // transform: scale(1.15);
+              transform: translateY(-3px);
             }
+          }
+          .display_none {
+            display: none;
+          }
         }
+
+        .route_vehicle {
+          align-items: center;
+          justify-content: center;
+          // padding: 0;
+
+          li {
+            list-style: none;
+            display: inline-block;
+            // margin-left: 10px;
+            transition: all 0.3s;
+            image-rendering: -webkit-optimize-contrast;
+
+            &:hover {
+              // transform: scale(1.15);
+              transform: translateY(-3px);
+            }
+          }
+
+          .display_none {
+            display: none;
+          }
+        }
+
+        .isnot_running {
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          // margin-left: 10px;
+
+          transition: all 0.3s;
+          image-rendering: -webkit-optimize-contrast;
+
+          // &:hover {
+          //     // transform: scale(1.15);
+          //     transform: translateY(-3px);
+          // }
+
+          li {
+            list-style: none;
+            display: inline-block;
+            margin: 0px;
+
+            p {
+              margin: 0px 10px 0px 10px;
+              font-size: 25px;
+            }
+          }
+        }
+      }
     }
+
+    .chat_area {
+      width: 100%;
+      // height: 40%;
+      flex: 1;
+      min-height: 380px;
+      border-radius: 20px;
+      background-color: map-get($light_theme, "sub_bg");
+      transition: all 0.3s;
+      image-rendering: -webkit-optimize-contrast;
+
+      &:hover {
+        transform: scale(1.01);
+        // transform: translateY(-5px);
+      }
+    }
+  }
 }
