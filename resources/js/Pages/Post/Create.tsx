@@ -132,7 +132,7 @@ const Create = (props: Post) => {
             <span>{props.errors.body}</span>
 
             <div className="select_situation">
-              <div className="select_weather">
+              <div className={`select_weather ${data.category_id == 2 ? "none_edit" : ""}`}>
                 <div className="before">
                   <div>
                     <input
@@ -344,7 +344,15 @@ const Create = (props: Post) => {
                     </label>
                   </div>
                 </div>
-                <p>走行時の天候を選択してください．</p>
+                {data.category_id == 2 ? (
+                  <>
+                    <p>施設カテゴリーでは選択できません．</p>
+                  </>
+                ) : (
+                  <>
+                    <p>走行時の天候を選択してください．</p>
+                  </>
+                )}
               </div>
 
               <div className="select_vehicle">
@@ -540,7 +548,9 @@ const Create = (props: Post) => {
               <div className="posts_state">
                 <div
                   onClick={() => handleCheckboxClick("is_running")}
-                  className={` ${data.is_running ? "" : "none_check"}`}
+                  className={` ${data.is_running ? "" : "none_check"} ${
+                    data.category_id == 2 ? "none_edit" : ""
+                  }`}
                 >
                   <label htmlFor="is_running">
                     <input
