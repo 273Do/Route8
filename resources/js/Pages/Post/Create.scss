@@ -110,9 +110,116 @@
         }
 
         select {
-          width: 46px;
-          height: 46px;
+          width: 60px;
+          height: 60px;
           margin-left: 10px;
+          border-radius: 15px;
+          background-color: map-get($light_theme, "sub_bg");
+          color: map-get($light_theme, "sub_text");
+          transition: all 0.3s;
+
+          &:hover {
+            transform: scale(1.03);
+          }
+
+          &:focus {
+            outline: none;
+            // transform: scale(1.03);
+          }
+        }
+      }
+    }
+
+    .select_situation {
+      display: flex;
+      height: 215px;
+
+      .select_weather,
+      .select_vehicle {
+        height: 200px;
+        margin-bottom: 10px;
+        flex: 1;
+        border-radius: 20px;
+        border: 2px map-get($light_theme, "sub_bg") solid;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+
+        p {
+          text-align: center;
+          margin: 0px;
+
+          &:last-child {
+            margin-top: 10px;
+          }
+        }
+      }
+
+      .select_weather {
+        margin-right: 5px;
+
+        .before,
+        .after {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .before {
+          margin-top: 10px;
+        }
+
+        div {
+          margin-left: 5px;
+          margin-right: 5px;
+
+          input[type="radio"] {
+            display: none;
+          }
+
+          label {
+            transition: all 0.3s;
+            opacity: 0.5;
+          }
+
+          .select_situation_input {
+            opacity: 1;
+          }
+        }
+      }
+
+      .select_vehicle {
+        margin-left: 5px;
+
+        .vehicle_list {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:first-child {
+            margin-top: 10px;
+            margin-bottom: 22.73px;
+          }
+        }
+
+        div {
+          margin-left: 5px;
+          margin-right: 5px;
+
+          input[type="checkbox"] {
+            display: none;
+          }
+
+          label {
+            transition: all 0.3s;
+            opacity: 0.5;
+          }
+
+          .select_situation_input {
+            opacity: 1;
+          }
         }
       }
     }
@@ -135,7 +242,7 @@
           align-items: center; /* 縦方向中央揃え */
           justify-content: center; /* 横方向中央揃え */
           // height: 100%; /* 高さを親要素に合わせる */
-          // vertical-align: middle;
+
           border: 2px map-get($light_theme, "sub_bg") solid;
           background-color: map-get($light_theme, "sub_bg");
           color: map-get($light_theme, "sub_text");
@@ -165,6 +272,8 @@
       button {
         flex: 1;
         border-radius: 20px;
+        font-size: 16px;
+        font-family: $font;
 
         // background-color: #55c500;
         background-color: map-get($light_theme, "bg");

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Authenticated from '@/Layouts/Authenticated';
-import { Link } from '@inertiajs/inertia-react';
-import { Post } from '../Types';
-import { LordIcon } from '../Common/lord-icon';
-import TitleBar from '../../Layouts/TitleBar';
+import React, { useState } from "react";
+import Authenticated from "@/Layouts/Authenticated";
+import { Link } from "@inertiajs/inertia-react";
+import { Post } from "../Types";
+import { LordIcon } from "../Common/lord-icon";
+import TitleBar from "../../Layouts/TitleBar";
 
 // RoutePage
 const Show = (props: Post) => {
@@ -13,18 +13,18 @@ const Show = (props: Post) => {
 
   const FormattedDate = (date: string) => {
     const dateTime = new Date(date);
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    const dateFormatter = new Intl.DateTimeFormat('ja-JP', options);
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    const dateFormatter = new Intl.DateTimeFormat("ja-JP", options);
     const formattedDate = dateFormatter.format(dateTime);
     return formattedDate;
   };
 
   const putWeatherState = (weather: string): string => {
-    let url: string = '';
-    if (weather == 'sunny') url = 'https://cdn.lordicon.com/ingirgpt.json';
-    else if (weather == 'cloudy') url = 'https://cdn.lordicon.com/zawvkqfy.json';
-    else if (weather == 'rainy') url = 'https://cdn.lordicon.com/jtslwgho.json';
-    else if (weather == 'snowy') url = 'https://cdn.lordicon.com/sjtzcwfd.json';
+    let url: string = "";
+    if (weather == "sunny") url = "https://cdn.lordicon.com/ingirgpt.json";
+    else if (weather == "cloudy") url = "https://cdn.lordicon.com/zawvkqfy.json";
+    else if (weather == "rainy") url = "https://cdn.lordicon.com/jtslwgho.json";
+    else if (weather == "snowy") url = "https://cdn.lordicon.com/sjtzcwfd.json";
     return url;
   };
 
@@ -32,7 +32,7 @@ const Show = (props: Post) => {
     <Authenticated auth={props.auth} header={<h2>Index</h2>}>
       <div className="main_contents">
         <TitleBar
-          page={'show'}
+          page={"show"}
           title={post.title}
           post_id={post.id}
           edit={props.auth.user.id == post.user.id ? true : false}
@@ -66,15 +66,15 @@ const Show = (props: Post) => {
                   <>
                     <div>
                       <ul className="route_weather">
-                        {post.category.category_name == 'Facility' ? (
+                        {post.category.category_name == "Facility" ? (
                           <>
                             <li>
                               <LordIcon
                                 src="https://cdn.lordicon.com/pfdotuzr.json"
                                 trigger="hover"
                                 colors={{
-                                  primary: '#222222',
-                                  secondary: '#222222',
+                                  primary: "#222222",
+                                  secondary: "#222222",
                                 }}
                                 size={52}
                               />
@@ -84,7 +84,23 @@ const Show = (props: Post) => {
                           <>
                             <li
                               className={`${
-                                post.category.category_name == 'Scenery' ? '' : 'display_none'
+                                post.category.category_name == "Route" ? "" : "display_none"
+                              }`}
+                            >
+                              <LordIcon
+                                src="https://cdn.lordicon.com/rxtfetez.json"
+                                trigger="hover"
+                                stroke="bold"
+                                colors={{
+                                  primary: "#222222",
+                                  secondary: "#222222",
+                                }}
+                                size={52}
+                              />
+                            </li>
+                            <li
+                              className={`${
+                                post.category.category_name == "Scenery" ? "" : "display_none"
                               }`}
                             >
                               <LordIcon
@@ -92,8 +108,8 @@ const Show = (props: Post) => {
                                 trigger="hover"
                                 stroke="bold"
                                 colors={{
-                                  primary: '#222222',
-                                  secondary: '#222222',
+                                  primary: "#222222",
+                                  secondary: "#222222",
                                 }}
                                 size={52}
                               />
@@ -104,8 +120,8 @@ const Show = (props: Post) => {
                                 trigger="hover"
                                 stroke="bold"
                                 colors={{
-                                  primary: '#222222',
-                                  secondary: '#222222',
+                                  primary: "#222222",
+                                  secondary: "#222222",
                                 }}
                                 size={52}
                               />
@@ -116,8 +132,8 @@ const Show = (props: Post) => {
                                 trigger="hover"
                                 stroke="bold"
                                 colors={{
-                                  primary: '#222222',
-                                  secondary: '#222222',
+                                  primary: "#222222",
+                                  secondary: "#222222",
                                 }}
                                 size={52}
                               />
@@ -128,100 +144,100 @@ const Show = (props: Post) => {
                     </div>
                     <div>
                       <ul className="route_vehicle">
-                        <li className={`${post.vehicle.walk_available == 0 ? 'display_none' : ''}`}>
+                        <li className={`${post.vehicle.walk_available == 0 ? "display_none" : ""}`}>
                           <LordIcon
                             src="https://cdn.lordicon.com/oxbjzlrk.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
                         </li>
                         <li
-                          className={`${post.vehicle.bicycle_available == 0 ? 'display_none' : ''}`}
+                          className={`${post.vehicle.bicycle_available == 0 ? "display_none" : ""}`}
                         >
                           <LordIcon
                             src="https://cdn.lordicon.com/mknljqhi.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
                         </li>
-                        <li className={`${post.vehicle.car_available == 0 ? 'display_none' : ''}`}>
+                        <li className={`${post.vehicle.car_available == 0 ? "display_none" : ""}`}>
                           <LordIcon
                             src="https://cdn.lordicon.com/cqjfxkgf.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
                         </li>
-                        <li className={`${post.vehicle.bus_available == 0 ? 'display_none' : ''}`}>
+                        <li className={`${post.vehicle.bus_available == 0 ? "display_none" : ""}`}>
                           <LordIcon
                             src="https://cdn.lordicon.com/yiothpas.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
                         </li>
                         <li
-                          className={`${post.vehicle.train_available == 0 ? 'display_none' : ''}`}
+                          className={`${post.vehicle.train_available == 0 ? "display_none" : ""}`}
                         >
                           <LordIcon
                             src="https://cdn.lordicon.com/eomzkbrc.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
                         </li>
                         <li
                           className={`${
-                            post.vehicle.shinkansen_available == 0 ? 'display_none' : ''
+                            post.vehicle.shinkansen_available == 0 ? "display_none" : ""
                           }`}
                         >
                           <LordIcon
                             src="https://cdn.lordicon.com/dpwabcjy.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
                         </li>
                         <li
-                          className={`${post.vehicle.plane_available == 0 ? 'display_none' : ''}`}
+                          className={`${post.vehicle.plane_available == 0 ? "display_none" : ""}`}
                         >
                           <LordIcon
                             src="https://cdn.lordicon.com/rpcdmsys.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
                         </li>
-                        <li className={`${post.vehicle.ship_available == 0 ? 'display_none' : ''}`}>
+                        <li className={`${post.vehicle.ship_available == 0 ? "display_none" : ""}`}>
                           <LordIcon
                             src="https://cdn.lordicon.com/pgofwoue.json"
                             trigger="hover"
                             colors={{
-                              primary: '#222222',
-                              secondary: '#222222',
+                              primary: "#222222",
+                              secondary: "#222222",
                             }}
                             size={52}
                           />
@@ -237,8 +253,8 @@ const Show = (props: Post) => {
                           src="https://cdn.lordicon.com/muyjobwf.json"
                           trigger="hover"
                           colors={{
-                            primary: '#222222',
-                            secondary: '#222222',
+                            primary: "#222222",
+                            secondary: "#222222",
                           }}
                           size={52}
                         />
