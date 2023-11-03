@@ -266,7 +266,6 @@
           border: 2px map-get($light_theme, "sub_bg") solid;
           background-color: map-get($light_theme, "sub_bg");
           color: map-get($light_theme, "sub_text");
-          // color: rgb(87, 194, 236);
           transition: all 0.3s;
 
           &:hover {
@@ -275,7 +274,6 @@
 
           &:first-child {
             margin-bottom: 10px;
-            // color: rgb(170, 82, 224);
           }
 
           input[type="checkbox"] {
