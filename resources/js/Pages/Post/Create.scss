@@ -13,12 +13,30 @@
       margin-bottom: 10px;
     }
 
-    iframe {
+    iframe,
+    .none_map {
       border: 2px map-get($light_theme, "sub_bg") solid;
       background-color: map-get($light_theme, "sub_bg");
       margin-bottom: 10px;
+      border-radius: 20px;
       width: 99.5%;
       flex: 1;
+
+      a {
+        text-decoration: none;
+        text-align: center;
+
+        p {
+          // align-items: center;
+          justify-content: center;
+          color: map-get($light_theme, "input_text");
+          transition: all 0.3s;
+
+          &:hover {
+            font-size: 18px;
+          }
+        }
+      }
     }
 
     .input_map_url {

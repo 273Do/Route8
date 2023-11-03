@@ -72,13 +72,21 @@ const Create = (props: Post) => {
         {/* <div className="route_page"> */}
         <form className="route_page" onSubmit={handleSendPosts}>
           <div className="create_map">
-            <iframe
-              src={data.map_url}
-              width="600"
-              height="450"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
+            {data.map_url.length > 0 ? (
+              <iframe
+                src={data.map_url}
+                width="600"
+                height="450"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            ) : (
+              <div className="none_map">
+                <a href="https://www.google.co.jp/maps" target="_blank" rer="noopener noreferrer">
+                  <p>Google Map</p>
+                </a>
+              </div>
+            )}
             <input
               className="input_map_url"
               type="text"
