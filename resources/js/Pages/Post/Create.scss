@@ -27,7 +27,6 @@
         text-align: center;
 
         p {
-          // align-items: center;
           justify-content: center;
           color: map-get($light_theme, "input_text");
           transition: all 0.3s;
