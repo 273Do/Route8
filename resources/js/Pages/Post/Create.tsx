@@ -72,21 +72,30 @@ const Create = (props: Post) => {
         {/* <div className="route_page"> */}
         <form className="route_page" onSubmit={handleSendPosts}>
           <div className="create_map">
-            <iframe
-              src={data.map_url}
-              width="600"
-              height="450"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
+            {data.map_url.length > 0 ? (
+              <iframe
+                src={data.map_url}
+                width="600"
+                height="450"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
+            ) : (
+              <div className="none_map">
+                <a href="https://www.google.co.jp/maps" target="_blank" rer="noopener noreferrer">
+                  <p>Google Map</p>
+                </a>
+              </div>
+            )}
             <input
               className="input_map_url"
               type="text"
               placeholder="マップURLを入力してください．"
               onChange={(e) => setData("map_url", extractGoogleMapsSrc(e.target.value))}
             />
+            {/* <span>{props.errors.map_url}</span> */}
           </div>
-          {/* <span>{props.errors.map_url}</span> */}
+
           <div className="route_detail">
             <div className="create_header">
               <div className="input_title">
@@ -131,7 +140,7 @@ const Create = (props: Post) => {
             <span>{props.errors.body}</span>
 
             <div className="select_situation">
-              <div className="select_weather">
+              <div className={`select_weather ${data.category_id == 2 ? "none_edit" : ""}`}>
                 <div className="before">
                   <div>
                     <input
@@ -343,7 +352,15 @@ const Create = (props: Post) => {
                     </label>
                   </div>
                 </div>
-                <p>走行時の天候を選択してください．</p>
+                {data.category_id == 2 ? (
+                  <>
+                    <p>施設カテゴリーでは選択できません．</p>
+                  </>
+                ) : (
+                  <>
+                    <p>走行時の天候を選択してください．</p>
+                  </>
+                )}
               </div>
 
               <div className="select_vehicle">
@@ -539,7 +556,9 @@ const Create = (props: Post) => {
               <div className="posts_state">
                 <div
                   onClick={() => handleCheckboxClick("is_running")}
-                  className={` ${data.is_running ? "" : "none_check"}`}
+                  className={` ${data.is_running ? "" : "none_check"} ${
+                    data.category_id == 2 ? "none_edit" : ""
+                  }`}
                 >
                   <label htmlFor="is_running">
                     <input
