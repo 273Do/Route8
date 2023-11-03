@@ -114,7 +114,7 @@ class PostController extends Controller
         $post -> vehicle -> bicycle_available = $input["bicycle_available"];
         $post -> vehicle -> car_available = $input["car_available"];
         $post -> vehicle -> bus_available = $input["bus_available"];
-        $post -> vehicle  -> train_available = $input["train_available"];
+        $post -> vehicle -> train_available = $input["train_available"];
         $post -> vehicle -> shinkansen_available = $input["shinkansen_available"];
         $post -> vehicle -> plane_available = $input["plane_available"];
         $post -> vehicle -> ship_available = $input["ship_available"];
@@ -125,6 +125,9 @@ class PostController extends Controller
         $post -> body = $input["body"];
         $post -> is_public = $input["is_public"];
         $post -> map_url = $input["map_url"];
+
+        //categories
+        // $post -> category_id = $input["category_id"];
 
         // $post -> user_id = $input["user_id"];
         // $post -> situation_id = $situation -> id;

@@ -1,24 +1,14 @@
-import React from 'react';
-import { Link, useForm } from '@inertiajs/inertia-react';
-import Authenticated from '@/Layouts/Authenticated';
-import { Post } from '../Types';
+import React, { useState } from "react";
+import { Link, useForm } from "@inertiajs/inertia-react";
+import Authenticated from "@/Layouts/Authenticated";
+import { Post } from "../Types";
+import { LordIcon } from "../Common/lord-icon";
+import TitleBar from "../../Layouts/TitleBar";
 
 const Edit = (props: Post) => {
   const { post } = props;
   console.log(post);
   const { data, setData, put } = useForm({
-    // title: post.title,
-    // body: post.body,
-    // is_public: post.is_public,
-    // walk_available: post.walk_available,
-    // bicycle_available: post.bicycle_available,
-    // car_available: post.car_available,
-    // bus_available: post.bus_available,
-    // train_available: post.train_available,
-    // shinkansen_available: post.shinkansen_available,
-    // plane_available: post.plane_available,
-    // ship_available: post.ship_available,
-
     // 投稿
     title: post.title,
     body: post.body,
@@ -47,285 +37,660 @@ const Edit = (props: Post) => {
     // user_id: props.auth.user.id,
   });
 
+  const extractGoogleMapsSrc = (iframeSrc: string): string => {
+    // 正規表現を使用して src 属性の値を抜き出す
+    const srcRegex = /src="([^"]+)"/;
+    const matches = iframeSrc.match(srcRegex);
+
+    if (matches && matches.length > 1 && matches[1].startsWith("https://www.google.com/maps/")) {
+      // マッチした部分が条件を満たす場合にのみ返す
+      return matches[1];
+    } else {
+      return "";
+    }
+  };
+
+  const handleCheckboxClick = (checkboxName: string) => {
+    // チェックボックスの状態を反転させるロジック
+    setData((prevData: any) => ({
+      ...prevData,
+      [checkboxName]: !prevData[checkboxName],
+    }));
+  };
+
   const handleSendPosts = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     put(`/posts/${post.id}`);
   };
 
+  console.log(data.category_id);
+
   return (
-    <Authenticated
-      auth={props.auth}
-      header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create</h2>}
-    >
-      <div className="p-12">
-        <iframe src={data.map_url} width="600" height="450" allowfullscreen loading="lazy"></iframe>
-        <form onSubmit={handleSendPosts}>
-          <div>
-            <h2>Title</h2>
+    <Authenticated auth={props.auth} header={<h2>Edit</h2>}>
+      <div className="main_contents">
+        <TitleBar page={"edit"} title={`Edit:${data.title}`} post_id={post.id} />
+        <form className="route_page" onSubmit={handleSendPosts}>
+          <div className="create_map">
+            <iframe
+              src={data.map_url}
+              width="600"
+              height="450"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
             <input
-              type="text"
-              placeholder="タイトルを入力してください．"
-              value={data.title}
-              onChange={(e) => setData('title', e.target.value)}
-            />
-            <span className="text-red-600">{props.errors.title}</span>
-          </div>
-
-          <div>
-            <h2>Body</h2>
-            <textarea
-              placeholder="内容を入力してください．"
-              value={data.body}
-              onChange={(e) => setData('body', e.target.value)}
-            ></textarea>
-            <span className="text-red-600">{props.errors.body}</span>
-          </div>
-
-          <div>
-            <h2>Map_url</h2>
-            <input
+              className="input_map_url"
               type="text"
               placeholder="マップURLを入力してください．"
               value={data.map_url}
-              onChange={(e) => setData('map_url', e.target.value)}
+              onChange={(e) => setData("map_url", extractGoogleMapsSrc(e.target.value))}
             />
-            <span className="text-red-600">{props.errors.map_url}</span>
+            {/* <span>{props.errors.map_url}</span> */}
           </div>
 
-          <div>
-            <input
-              type="checkbox"
-              name="is_public"
-              checked={data.is_public}
-              onChange={(e) => setData('is_public', e.target.checked)}
-            />
-            <label htmlFor="is_public">is_public</label>
-          </div>
+          <div className="route_detail">
+            <div className="create_header">
+              <div className="input_title">
+                <input
+                  type="text"
+                  placeholder="タイトルを入力してください．"
+                  value={data.title}
+                  onChange={(e) => setData("title", e.target.value)}
+                />
+                <span>{props.errors.title}</span>
 
-          <div>
-            <h2>start_point</h2>
-            <input
-              type="text"
-              placeholder="出発地点"
-              value={data.start_point}
-              onChange={(e) => setData('start_point', e.target.value)}
-            />
-            <span className="text-red-600">{props.errors.start_point}</span>
-          </div>
+                {/* <select
+                  // value={post.category.id}
+                  onChange={(e) => setData("category_id", e.target.value)}
+                > */}
+                {/* {categories.map((category: any) => (
+                  <option value={category.id}>{category.category_name}</option>
+                ))} */}
+                {/* <option value={1}>経路</option>
+                  <option value={2}>施設</option>
+                  <option value={3}>景色</option>
+                </select> */}
+                <div>
+                  {post.category.category_name == "Route" ? (
+                    <LordIcon
+                      src="https://cdn.lordicon.com/rxtfetez.json"
+                      trigger="hover"
+                      stroke="bold"
+                      colors={{
+                        primary: "#f4ede4",
+                        secondary: "#f4ede4",
+                      }}
+                      size={40}
+                    />
+                  ) : post.category.category_name == "Facility" ? (
+                    <LordIcon
+                      src="https://cdn.lordicon.com/pfdotuzr.json"
+                      trigger="hover"
+                      colors={{
+                        primary: "#f4ede4",
+                        secondary: "#f4ede4",
+                      }}
+                      size={40}
+                    />
+                  ) : (
+                    <LordIcon
+                      src="https://cdn.lordicon.com/esrfxuri.json"
+                      trigger="hover"
+                      stroke="bold"
+                      colors={{
+                        primary: "#f4ede4",
+                        secondary: "#f4ede4",
+                      }}
+                      size={40}
+                    />
+                  )}
+                </div>
+              </div>
 
-          <div>
-            <h2>goal_point</h2>
-            <input
-              type="text"
-              placeholder="到着地点"
-              value={data.goal_point}
-              onChange={(e) => setData('goal_point', e.target.value)}
-            />
-            <span className="text-red-600">{props.errors.goal_point}</span>
-          </div>
+              <div className="input_sg_point">
+                <input
+                  type="text"
+                  placeholder="出発地点"
+                  value={data.start_point}
+                  onChange={(e) => setData("start_point", e.target.value)}
+                />
+                <span>{props.errors.start_point}</span>
 
-          <div>
-            <legend>weather_before_id</legend>
-
-            <div>
-              <input
-                type="radio"
-                name="before"
-                value="sunny"
-                checked={data.weather_before_id == 'sunny'}
-                onChange={(e) => setData('weather_before_id', e.target.value)}
-              />
-              <label htmlFor="sunny">sunny</label>
+                <input
+                  type="text"
+                  placeholder="到着地点"
+                  value={data.goal_point}
+                  onChange={(e) => setData("goal_point", e.target.value)}
+                />
+                <span>{props.errors.goal_point}</span>
+              </div>
             </div>
 
-            <div>
-              <input
-                type="radio"
-                name="before"
-                value="cloudy"
-                checked={data.weather_before_id == 'cloudy'}
-                onChange={(e) => setData('weather_before_id', e.target.value)}
-              />
-              <label htmlFor="cloudy">cloudy</label>
+            <textarea
+              placeholder="内容を入力してください．"
+              value={data.body}
+              onChange={(e) => setData("body", e.target.value)}
+            ></textarea>
+            <span>{props.errors.body}</span>
+
+            <div className="select_situation">
+              <div className="select_weather">
+                <div className="before">
+                  <div>
+                    <input
+                      type="radio"
+                      id="sunny_b"
+                      name="before"
+                      value="sunny"
+                      checked={data.weather_before_id == "sunny"}
+                      onChange={(e) => setData("weather_before_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="sunny_b"
+                      className={`${
+                        data.weather_before_id == "sunny" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/ingirgpt.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="cloudy_b"
+                      name="before"
+                      value="cloudy"
+                      checked={data.weather_before_id == "cloudy"}
+                      onChange={(e) => setData("weather_before_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="cloudy_b"
+                      className={`${
+                        data.weather_before_id == "cloudy" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/zawvkqfy.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="rainy_b"
+                      name="before"
+                      value="rainy"
+                      checked={data.weather_before_id == "rainy"}
+                      onChange={(e) => setData("weather_before_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="rainy_b"
+                      className={`${
+                        data.weather_before_id == "rainy" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/jtslwgho.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="snowy_b"
+                      name="before"
+                      value="snowy"
+                      checked={data.weather_before_id == "snowy"}
+                      onChange={(e) => setData("weather_before_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="snowy_b"
+                      className={`${
+                        data.weather_before_id == "snowy" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/sjtzcwfd.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+                </div>
+                <p>↓</p>
+                <div className="after">
+                  <div>
+                    <input
+                      type="radio"
+                      id="sunny_a"
+                      name="after"
+                      value="sunny"
+                      checked={data.weather_after_id == "sunny"}
+                      onChange={(e) => setData("weather_after_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="sunny_a"
+                      className={`${
+                        data.weather_after_id == "sunny" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/ingirgpt.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="cloudy_a"
+                      name="after"
+                      value="cloudy"
+                      checked={data.weather_after_id == "cloudy"}
+                      onChange={(e) => setData("weather_after_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="cloudy_a"
+                      className={`${
+                        data.weather_after_id == "cloudy" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/zawvkqfy.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="rainy_a"
+                      name="after"
+                      value="rainy"
+                      checked={data.weather_after_id == "rainy"}
+                      onChange={(e) => setData("weather_after_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="rainy_a"
+                      className={`${
+                        data.weather_after_id == "rainy" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/jtslwgho.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="radio"
+                      id="snowy_a"
+                      name="after"
+                      value="snowy"
+                      checked={data.weather_after_id == "snowy"}
+                      onChange={(e) => setData("weather_after_id", e.target.value)}
+                    />
+                    <label
+                      htmlFor="snowy_a"
+                      className={`${
+                        data.weather_after_id == "snowy" ? "select_situation_input" : ""
+                      }`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/sjtzcwfd.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+                </div>
+                <p>走行時の天候を選択してください．</p>
+              </div>
+
+              <div className="select_vehicle">
+                <div className="vehicle_list">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="walk_available"
+                      name="walk_available"
+                      checked={data.walk_available}
+                      onChange={(e) => setData("walk_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="walk_available"
+                      className={` ${data.walk_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/oxbjzlrk.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="bicycle_available"
+                      name="bicycle_available"
+                      checked={data.bicycle_available}
+                      onChange={(e) => setData("bicycle_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="bicycle_available"
+                      className={` ${data.bicycle_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/mknljqhi.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="car_available"
+                      name="car_available"
+                      checked={data.car_available}
+                      onChange={(e) => setData("car_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="car_available"
+                      className={` ${data.car_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/cqjfxkgf.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="bus_available"
+                      name="bus_available"
+                      checked={data.bus_available}
+                      onChange={(e) => setData("bus_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="bus_available"
+                      className={` ${data.bus_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/yiothpas.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <div className="vehicle_list">
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="train_available"
+                      name="train_available"
+                      checked={data.train_available}
+                      onChange={(e) => setData("train_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="train_available"
+                      className={` ${data.train_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/eomzkbrc.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="shinkansen_available"
+                      name="shinkansen_available"
+                      checked={data.shinkansen_available}
+                      onChange={(e) => setData("shinkansen_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="shinkansen_available"
+                      className={` ${data.shinkansen_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/dpwabcjy.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="plane_available"
+                      name="plane_available"
+                      checked={data.plane_available}
+                      onChange={(e) => setData("plane_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="plane_available"
+                      className={` ${data.plane_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/rpcdmsys.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+
+                  <div>
+                    <input
+                      type="checkbox"
+                      name="ship_available"
+                      checked={data.ship_available}
+                      onChange={(e) => setData("ship_available", e.target.checked)}
+                    />
+                    <label
+                      htmlFor="ship_available"
+                      className={` ${data.ship_available ? "select_situation_input" : ""}`}
+                    >
+                      <LordIcon
+                        src="https://cdn.lordicon.com/pgofwoue.json"
+                        trigger="click"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={52}
+                      />
+                    </label>
+                  </div>
+                </div>
+                <p>走行手段を選択してください．</p>
+              </div>
             </div>
 
-            <div>
-              <input
-                type="radio"
-                name="before"
-                value="rainy"
-                checked={data.weather_before_id == 'rainy'}
-                onChange={(e) => setData('weather_before_id', e.target.value)}
-              />
-              <label htmlFor="rainy">rainy</label>
+            <div className="create_footer">
+              <div className="posts_state">
+                <div
+                  onClick={() => handleCheckboxClick("is_running")}
+                  className={` ${data.is_running ? "" : "none_check"}`}
+                >
+                  <label htmlFor="is_running">
+                    <input
+                      type="checkbox"
+                      id="is_running"
+                      checked={data.is_running}
+                      onChange={(e) => setData("is_running", e.target.checked)}
+                    />
+                  </label>
+                  {data.is_running ? (
+                    <>
+                      <LordIcon
+                        src="https://cdn.lordicon.com/spukaklw.json"
+                        trigger="hover"
+                        colors={{
+                          primary: "#f4ede4",
+                          secondary: "#f4ede4",
+                        }}
+                        size={28}
+                      />
+                      <p>走行済</p>
+                    </>
+                  ) : (
+                    <>
+                      <LordIcon
+                        src="https://cdn.lordicon.com/muyjobwf.json"
+                        trigger="hover"
+                        stroke="bold"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={28}
+                      />
+                      <p>未走行</p>
+                    </>
+                  )}
+                </div>
+
+                <div
+                  onClick={() => handleCheckboxClick("is_public")}
+                  className={` ${data.is_public ? "" : "none_check"}`}
+                >
+                  <label htmlFor="is_public">
+                    <input
+                      type="checkbox"
+                      id="is_public"
+                      checked={data.is_public}
+                      onChange={(e) => setData("is_public", e.target.checked)}
+                    />
+                  </label>
+                  {data.is_public ? (
+                    <>
+                      <LordIcon
+                        src="https://cdn.lordicon.com/bnsmvaui.json"
+                        trigger="hover"
+                        colors={{
+                          primary: "#f4ede4",
+                          secondary: "#f4ede4",
+                        }}
+                        size={28}
+                      />
+                      <p>公開</p>
+                    </>
+                  ) : (
+                    <>
+                      <LordIcon
+                        src="https://cdn.lordicon.com/bnsmvaui.json"
+                        trigger="hover"
+                        state="hover-eye-off"
+                        colors={{
+                          primary: "#222222",
+                          secondary: "#222222",
+                        }}
+                        size={28}
+                      />
+                      <p>非公開</p>
+                    </>
+                  )}
+                </div>
+              </div>
+              {/* このbuttonをクリックすると、onSubmitに設定してあるhandleSendPosts関数が発火する*/}
+              <button type="submit">
+                <p>修正</p>
+              </button>
             </div>
-
-            <div>
-              <input
-                type="radio"
-                name="before"
-                value="snowy"
-                checked={data.weather_before_id == 'snowy'}
-                onChange={(e) => setData('weather_before_id', e.target.value)}
-              />
-              <label htmlFor="snowy">snowy</label>
-            </div>
           </div>
-
-          <div>
-            <legend>weather_after_id</legend>
-
-            <div>
-              <input
-                type="radio"
-                name="after"
-                value="sunny"
-                checked={data.weather_after_id == 'sunny'}
-                onChange={(e) => setData('weather_after_id', e.target.value)}
-              />
-              <label htmlFor="sunny">sunny</label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                name="after"
-                value="cloudy"
-                checked={data.weather_after_id == 'cloudy'}
-                onChange={(e) => setData('weather_after_id', e.target.value)}
-              />
-              <label htmlFor="cloudy">cloudy</label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                name="after"
-                value="rainy"
-                checked={data.weather_after_id == 'rainy'}
-                onChange={(e) => setData('weather_after_id', e.target.value)}
-              />
-              <label htmlFor="rainy">rainy</label>
-            </div>
-
-            <div>
-              <input
-                type="radio"
-                name="after"
-                value="snowy"
-                checked={data.weather_after_id == 'snowy'}
-                onChange={(e) => setData('weather_after_id', e.target.value)}
-              />
-              <label htmlFor="snowy">snowy</label>
-            </div>
-          </div>
-
-          <div>
-            <input
-              type="checkbox"
-              name="is_running"
-              checked={data.is_running}
-              onChange={(e) => setData('is_running', e.target.checked)}
-            />
-            <label htmlFor="is_running">is_running</label>
-          </div>
-
-          <div>
-            <input
-              type="checkbox"
-              name="walk_available"
-              checked={data.walk_available}
-              onChange={(e) => setData('walk_available', e.target.checked)}
-            />
-            <label htmlFor="walk_available">Walk</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="bicycle_available"
-              checked={data.bicycle_available}
-              onChange={(e) => setData('bicycle_available', e.target.checked)}
-            />
-            <label htmlFor="bicycle_available">Bicycle</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="car_available"
-              checked={data.car_available}
-              onChange={(e) => setData('car_available', e.target.checked)}
-            />
-            <label htmlFor="car_available">Car</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="bus_available"
-              checked={data.bus_available}
-              onChange={(e) => setData('bus_available', e.target.checked)}
-            />
-            <label htmlFor="bus_available">Bus</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="train_available"
-              checked={data.train_available}
-              onChange={(e) => setData('train_available', e.target.checked)}
-            />
-            <label htmlFor="train_available">Train</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="shinkansen_available"
-              checked={data.shinkansen_available}
-              onChange={(e) => setData('shinkansen_available', e.target.checked)}
-            />
-            <label htmlFor="shinkansen_available">Shinkansen</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="plane_available"
-              checked={data.plane_available}
-              onChange={(e) => setData('plane_available', e.target.checked)}
-            />
-            <label htmlFor="plane_available">Plane</label>
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              name="ship_available"
-              checked={data.ship_available}
-              onChange={(e) => setData('ship_available', e.target.checked)}
-            />
-            <label htmlFor="ship_available">Ship</label>
-          </div>
-
-          {/* <div>
-                        <h2>Category</h2>
-                        <select
-                            onChange={(e) =>
-                                setData("category_id", e.target.value)
-                            }
-                        >
-                            {categories.map((category: any) => (
-                                <option value={category.id}>
-                                    {category.category_name}
-                                </option>
-                            ))}
-                        </select>
-                    </div> */}
-
-          {/* このbuttonをクリックすると、onSubmitに設定してあるhandleSendPosts関数が発火する*/}
-          <button type="submit" className="p-1 bg-purple-300 hover:bg-purple-400 rounded-md">
-            send
-          </button>
         </form>
-
-        <Link href="/posts">戻る</Link>
       </div>
+      {/* <Link href="/posts">戻る</Link> */}
     </Authenticated>
   );
 };

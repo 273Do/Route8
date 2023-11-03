@@ -85,8 +85,9 @@ const Create = (props: Post) => {
               placeholder="マップURLを入力してください．"
               onChange={(e) => setData("map_url", extractGoogleMapsSrc(e.target.value))}
             />
+            {/* <span>{props.errors.map_url}</span> */}
           </div>
-          {/* <span>{props.errors.map_url}</span> */}
+
           <div className="route_detail">
             <div className="create_header">
               <div className="input_title">

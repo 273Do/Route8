@@ -26,6 +26,7 @@
       color: map-get($light_theme, "input_text");
       height: 30px;
       padding-left: 15px;
+      padding-right: 15px;
       border-top: -5px;
       border-radius: 20px;
       border: none;
@@ -60,6 +61,8 @@
       padding: 10px;
       resize: none;
       flex: 1;
+      overflow: scroll;
+      overflow: hidden;
       transition: all 0.3s;
 
       &:hover {
@@ -129,7 +132,8 @@
           }
         }
 
-        select {
+        select,
+        div {
           width: 60px;
           height: 60px;
           margin-left: 10px;
@@ -145,6 +149,13 @@
           &:focus {
             outline: none;
             // transform: scale(1.03);
+          }
+        }
+
+        div {
+          lord-icon {
+            margin-left: 10px;
+            margin-top: 10px;
           }
         }
       }
