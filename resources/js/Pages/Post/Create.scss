@@ -340,7 +340,6 @@
         // background-color: #55c500;
         background-color: map-get($light_theme, "bg");
         border: 2px map-get($light_theme, "sub_bg") solid;
-        // border: none;
         transition: all 0.3s;
 
         &:hover {
