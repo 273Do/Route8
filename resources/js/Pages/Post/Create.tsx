@@ -50,8 +50,6 @@ const Create = (props: Post) => {
     }
   };
 
-  // console.log(data); // 確認用に追加
-
   const handleCheckboxClick = (checkboxName: string) => {
     // チェックボックスの状態を反転させるロジック
     setData((prevData: any) => ({
@@ -88,6 +86,7 @@ const Create = (props: Post) => {
               </div>
             )}
             <input
+              // className="input_map_url"
               className="input_map_url"
               type="text"
               placeholder="マップURLを入力してください．"
@@ -104,7 +103,7 @@ const Create = (props: Post) => {
                   placeholder="タイトルを入力してください．"
                   onChange={(e) => setData("title", e.target.value)}
                 />
-                <span>{props.errors.title}</span>
+                {/* <span>{props.errors.title}</span> */}
 
                 <select onChange={(e) => setData("category_id", e.target.value)}>
                   {/* {categories.map((category: any) => (
@@ -122,14 +121,14 @@ const Create = (props: Post) => {
                   placeholder="出発地点"
                   onChange={(e) => setData("start_point", e.target.value)}
                 />
-                <span>{props.errors.start_point}</span>
+                {/* <span>{props.errors.start_point}</span> */}
 
                 <input
                   type="text"
                   placeholder="到着地点"
                   onChange={(e) => setData("goal_point", e.target.value)}
                 />
-                <span>{props.errors.goal_point}</span>
+                {/* <span>{props.errors.goal_point}</span> */}
               </div>
             </div>
 
@@ -137,7 +136,7 @@ const Create = (props: Post) => {
               placeholder="内容を入力してください．"
               onChange={(e) => setData("body", e.target.value)}
             ></textarea>
-            <span>{props.errors.body}</span>
+            {/* <span>{props.errors.body}</span> */}
 
             <div className="select_situation">
               <div className={`select_weather ${data.category_id == 2 ? "none_edit" : ""}`}>
@@ -641,7 +640,32 @@ const Create = (props: Post) => {
                 </div>
               </div>
               {/* このbuttonをクリックすると、onSubmitに設定してあるhandleSendPosts関数が発火する*/}
-              <button type="submit">
+              <button
+                type="submit"
+                tabIndex="-1"
+                className={`${
+                  0 < data.title.length &&
+                  data.title.length <= 20 &&
+                  0 < data.body.length &&
+                  data.body.length <= 300 &&
+                  0 < data.map_url.length &&
+                  data.map_url.length <= 600 &&
+                  0 < data.start_point.length &&
+                  data.start_point.length <= 12 &&
+                  0 < data.goal_point.length &&
+                  data.goal_point.length <= 12 &&
+                  (data.walk_available ||
+                    data.bicycle_available ||
+                    data.car_available ||
+                    data.bus_available ||
+                    data.train_available ||
+                    data.shinkansen_available ||
+                    data.plane_available ||
+                    data.ship_available)
+                    ? ""
+                    : "none_edit"
+                }`}
+              >
                 <p>投稿</p>
               </button>
             </div>
