@@ -77,8 +77,8 @@
       padding: 10px;
       resize: none;
       flex: 1;
-      overflow: scroll;
-      overflow: hidden;
+      // overflow: scroll;
+      // overflow: hidden;
       transition: all 0.3s;
 
       &:hover {
