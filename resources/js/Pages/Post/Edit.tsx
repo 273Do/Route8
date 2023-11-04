@@ -699,7 +699,7 @@ const Edit = (props: Post) => {
                         }}
                         size={28}
                       />
-                      <p>非公開</p>
+                      <p>下書き</p>
                     </>
                   )}
                 </div>

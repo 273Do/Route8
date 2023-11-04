@@ -23,7 +23,15 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
   return (
     <div className="route_board" key={post.id}>
       <Link className="link_no_underline" href={`/posts/${post.id}`}>
-        <div className="route_card">
+        <div
+          className={`route_card ${
+            props.auth.user.id !== post.user.id && post.is_public == false
+              ? "display_none"
+              : post.is_public == false
+              ? "isnot_public"
+              : ""
+          }`}
+        >
           <div className="route_header">
             <p>
               {post.situation.start_point} → {post.situation.goal_point}
@@ -104,7 +112,6 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                       >
                         <LordIcon
                           src="https://cdn.lordicon.com/rxtfetez.json"
-                          // src="https://cdn.lordicon.com/irjwlmmn.json"
                           trigger="hover"
                           stroke="bold"
                           colors={{

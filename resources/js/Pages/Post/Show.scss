@@ -47,12 +47,37 @@
       .explanation_header {
         display: flex;
         justify-content: right;
+        text-decoration: none;
+        text-decoration-line: none;
 
         p {
-          margin-left: 20px;
+          // margin-left: 20px;
           margin-top: 0px;
           margin-bottom: 0px;
           font-size: 20px;
+
+          &:first-child {
+            margin-top: 1px;
+            margin-right: 20px;
+          }
+        }
+
+        .link_no_underline {
+          text-decoration: none;
+          color: map-get($light_theme, "text");
+          cursor: pointer;
+        }
+
+        .user_button {
+          display: flex;
+          align-items: center;
+          color: map-get($light_theme, "text");
+          transition: all 0.3s;
+
+          // &:hover {
+          //   // transform: scale(1.15);
+          //   transform: translateY(-5px);
+          // }
         }
       }
 

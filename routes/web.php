@@ -42,6 +42,8 @@ Route::group(["middleware" => ["auth"]], function() {
 //        return Inertia::render("Post/Index");
 //    }) ;
 
+    Route::get('/previous-page', [PageController::class, 'previousPage'])->name('previous.page');
+
     //HomePage
     Route::get("/posts", [PostController::class, "index"])->name("index");
     
@@ -53,6 +55,9 @@ Route::group(["middleware" => ["auth"]], function() {
     
     //RoutePage
     Route::get("/posts/{post}", [PostController::class, "show"]);
+
+    //UserPostPage
+    Route::get("/posts/user/{user}", [PostController::class, "userPostedRoute"]);
     
     //EditPage
     Route::get("/posts/{post}/edit", [PostController::class, "edit"]);

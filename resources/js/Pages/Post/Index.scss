@@ -28,6 +28,14 @@
         text-decoration: none;
       }
 
+      .display_none {
+        display: none;
+      }
+
+      .isnot_public {
+        opacity: 0.85;
+      }
+
       .route_card {
         width: 580px;
         height: 325px;

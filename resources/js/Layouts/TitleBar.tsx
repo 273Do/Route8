@@ -6,7 +6,7 @@ import { TitleBar } from "../Pages/Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 
 // HomePage
-const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
+const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
   console.log(page, title, post_id, edit);
 
   const handleDeletePost = (id: number) => {
@@ -21,15 +21,27 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
         <h1>{title}</h1>
         <nav>
           <ul>
-            <li>
-              <NavLink href={route("dashboard")} active={route().current("dashboard")}>
+            <li className={`back_arrow ${arrow ? "" : "display_none"}`}>
+              <Link href={`/posts`}>
+                <LordIcon
+                  src="https://cdn.lordicon.com/vduvxizq.json"
+                  trigger="hover"
+                  colors={{
+                    primary: "#222222",
+                  }}
+                  size={28}
+                />
+              </Link>
+            </li>
+            <li className={`${arrow ? "display_none" : ""}`}>
+              <Link href={`/posts/user/${user_id}`}>
                 <LordIcon
                   src="https://cdn.lordicon.com/ziafkkwv.json"
                   trigger="hover"
                   colors={{ primary: "#222222" }}
                   size={28}
                 />
-              </NavLink>
+              </Link>
             </li>
             <li>
               <NavLink href={route("create")} active={route().current("create")}>
@@ -81,6 +93,16 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
                   colors={{
                     primary: "#222222",
                   }}
+                  size={28}
+                />
+              </Link>
+            </li>
+            <li>
+              <Link href={`/posts/user/${user_id}`}>
+                <LordIcon
+                  src="https://cdn.lordicon.com/ziafkkwv.json"
+                  trigger="hover"
+                  colors={{ primary: "#222222" }}
                   size={28}
                 />
               </Link>

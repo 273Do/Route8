@@ -35,6 +35,7 @@ const Show = (props: Post) => {
           page={"show"}
           title={post.title}
           post_id={post.id}
+          user_id={props.auth.user.id}
           edit={props.auth.user.id == post.user.id ? true : false}
         />
         <div className="route_page">
@@ -50,7 +51,20 @@ const Show = (props: Post) => {
             <div className="route_explanation">
               <div className="explanation_header">
                 <p> {FormattedDate(post.created_at)}</p>
-                <p>{post.user.name}</p>
+                {/* <Link href={`/posts/user/${post.user.id}`} className="link_no_underline">
+                  <p>{post.user.name}</p>
+                </Link> */}
+                <Link href={`/posts/user/${post.user.id}`} className="link_no_underline">
+                  <div className="user_button">
+                    <LordIcon
+                      src="https://cdn.lordicon.com/kthelypq.json"
+                      trigger="hover"
+                      colors={{ primary: "#222222" }}
+                      size={23}
+                    />
+                    <p>{post.user.name}</p>
+                  </div>
+                </Link>
               </div>
 
               <div className="explanation_start_goal">
