@@ -105,7 +105,7 @@ const Edit = (props: Post) => {
                   value={data.title}
                   onChange={(e) => setData("title", e.target.value)}
                 />
-                <span>{props.errors.title}</span>
+                {/* <span>{props.errors.title}</span> */}
 
                 {/* <select
                   // value={post.category.id}
@@ -162,7 +162,7 @@ const Edit = (props: Post) => {
                   value={data.start_point}
                   onChange={(e) => setData("start_point", e.target.value)}
                 />
-                <span>{props.errors.start_point}</span>
+                {/* <span>{props.errors.start_point}</span> */}
 
                 <input
                   type="text"
@@ -170,7 +170,7 @@ const Edit = (props: Post) => {
                   value={data.goal_point}
                   onChange={(e) => setData("goal_point", e.target.value)}
                 />
-                <span>{props.errors.goal_point}</span>
+                {/* <span>{props.errors.goal_point}</span> */}
               </div>
             </div>
 
@@ -179,7 +179,7 @@ const Edit = (props: Post) => {
               value={data.body}
               onChange={(e) => setData("body", e.target.value)}
             ></textarea>
-            <span>{props.errors.body}</span>
+            {/* <span>{props.errors.body}</span> */}
 
             <div className="select_situation">
               <div
@@ -705,7 +705,32 @@ const Edit = (props: Post) => {
                 </div>
               </div>
               {/* このbuttonをクリックすると、onSubmitに設定してあるhandleSendPosts関数が発火する*/}
-              <button type="submit">
+              <button
+                type="submit"
+                tabIndex="-1"
+                className={`${
+                  0 < data.title.length &&
+                  data.title.length <= 20 &&
+                  0 < data.body.length &&
+                  data.body.length <= 300 &&
+                  0 < data.map_url.length &&
+                  data.map_url.length <= 600 &&
+                  0 < data.start_point.length &&
+                  data.start_point.length <= 12 &&
+                  0 < data.goal_point.length &&
+                  data.goal_point.length <= 12 &&
+                  (data.walk_available ||
+                    data.bicycle_available ||
+                    data.car_available ||
+                    data.bus_available ||
+                    data.train_available ||
+                    data.shinkansen_available ||
+                    data.plane_available ||
+                    data.ship_available)
+                    ? ""
+                    : "none_edit"
+                }`}
+              >
                 <p>修正</p>
               </button>
             </div>
