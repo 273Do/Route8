@@ -62,6 +62,12 @@ Route::group(["middleware" => ["auth"]], function() {
     //filterCategory
     Route::get("/posts/category/{category}", [PostController::class, "filterCategory"]);
     
+    //filterWeather
+    Route::get("/posts/weather/{situation}/{weather}", [PostController::class, "filterWeather"]);
+
+    //filterVehicle
+    Route::get("/posts/vehicle/{vehicle}", [PostController::class, "filterVehicle"]);
+    
     //EditPage
     Route::get("/posts/{post}/edit", [PostController::class, "edit"]);
     
