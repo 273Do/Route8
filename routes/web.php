@@ -56,8 +56,11 @@ Route::group(["middleware" => ["auth"]], function() {
     //RoutePage
     Route::get("/posts/{post}", [PostController::class, "show"]);
 
-    //UserPostPage
-    Route::get("/posts/user/{user}", [PostController::class, "userPostedRoute"]);
+    //filterUser
+    Route::get("/posts/user/{user}", [PostController::class, "filterUser"]);
+
+    //filterCategory
+    Route::get("/posts/category/{category}", [PostController::class, "filterCategory"]);
     
     //EditPage
     Route::get("/posts/{post}/edit", [PostController::class, "edit"]);

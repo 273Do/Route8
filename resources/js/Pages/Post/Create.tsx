@@ -58,7 +58,8 @@ const Create = (props: Post) => {
     }));
   };
 
-  const handleSendPosts = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSendPosts = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") return;
     e.preventDefault();
     post("/posts");
   };

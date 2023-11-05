@@ -91,16 +91,21 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                   {post.category.category_name == "Facility" ? (
                     <>
                       <li>
-                        <LordIcon
-                          src="https://cdn.lordicon.com/pfdotuzr.json"
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link
+                          href={`/posts/category/${post.category.id}`}
+                          className="link_no_underline"
+                        >
+                          <LordIcon
+                            src="https://cdn.lordicon.com/pfdotuzr.json"
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                     </>
                   ) : (
@@ -110,32 +115,42 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                           post.category.category_name == "Route" ? "" : "display_none"
                         }`}
                       >
-                        <LordIcon
-                          src="https://cdn.lordicon.com/rxtfetez.json"
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link
+                          href={`/posts/category/${post.category.id}`}
+                          className="link_no_underline"
+                        >
+                          <LordIcon
+                            src="https://cdn.lordicon.com/rxtfetez.json"
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                       <li
                         className={`${
                           post.category.category_name == "Scenery" ? "" : "display_none"
                         }`}
                       >
-                        <LordIcon
-                          src="https://cdn.lordicon.com/esrfxuri.json"
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link
+                          href={`/posts/category/${post.category.id}`}
+                          className="link_no_underline"
+                        >
+                          <LordIcon
+                            src="https://cdn.lordicon.com/esrfxuri.json"
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                       <li>
                         <LordIcon
@@ -276,7 +291,13 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
           </div>
         </div>
       </Link>
-      <p className="card_title">{post.title}</p>
+      <p
+        className={`card_title ${
+          props.auth.user.id !== post.user.id && post.is_public == false ? "display_none" : ""
+        }`}
+      >
+        {post.title}
+      </p>
     </div>
   );
 };

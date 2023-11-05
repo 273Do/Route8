@@ -23,11 +23,17 @@ class PostController extends Controller
         // ->where("is_public", 1)でis_publicが1(true)のもののみ返す．
     }
 
-    //UserPostPage
-    public function userPostedRoute(User $user)
+    //filterUser
+    public function filterUser(User $user)
     {
-        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where('user_id', $user->id)->get(), "page_title" => $user->name, "arrow" => true]);
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("user_id", $user->id)->get(), "page_title" => "User:".$user->name, "arrow" => true]);
         // userには指定したuser_idが入ってくる．暗黙の結合により，idに応じたUserテーブルから全てのデータを取ってくることができる．
+    }
+
+    //filterCategory
+    public function filterCategory(Category $category)
+    {
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("category_id", $category->id)->where("is_public", 1)->get(), "page_title" => "Category:".$category->category_name, "arrow" => true]);
     }
     
     //RoutePage
