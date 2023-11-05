@@ -58,7 +58,8 @@ const Create = (props: Post) => {
     }));
   };
 
-  const handleSendPosts = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSendPosts = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") return;
     e.preventDefault();
     post("/posts");
   };
@@ -634,7 +635,7 @@ const Create = (props: Post) => {
                         }}
                         size={28}
                       />
-                      <p>非公開</p>
+                      <p>下書き</p>
                     </>
                   )}
                 </div>

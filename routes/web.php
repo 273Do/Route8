@@ -42,6 +42,8 @@ Route::group(["middleware" => ["auth"]], function() {
 //        return Inertia::render("Post/Index");
 //    }) ;
 
+    Route::get('/previous-page', [PageController::class, 'previousPage'])->name('previous.page');
+
     //HomePage
     Route::get("/posts", [PostController::class, "index"])->name("index");
     
@@ -53,6 +55,18 @@ Route::group(["middleware" => ["auth"]], function() {
     
     //RoutePage
     Route::get("/posts/{post}", [PostController::class, "show"]);
+
+    //filterUser
+    Route::get("/posts/user/{user}", [PostController::class, "filterUser"]);
+
+    //filterCategory
+    Route::get("/posts/category/{category}", [PostController::class, "filterCategory"]);
+    
+    //filterWeather
+    Route::get("/posts/weather/{situation}/{weather}", [PostController::class, "filterWeather"]);
+
+    //filterVehicle
+    Route::get("/posts/vehicle/{vehicle}", [PostController::class, "filterVehicle"]);
     
     //EditPage
     Route::get("/posts/{post}/edit", [PostController::class, "edit"]);

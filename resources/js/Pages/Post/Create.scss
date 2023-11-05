@@ -336,8 +336,6 @@
         border-radius: 20px;
         font-size: 16px;
         font-family: $font;
-
-        // background-color: #55c500;
         background-color: map-get($light_theme, "bg");
         border: 2px map-get($light_theme, "sub_bg") solid;
         transition: all 0.3s;

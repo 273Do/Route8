@@ -1,12 +1,15 @@
 import React from "react";
 import NavLink from "@/Components/NavLink";
-import { Link } from "@inertiajs/inertia-react";
+import { Link, usePage } from "@inertiajs/inertia-react";
 import { router } from "@inertiajs/react";
 import { TitleBar } from "../Pages/Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 
 // HomePage
-const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
+const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
+  const urlPrev = usePage().props.urlPrev as string;
+
+  console.log("URL:", urlPrev);
   console.log(page, title, post_id, edit);
 
   const handleDeletePost = (id: number) => {
@@ -21,15 +24,28 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
         <h1>{title}</h1>
         <nav>
           <ul>
-            <li>
-              <NavLink href={route("dashboard")} active={route().current("dashboard")}>
+            <li className={`${arrow ? "" : "display_none"}`}>
+              {/* <Link href={urlPrev}> */}
+              <Link href={"/posts"}>
+                <LordIcon
+                  src="https://cdn.lordicon.com/yymhadbu.json"
+                  trigger="hover"
+                  colors={{
+                    primary: "#222222",
+                  }}
+                  size={28}
+                />
+              </Link>
+            </li>
+            <li className={`${arrow ? "display_none" : ""}`}>
+              <Link href={`/posts/user/${user_id}`}>
                 <LordIcon
                   src="https://cdn.lordicon.com/ziafkkwv.json"
                   trigger="hover"
                   colors={{ primary: "#222222" }}
                   size={28}
                 />
-              </NavLink>
+              </Link>
             </li>
             <li>
               <NavLink href={route("create")} active={route().current("create")}>
@@ -74,13 +90,24 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
         <nav>
           <ul>
             <li className="back_arrow">
-              <Link href={`/posts`}>
+              <Link href={urlPrev}>
+                {/* <Link href="#" onClick={history.back()}> */}
                 <LordIcon
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"
                   colors={{
                     primary: "#222222",
                   }}
+                  size={28}
+                />
+              </Link>
+            </li>
+            <li>
+              <Link href={`/posts/user/${user_id}`}>
+                <LordIcon
+                  src="https://cdn.lordicon.com/ziafkkwv.json"
+                  trigger="hover"
+                  colors={{ primary: "#222222" }}
                   size={28}
                 />
               </Link>
@@ -133,7 +160,8 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
         <nav>
           <ul>
             <li className="back_arrow">
-              <Link href={`/posts`}>
+              <Link href={urlPrev}>
+                {/* <Link href="#" onClick={history.back()}> */}
                 <LordIcon
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"
@@ -155,7 +183,8 @@ const TitleBar = ({ page, title, post_id, edit }: TitleBar) => {
         <nav>
           <ul>
             <li className="back_arrow">
-              <Link href={`/posts`}>
+              <Link href={urlPrev}>
+                {/* <Link href="#" onClick={history.back()}> */}
                 <LordIcon
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"

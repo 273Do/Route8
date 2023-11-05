@@ -18,9 +18,52 @@ class PostController extends Controller
     {
         // return Inertia::render("Post/Index");
         //  return Inertia::render("Post/Index",["posts" => $post->get()]);
-        return Inertia::render("Post/Index",["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("is_public", 1)->get()]);
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("is_public", 1)->get(), "page_title" => "Route", "arrow" => false]);
         // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
         // ->where("is_public", 1)でis_publicが1(true)のもののみ返す．
+    }
+
+    //filterUser
+    public function filterUser(User $user)
+    {
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("user_id", $user->id)->get(), "page_title" => "User:".$user->name, "arrow" => true]);
+        // userには指定したuser_idが入ってくる．暗黙の結合により，idに応じたUserテーブルから全てのデータを取ってくることができる．
+    }
+
+    //filterCategory
+    public function filterCategory(Category $category)
+    {
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("category_id", $category->id)->where("is_public", 1)->get(), "page_title" => "Category:".$category->category_name, "arrow" => true]);
+    }
+
+    //filterWeather
+    public function filterWeather($situation, $weather)
+    {
+        return Inertia::render("Post/Index", [
+            "posts" => Post::with(["category", "vehicle", "situation", "user"])
+            ->whereHas('situation', function ($query) use ($situation, $weather) {$query->where("is_running", 1)->where("weather_".$situation."_id", $weather);})
+            ->whereHas('category', function ($q) {$q->where("category_id", '<>', 2);})->where("is_public", 1)->get(), 
+            "page_title" => ucfirst($situation)." Weather:".ucfirst($weather), 
+            "arrow" => true]);
+    }
+
+    //filterVehicle
+    public function filterVehicle($vehicle)
+    {   $vehicle_available = $vehicle."_available";
+        //whereHasはリレーション先のテーブルの条件で検索したいときに用いる．
+        //whereHasの第一引数にはリレーションメソッド名(Postでのリレーションメソッド名)が入る．
+        //第二引数には無名関数が入る．
+        // $query はクエリビルダーを操作するために必要な変数です。Eloquentの whereHas メソッド内で使用されるクロージャは、クエリビルダーの操作を行うために $query という変数名を使うことが一般的です。
+        // このように $query を使うことで、リレーション内のクエリを操作できます。Eloquentを使用する際に、関連付けられたモデルに対する条件を動的に指定する場合、$query を使用してサブクエリを構築することが一般的な方法です。
+        // 例えば、$query->where($vehicle, true) の部分は、$vehicle パラメータに基づいて、リレーション内のカラムに対する条件を設定しています。そのため、$query を書かないと、クエリを操作する手段がなくなり、条件の指定ができなくなります。
+        // したがって、$query を使用してクエリを操作することで、特定の条件に一致する投稿を正確に取得できます。このようなクエリの組み立ては、Eloquentを効果的に活用するために一般的な手法です。
+        // $query->where($vehicle, true)：これはサブクエリ内でのクエリビルダーの操作です。具体的には、$vehicle パラメータの値（例: "walk_available"）をカラム名として指定し、そのカラムが true の場合に一致する投稿を取得する条件を設定しています。この部分は動的にカラム名を指定できるため、異なる車両タイプに対応する条件を設定する際に非常に便利です。
+        return Inertia::render("Post/Index", [
+             "posts" => Post::with(["category", "vehicle", "situation", "user"])
+             ->whereHas('vehicle', function ($query) use ($vehicle_available) {$query->where($vehicle_available, true);})->where("is_public", 1)->get(),
+             "page_title" => "Vehicle:".ucfirst($vehicle),
+             "arrow" => true
+        ]);
     }
     
     //RoutePage
@@ -34,7 +77,7 @@ class PostController extends Controller
     //CreatePage
     public function create(Category $category)
     {
-        return Inertia::render("Post/Create",["categories" => $category->get()]);
+        return Inertia::render("Post/Create", ["categories" => $category->get()]);
     }
     
     //Post

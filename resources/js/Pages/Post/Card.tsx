@@ -23,7 +23,15 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
   return (
     <div className="route_board" key={post.id}>
       <Link className="link_no_underline" href={`/posts/${post.id}`}>
-        <div className="route_card">
+        <div
+          className={`route_card ${
+            props.auth.user.id !== post.user.id && post.is_public == false
+              ? "display_none"
+              : post.is_public == false
+              ? "isnot_public"
+              : ""
+          }`}
+        >
           <div className="route_header">
             <p>
               {post.situation.start_point} → {post.situation.goal_point}
@@ -83,16 +91,18 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                   {post.category.category_name == "Facility" ? (
                     <>
                       <li>
-                        <LordIcon
-                          src="https://cdn.lordicon.com/pfdotuzr.json"
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link href={`/posts/category/${post.category.id}`}>
+                          <LordIcon
+                            src="https://cdn.lordicon.com/pfdotuzr.json"
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                     </>
                   ) : (
@@ -102,151 +112,67 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                           post.category.category_name == "Route" ? "" : "display_none"
                         }`}
                       >
-                        <LordIcon
-                          src="https://cdn.lordicon.com/rxtfetez.json"
-                          // src="https://cdn.lordicon.com/irjwlmmn.json"
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link href={`/posts/category/${post.category.id}`}>
+                          <LordIcon
+                            src="https://cdn.lordicon.com/rxtfetez.json"
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                       <li
                         className={`${
                           post.category.category_name == "Scenery" ? "" : "display_none"
                         }`}
                       >
-                        <LordIcon
-                          src="https://cdn.lordicon.com/esrfxuri.json"
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link href={`/posts/category/${post.category.id}`}>
+                          <LordIcon
+                            src="https://cdn.lordicon.com/esrfxuri.json"
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                       <li>
-                        <LordIcon
-                          src={putWeatherState(post.situation.weather_before_id)}
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link href={`/posts/weather/before/${post.situation.weather_before_id}`}>
+                          <LordIcon
+                            src={putWeatherState(post.situation.weather_before_id)}
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                       <li>
-                        <LordIcon
-                          src={putWeatherState(post.situation.weather_after_id)}
-                          trigger="hover"
-                          stroke="bold"
-                          colors={{
-                            primary: "#f4ede4",
-                            secondary: "#f4ede4",
-                          }}
-                          size={25}
-                        />
+                        <Link href={`/posts/weather/after/${post.situation.weather_after_id}`}>
+                          <LordIcon
+                            src={putWeatherState(post.situation.weather_after_id)}
+                            trigger="hover"
+                            stroke="bold"
+                            colors={{
+                              primary: "#f4ede4",
+                              secondary: "#f4ede4",
+                            }}
+                            size={25}
+                          />
+                        </Link>
                       </li>
                     </>
                   )}
-                </ul>
-
-                <ul className="route_vehicle">
-                  <li className={`${post.vehicle.walk_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/oxbjzlrk.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
-                  <li className={`${post.vehicle.bicycle_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/mknljqhi.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
-                  <li className={`${post.vehicle.car_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/cqjfxkgf.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
-                  <li className={`${post.vehicle.bus_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/yiothpas.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
-                  <li className={`${post.vehicle.train_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/eomzkbrc.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
-                  <li className={`${post.vehicle.shinkansen_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/dpwabcjy.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
-                  <li className={`${post.vehicle.plane_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/rpcdmsys.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
-                  <li className={`${post.vehicle.ship_available == 0 ? "display_none" : ""}`}>
-                    <LordIcon
-                      src="https://cdn.lordicon.com/pgofwoue.json"
-                      trigger="hover"
-                      colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
-                      }}
-                      size={25}
-                    />
-                  </li>
                 </ul>
               </>
             ) : (
@@ -266,10 +192,122 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                 </ul>
               </>
             )}
+            <ul className="route_vehicle">
+              <li className={`${post.vehicle.walk_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/walk"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/oxbjzlrk.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+              <li className={`${post.vehicle.bicycle_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/bicycle"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/mknljqhi.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+              <li className={`${post.vehicle.car_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/car"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/cqjfxkgf.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+              <li className={`${post.vehicle.bus_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/bus"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/yiothpas.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+              <li className={`${post.vehicle.train_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/train"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/eomzkbrc.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+              <li className={`${post.vehicle.shinkansen_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/shinkansen"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/dpwabcjy.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+              <li className={`${post.vehicle.plane_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/plane"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/rpcdmsys.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+              <li className={`${post.vehicle.ship_available == 0 ? "display_none" : ""}`}>
+                <Link href={"/posts/vehicle/ship"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/pgofwoue.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#f4ede4",
+                      secondary: "#f4ede4",
+                    }}
+                    size={25}
+                  />
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </Link>
-      <p className="card_title">{post.title}</p>
+      <p
+        className={`card_title ${
+          props.auth.user.id !== post.user.id && post.is_public == false ? "display_none" : ""
+        }`}
+      >
+        {post.title}
+      </p>
     </div>
   );
 };

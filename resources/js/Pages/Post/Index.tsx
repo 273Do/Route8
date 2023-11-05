@@ -7,13 +7,14 @@ import Card from "./Card";
 
 // IndexPage
 const Index = (props: Auth) => {
-  const { posts } = props;
+  const { posts, page_title, arrow } = props;
   console.log(props);
+  console.log(page_title);
 
   return (
     <Authenticated auth={props.auth} header={<h2>Index</h2>}>
       <div className="main_contents">
-        <TitleBar page={"Route"} title={"Route"} edit={false} />
+        <TitleBar page={"Route"} title={page_title} user_id={props.auth.user.id} arrow={arrow} />
         <div className="route_list">
           {posts.map((post: Post) => (
             <Card props={props} post={post} />

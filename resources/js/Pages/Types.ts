@@ -1,73 +1,74 @@
 export interface Auth {
-    props: any;
-    posts: any;
-    auth: any;
+  props: any;
+  posts: any;
+  auth: any;
+  page_title: string;
+  arrow: boolean;
 }
 
 export interface Post {
-    auth: any;
-    post: any;
-    errors: any;
-    id: number;
-    title: string;
-    body: string;
-    is_public: boolean;
-    walk_available: boolean;
-    bicycle_available: boolean;
-    car_available: boolean;
-    bus_available: boolean;
-    train_available: boolean;
-    shinkansen_available: boolean;
-    plane_available: boolean;
-    ship_available: boolean;
-    created_at: any;
-    map_url: string;
-    users: any;
-    user: any;
-    vehicle: any;
-    situation: any;
-    categories: any;
-    category: any;
+  auth: any;
+  post: any;
+  errors: any;
+  id: number;
+  title: string;
+  body: string;
+  is_public: boolean;
+  walk_available: boolean;
+  bicycle_available: boolean;
+  car_available: boolean;
+  bus_available: boolean;
+  train_available: boolean;
+  shinkansen_available: boolean;
+  plane_available: boolean;
+  ship_available: boolean;
+  created_at: any;
+  map_url: string;
+  users: any;
+  user: any;
+  vehicle: any;
+  situation: any;
+  categories: any;
+  category: any;
 }
 
 export interface TitleBar {
-    page: string;
-    title: string;
-    post_id: number;
-    edit: boolean;
+  page: string;
+  title: string;
+  post_id: number;
+  user_id: number;
+  edit: boolean;
+  arrow: boolean;
 }
 
 import "react";
 
 type LordIconTrigger =
-    | "in"
-    | "hover"
-    | "click"
-    | "loop"
-    | "loop-on-hover"
-    | "morph"
-    | "morph-two-way";
+  | "in"
+  | "hover"
+  | "click"
+  | "loop"
+  | "loop-on-hover"
+  | "morph"
+  | "morph-two-way";
 
 type LordIconProps = {
-    src?: string;
-    state?: string;
-    stroke?: string;
-    trigger?: LordIconTrigger;
-    colors?: string;
-    delay?: string | number;
+  src?: string;
+  state?: string;
+  stroke?: string;
+  trigger?: LordIconTrigger;
+  colors?: string;
+  delay?: string | number;
 };
 
-type LordIconElement = React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLElement>,
-    HTMLElement
-> &
-    LordIconProps;
+type LordIconElement = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> &
+  LordIconProps;
 
 declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace JSX {
-        interface IntrinsicElements {
-            "lord-icon": LordIconElement;
-        }
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    interface IntrinsicElements {
+      "lord-icon": LordIconElement;
     }
+  }
 }
