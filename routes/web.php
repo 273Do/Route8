@@ -56,6 +56,9 @@ Route::group(["middleware" => ["auth"]], function() {
     //RoutePage
     Route::get("/posts/{post}", [PostController::class, "show"]);
 
+    //Search
+    Route::get("/posts/search/title/{word}", [PostController::class, "search"]);
+
     //filterUser
     Route::get("/posts/user/{user}", [PostController::class, "filterUser"]);
 
