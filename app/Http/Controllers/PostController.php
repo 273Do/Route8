@@ -18,22 +18,48 @@ class PostController extends Controller
     {
         // return Inertia::render("Post/Index");
         //  return Inertia::render("Post/Index",["posts" => $post->get()]);
-        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("is_public", 1)->get(), "page_title" => "Route", "arrow" => false]);
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
+        ->where("is_public", 1)->get(), "page_title" => "Route", "arrow" => false]);
         // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
         // ->where("is_public", 1)でis_publicが1(true)のもののみ返す．
+    }
+
+    //Search
+    public function search($search_mode, $word)
+    {
+        if(!empty($word)){
+            if($search_mode == "title" || $search_mode == "body"){
+                return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
+                ->where($search_mode, "like", "%".$word."%")->where("is_public", 1)->get(), 
+                 "page_title" => "Search ".ucfirst($search_mode).":".$word, 
+                "arrow" => true]);
+                //  % を追加することで、指定したキーワードを含むすべてのレコードを取得．
+            }else if($search_mode == "start" || $search_mode == "goal"){
+                return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
+                -> whereHas("situation", function($query) use ($search_mode, $word){ $query -> where($search_mode."_point", "like", "%".$word."%");})
+                ->where("is_public", 1)->get(), 
+                "page_title" => "Search ".ucfirst($search_mode).":".$word, 
+                "arrow" => true]);
+            }
+        }
+        else{
+            return redirect("/posts");
+        }
     }
 
     //filterUser
     public function filterUser(User $user)
     {
-        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("user_id", $user->id)->get(), "page_title" => "User:".$user->name, "arrow" => true]);
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
+        ->where("user_id", $user->id)->get(), "page_title" => "User:".$user->name, "arrow" => true]);
         // userには指定したuser_idが入ってくる．暗黙の結合により，idに応じたUserテーブルから全てのデータを取ってくることができる．
     }
 
     //filterCategory
     public function filterCategory(Category $category)
     {
-        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])->where("category_id", $category->id)->where("is_public", 1)->get(), "page_title" => "Category:".$category->category_name, "arrow" => true]);
+        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
+        ->where("category_id", $category->id)->where("is_public", 1)->get(), "page_title" => "Category:".$category->category_name, "arrow" => true]);
     }
 
     //filterWeather

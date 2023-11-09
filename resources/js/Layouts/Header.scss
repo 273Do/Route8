@@ -4,11 +4,11 @@ body {
   overflow-y: hidden;
   font-family: $font;
 
-  background-color: map-get($light_theme, 'bg');
+  background-color: map-get($light_theme, "bg");
 }
 
 .contents {
-  background-color: map-get($light_theme, 'bg');
+  background-color: map-get($light_theme, "bg");
   overflow-x: hidden;
 
   width: 100%;
@@ -22,7 +22,7 @@ body {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: map-get($light_theme, 'text');
+    background: map-get($light_theme, "text");
     border-radius: 20px;
   }
 
@@ -31,10 +31,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: map-get($light_theme, 'bg');
+    background-color: map-get($light_theme, "bg");
     height: 80px;
     margin-right: 25px;
-    position: 'fixed';
+    position: "fixed";
     z-index: 10;
 
     div {
@@ -52,10 +52,17 @@ body {
       justify-content: center;
       flex: 1;
       // flex-direction: column;//
+      .search_button {
+        cursor: pointer;
+      }
+
+      .button_disabled {
+        pointer-events: none;
+      }
 
       .search_area {
-        background-color: map-get($light_theme, 'input_bg');
-        color: map-get($light_theme, 'input_text');
+        background-color: map-get($light_theme, "input_bg");
+        color: map-get($light_theme, "input_text");
         height: 30px;
         width: 35%;
         min-width: 100px;
@@ -68,25 +75,26 @@ body {
         transition: all 0.3s;
 
         &:hover {
-          transform: scale(1.03);
+          transform: scale(1.03) translateX(7px);
         }
 
         &:focus {
           outline: none;
           // transform: scale(1.03);
+          transform: scale(1.03) translateX(7px);
         }
       }
     }
 
     .link_no_underline {
       text-decoration: none;
-      color: map-get($light_theme, 'text');
+      color: map-get($light_theme, "text");
     }
 
     .user_button {
       display: flex;
       align-items: center;
-      color: map-get($light_theme, 'text');
+      color: map-get($light_theme, "text");
       cursor: pointer;
       transition: all 0.3s;
       image-rendering: -webkit-optimize-contrast;

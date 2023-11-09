@@ -2,11 +2,9 @@
   display: flex;
   justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
   align-items: center;
-  // background-color: map-get($light_theme, "bg");
-  // backdrop-filter: blur(20px);
   height: 100px;
   margin-top: 40px;
-  position: 'fixed';
+  position: "fixed";
   z-index: 10;
 
   h1 {
