@@ -25,12 +25,22 @@ class PostController extends Controller
     }
 
     //Search
-    public function search($word)
+    public function search($search_mode, $word)
     {
         if(!empty($word)){
-        return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
-        ->where("title", "like", "%".$word."%")->where("is_public", 1)->get(), "page_title" => "Search:".$word, "arrow" => true]);
-        //  % を追加することで、指定したキーワードを含むすべてのレコードを取得
+            if($search_mode == "title" || $search_mode == "body"){
+                return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
+                ->where($search_mode, "like", "%".$word."%")->where("is_public", 1)->get(), 
+                 "page_title" => "Search ".ucfirst($search_mode).":".$word, 
+                "arrow" => true]);
+                //  % を追加することで、指定したキーワードを含むすべてのレコードを取得．
+            }else if($search_mode == "start" || $search_mode == "goal"){
+                return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
+                -> whereHas("situation", function($query) use ($search_mode, $word){ $query -> where($search_mode."_point", "like", "%".$word."%");})
+                ->where("is_public", 1)->get(), 
+                "page_title" => "Search ".ucfirst($search_mode).":".$word, 
+                "arrow" => true]);
+            }
         }
         else{
             return redirect("/posts");

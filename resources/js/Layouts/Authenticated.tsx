@@ -18,7 +18,7 @@ export default function Authenticated({ auth, header, children }: Props) {
   // const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
   const [searchWord, setSearchWord] = useState<string>("");
 
-  const mode: string[] = ["Title", "Start", "Goal", "Body"];
+  const mode: string[] = ["title", "start", "goal", "body"];
   const [searchMode, setSearchMode] = useState<string>(mode[0]);
 
   const navigateTo = (route: string, method: string = "get", data = {}) => {
@@ -33,7 +33,7 @@ export default function Authenticated({ auth, header, children }: Props) {
     console.log("test2", searchWord.trim());
     if (e.key == "Enter" && /^\s*$/.test(searchWord) == false) {
       e.preventDefault();
-      navigateTo(`/posts/search/title/${searchWord.trim()}`);
+      navigateTo(`/posts/search/${searchMode}/${searchWord.trim()}`);
     }
   };
 
@@ -247,7 +247,9 @@ export default function Authenticated({ auth, header, children }: Props) {
           <input
             type="text"
             className="search_area"
-            placeholder={searchMode}
+            placeholder={
+              searchMode.substring(0, 1).toUpperCase() + searchMode.substring(1).toLowerCase()
+            }
             onChange={(e) => setSearchWord(e.target.value)}
           />
         </div>

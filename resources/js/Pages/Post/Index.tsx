@@ -4,6 +4,7 @@ import { router } from "@inertiajs/react";
 import { Auth, Post } from "../Types";
 import TitleBar from "../../Layouts/TitleBar";
 import Card from "./Card";
+import SearchNotFound from "./SearchNotFound";
 
 // IndexPage
 const Index = (props: Auth) => {
@@ -16,9 +17,17 @@ const Index = (props: Auth) => {
       <div className="main_contents">
         <TitleBar page={"Route"} title={page_title} user_id={props.auth.user.id} arrow={arrow} />
         <div className="route_list">
-          {posts.map((post: Post) => (
-            <Card props={props} post={post} />
-          ))}
+          {posts == 0 ? (
+            <>
+              <SearchNotFound />
+            </>
+          ) : (
+            <>
+              {posts.map((post: Post) => (
+                <Card props={props} post={post} />
+              ))}
+            </>
+          )}
         </div>
       </div>
     </Authenticated>
