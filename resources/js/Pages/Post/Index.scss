@@ -42,8 +42,8 @@
         // padding: 5px;
         margin: 30px 20px 0px 20px;
         border-radius: 20px;
-        color: map-get($light_theme, "sub_text");
-        background-color: map-get($light_theme, "sub_bg");
+        color: var(--sub_text);
+        background-color: var(--sub_bg);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         backface-visibility: hidden;
@@ -200,6 +200,8 @@
         font-size: 1.5rem;
         margin: 0 auto;
         margin-top: 5px;
+        color: var(--text);
+        transition: all 0.3s;
       }
     }
   }

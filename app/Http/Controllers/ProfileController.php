@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -59,5 +60,21 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    //DarkTheme
+    public function darkTheme(User $user)
+    {
+        $user->dark_theme_enabled = !$user->dark_theme_enabled;
+        $user->save();
+        return redirect("/posts");
+    }
+
+    //MapEffect
+    public function mapEffect(User $user)
+    {
+        $user->map_effect_enabled = !$user->map_effect_enabled;
+        $user->save();
+        return redirect("/posts");
     }
 }

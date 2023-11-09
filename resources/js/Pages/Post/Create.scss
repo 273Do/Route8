@@ -15,12 +15,13 @@
 
     iframe,
     .none_map {
-      border: 2px map-get($light_theme, "sub_bg") solid;
-      background-color: map-get($light_theme, "sub_bg");
+      border: 2px var(--sub_bg) solid;
+      background-color: var(--sub_bg);
       margin-bottom: 10px;
       border-radius: 20px;
       width: 99.5%;
       flex: 1;
+      transition: all 0.3s;
 
       a {
         text-decoration: none;
@@ -28,7 +29,7 @@
 
         p {
           justify-content: center;
-          color: map-get($light_theme, "input_text");
+          color: var(--input_text);
           transition: all 0.3s;
 
           &:hover {
@@ -39,8 +40,8 @@
     }
 
     .input_map_url {
-      background-color: map-get($light_theme, "input_bg");
-      color: map-get($light_theme, "input_text");
+      background-color: var(--input_bg);
+      color: var(--input_text);
       height: 30px;
       padding-left: 15px;
       padding-right: 15px;
@@ -70,8 +71,8 @@
     }
 
     textarea {
-      background-color: map-get($light_theme, "input_bg");
-      color: map-get($light_theme, "input_text");
+      background-color: var(--input_bg);
+      color: var(--input_text);
       font-size: 20px;
       margin-bottom: 10px;
       border-radius: 20px;
@@ -101,8 +102,8 @@
         input {
           width: 50%;
           font-size: 25px;
-          color: map-get($light_theme, "input_text");
-          background-color: map-get($light_theme, "sub_bg");
+          color: var(--input_text);
+          background-color: var(--sub_bg);
           transition: all 0.3s;
 
           &:hover {
@@ -113,7 +114,7 @@
 
       .input_sg_point {
         height: 30px;
-        border: 2px map-get($light_theme, "sub_bg") solid;
+        border: 2px var(--sub_bg) solid;
         border-radius: 20px;
         transition: all 0.3s;
 
@@ -123,8 +124,9 @@
 
         input {
           font-size: 20px;
-          color: map-get($light_theme, "text");
-          background-color: map-get($light_theme, "bg");
+          color: var(--text);
+          background-color: var(--bg);
+          transition: all 0.3s;
         }
       }
 
@@ -137,7 +139,6 @@
         input {
           flex: 1;
           padding-left: 15px;
-
           border-radius: 15px;
           border: none;
           font-family: $font;
@@ -155,8 +156,8 @@
           height: 60px;
           margin-left: 10px;
           border-radius: 15px;
-          background-color: map-get($light_theme, "sub_bg");
-          color: map-get($light_theme, "sub_text");
+          background-color: var(--sub_bg);
+          color: var(--sub_text);
           transition: all 0.3s;
 
           &:hover {
@@ -193,7 +194,7 @@
         margin-bottom: 10px;
         flex: 1;
         border-radius: 20px;
-        border: 2px map-get($light_theme, "sub_bg") solid;
+        border: 2px var(--sub_bg) solid;
         transition: all 0.3s;
 
         &:hover {
@@ -203,6 +204,7 @@
         p {
           text-align: center;
           margin: 0px;
+          color: var(--text);
           transition: all 0.3s;
 
           &:last-child {
@@ -302,9 +304,9 @@
           justify-content: center; /* 横方向中央揃え */
           // height: 100%; /* 高さを親要素に合わせる */
 
-          border: 2px map-get($light_theme, "sub_bg") solid;
-          background-color: map-get($light_theme, "sub_bg");
-          color: map-get($light_theme, "sub_text");
+          border: 2px var(--sub_bg) solid;
+          background-color: var(--sub_bg);
+          color: var(--sub_text);
           transition: all 0.3s;
 
           &:hover {
@@ -321,8 +323,8 @@
         }
 
         .none_check {
-          background-color: map-get($light_theme, "bg");
-          color: map-get($light_theme, "text");
+          background-color: var(--bg);
+          color: var(--text);
         }
       }
 
@@ -336,13 +338,14 @@
         border-radius: 20px;
         font-size: 16px;
         font-family: $font;
-        background-color: map-get($light_theme, "bg");
-        border: 2px map-get($light_theme, "sub_bg") solid;
+        color: var(--text);
+        background-color: var(--bg);
+        border: 2px var(--sub_bg) solid;
         transition: all 0.3s;
 
         &:hover {
-          color: map-get($light_theme, "input_text");
-          background-color: map-get($light_theme, "sub_bg");
+          color: var(--input_text);
+          background-color: var(--sub_bg);
           transform: scale(1.03);
         }
       }
