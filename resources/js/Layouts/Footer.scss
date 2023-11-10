@@ -13,8 +13,10 @@ footer {
     text-align: center; /* テキストを中央に配置 */
     flex-grow: 1;
     pointer-events: none;
+    font-family: $font;
     color: var(--text);
     margin-left: 8%;
+    transition: all 0.3s;
   }
 
   ul {
@@ -25,6 +27,7 @@ footer {
       display: inline-block;
       margin-left: 10px;
       cursor: pointer;
+      filter: var(--icon_color);
       transition: all 0.3s;
       image-rendering: -webkit-optimize-contrast;
 

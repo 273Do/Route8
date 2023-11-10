@@ -240,7 +240,7 @@ export default function Authenticated({ auth, header, children }: Props) {
             <LordIcon
               src="https://cdn.lordicon.com/kkvxgpti.json"
               trigger="click"
-              colors={{ primary: "#222222" }}
+              colors={{ primary: "#000" }}
               size={28}
             />
           </div>
@@ -258,7 +258,7 @@ export default function Authenticated({ auth, header, children }: Props) {
             <LordIcon
               src="https://cdn.lordicon.com/kthelypq.json"
               trigger="hover"
-              colors={{ primary: "#222222" }}
+              colors={{ primary: "#000" }}
               size={28}
             />
             <p>{auth.user.name}</p>
@@ -266,7 +266,7 @@ export default function Authenticated({ auth, header, children }: Props) {
         </Link>
       </header>
       <main>{children}</main>
-      <Footer user_theme={true} />
+      <Footer user_theme={auth.user.dark_theme_enabled} user_effect={true} />
     </div>
   );
 }

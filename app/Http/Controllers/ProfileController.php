@@ -67,7 +67,7 @@ class ProfileController extends Controller
     {
         $user->dark_theme_enabled = !$user->dark_theme_enabled;
         $user->save();
-        return redirect("/posts");
+        // return redirect("/posts");
     }
 
     //MapEffect
@@ -75,6 +75,6 @@ class ProfileController extends Controller
     {
         $user->map_effect_enabled = !$user->map_effect_enabled;
         $user->save();
-        return redirect("/posts");
+        // return redirect("/posts");
     }
 }

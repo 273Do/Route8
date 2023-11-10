@@ -81,7 +81,7 @@ Route::group(["middleware" => ["auth"]], function() {
     Route::delete("/posts/{post}", [PostController::class, "delete"]);
 
     //DarkTheme
-    Route::get("/{user}/dark_theme", [PostController::class, "darkTheme"]);
+    Route::put("/{user}/dark_theme", [PostController::class, "darkTheme"]);
     
     //MapEffect
     Route::put("/{user}/map_effect", [PostController::class, "mapEffect"]);

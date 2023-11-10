@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { LordIcon } from "../Pages/Common/lord-icon";
 
-const Footer = ({ user_theme }: { user_theme: boolean }) => {
+const Footer = ({ user_theme, user_effect }: { user_theme: boolean; user_effect: boolean }) => {
   const [theme, setTheme] = useState<string>(user_theme ? "dark" : "light"); // dark_theme_enabled に基づいて初期テーマを設定
   const root = document.documentElement;
 
@@ -14,6 +14,14 @@ const Footer = ({ user_theme }: { user_theme: boolean }) => {
       root.style.setProperty("--sub_text", "#f4ede4");
       root.style.setProperty("--input_bg", "#222222");
       root.style.setProperty("--input_text", "#f4ede4");
+      root.style.setProperty(
+        "--icon_color",
+        "invert(15%) sepia(20%) saturate(0%) hue-rotate(177deg) brightness(88%) contrast(102%)"
+      );
+      root.style.setProperty(
+        "--icon_sub_color",
+        "invert(93%) sepia(4%) saturate(634%) hue-rotate(336deg) brightness(104%) contrast(91%)"
+      );
     } else if (theme === "dark") {
       root.style.setProperty("--bg", "#222222");
       root.style.setProperty("--sub_bg", "#f4ede4");
@@ -21,11 +29,18 @@ const Footer = ({ user_theme }: { user_theme: boolean }) => {
       root.style.setProperty("--sub_text", "#222222");
       root.style.setProperty("--input_bg", "#f4ede4");
       root.style.setProperty("--input_text", "#222222");
+      root.style.setProperty(
+        "--icon_color",
+        "invert(93%) sepia(4%) saturate(634%) hue-rotate(336deg) brightness(104%) contrast(91%)"
+      );
+      root.style.setProperty(
+        "--icon_sub_color",
+        "invert(15%) sepia(20%) saturate(0%) hue-rotate(177deg) brightness(88%) contrast(102%)"
+      );
     }
   }, [theme]);
 
   const toggleTheme = () => {
-    // テーマを切り替え
     if (theme === "light") {
       setTheme("dark");
     } else {
@@ -33,18 +48,26 @@ const Footer = ({ user_theme }: { user_theme: boolean }) => {
     }
   };
 
+  const toggleEffect = () => {
+    if (theme === "on") {
+      setTheme("off");
+    } else {
+      setTheme("on");
+    }
+  };
+
   return (
     <footer>
       <p className="copy_light">273DoWorks</p>
       <ul>
-        <li>
+        <li onClick={() => toggleEffect()}>
           <LordIcon
             // src="https://cdn.lordicon.com/ygumtulo.json"
             // trigger="morph"
             // state="morph-slider"
             src="https://cdn.lordicon.com/sqopewut.json"
             trigger="hover"
-            colors={{ primary: "#222222" }}
+            colors={{ primary: "#000" }}
             size={28}
           />
         </li>
@@ -52,8 +75,8 @@ const Footer = ({ user_theme }: { user_theme: boolean }) => {
           <LordIcon
             src="https://cdn.lordicon.com/nktbqhlt.json"
             trigger="morph"
-            state="morph-bulb-OFF" //"morph-bulb-ON"
-            colors={{ primary: "#222222" }}
+            state={`morph-bulb-${theme == "light" ? "OFF" : "ON"}`} //"morph-bulb-ON"
+            colors={{ primary: "#000" }}
             size={28}
           />
         </li>

@@ -41,4 +41,12 @@ $sp-w: 450px; // スマホ
   --sub_text: #f4ede4;
   --input_bg: #222222;
   --input_text: #f4ede4;
+  --icon_color: invert(15%) sepia(20%) saturate(0%) hue-rotate(177deg) brightness(88%)
+    contrast(102%);
+  --icon_sub_color:invert(93%) sepia(4%) saturate(634%) hue-rotate(336deg) brightness(104%) contrast(91%);
 }
+// light
+// filter: invert(93%) sepia(4%) saturate(634%) hue-rotate(336deg) brightness(104%) contrast(91%);
+
+// dark
+// filter: invert(15%) sepia(20%) saturate(0%) hue-rotate(177deg) brightness(88%) contrast(102%);

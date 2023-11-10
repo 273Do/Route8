@@ -25,6 +25,7 @@ body {
   ::-webkit-scrollbar-thumb {
     background: var(--sub_bg);
     border-radius: 20px;
+    transition: all 0.3s;
   }
 
   // header
@@ -55,7 +56,9 @@ body {
       flex: 1;
       // flex-direction: column;//
       .search_button {
+        filter: var(--icon_color);
         cursor: pointer;
+        transition: all 0.3s;
       }
 
       .button_disabled {
@@ -96,7 +99,8 @@ body {
     .user_button {
       display: flex;
       align-items: center;
-      color: var(--text);
+      color: #000;
+      filter: var(--icon_color);
       cursor: pointer;
       transition: all 0.3s;
       image-rendering: -webkit-optimize-contrast;

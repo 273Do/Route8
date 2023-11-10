@@ -110,6 +110,11 @@
             transform: scale(1.01);
           }
         }
+
+        .category_icon {
+          filter: var(--icon_sub_color);
+          transition: all 0.3s;
+        }
       }
 
       .input_sg_point {
@@ -236,8 +241,9 @@
           }
 
           label {
-            transition: all 0.3s;
             opacity: 0.5;
+            filter: var(--icon_color);
+            transition: all 0.3s;
           }
 
           .select_situation_input {
@@ -269,6 +275,7 @@
           }
 
           label {
+            filter: var(--icon_color);
             transition: all 0.3s;
             opacity: 0.5;
           }
@@ -308,6 +315,18 @@
           background-color: var(--sub_bg);
           color: var(--sub_text);
           transition: all 0.3s;
+
+          .change_before {
+            margin-top: 7px;
+            filter: var(--icon_sub_color);
+            transition: all 0.3s;
+          }
+
+          .change_after {
+            margin-top: 7px;
+            filter: var(--icon_color);
+            transition: all 0.3s;
+          }
 
           &:hover {
             transform: scale(1.03);

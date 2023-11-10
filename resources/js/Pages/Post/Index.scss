@@ -21,6 +21,11 @@
     justify-content: center; /* 横方向に中央配置 */
     flex-wrap: wrap;
 
+    .not_found {
+      filter: var(--icon_color);
+      transition: all 0.3s;
+    }
+
     .route_board {
       // height: 375px;
 
@@ -33,7 +38,7 @@
       }
 
       .isnot_public {
-        opacity: 0.85;
+        opacity: 0.8;
       }
 
       .route_card {
@@ -74,6 +79,7 @@
               list-style: none;
               display: inline-block;
               margin-right: 10px;
+              filter: var(--icon_sub_color);
               transition: all 0.3s;
               image-rendering: -webkit-optimize-contrast;
 
@@ -129,6 +135,7 @@
             list-style: none;
             display: inline-block;
             margin-right: 5px;
+            filter: var(--icon_sub_color);
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 
@@ -155,6 +162,7 @@
             list-style: none;
             display: inline-block;
             margin-left: 10px;
+            filter: var(--icon_sub_color);
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 

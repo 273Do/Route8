@@ -59,7 +59,7 @@ const Show = (props: Post) => {
                     <LordIcon
                       src="https://cdn.lordicon.com/kthelypq.json"
                       trigger="hover"
-                      colors={{ primary: "#222222" }}
+                      colors={{ primary: "#000" }}
                       size={23}
                     />
                     <p>{post.user.name}</p>
@@ -88,8 +88,8 @@ const Show = (props: Post) => {
                                   src="https://cdn.lordicon.com/pfdotuzr.json"
                                   trigger="hover"
                                   colors={{
-                                    primary: "#222222",
-                                    secondary: "#222222",
+                                    primary: "#000",
+                                    secondary: "#000",
                                   }}
                                   size={52}
                                 />
@@ -109,8 +109,8 @@ const Show = (props: Post) => {
                                   trigger="hover"
                                   stroke="bold"
                                   colors={{
-                                    primary: "#222222",
-                                    secondary: "#222222",
+                                    primary: "#000",
+                                    secondary: "#000",
                                   }}
                                   size={52}
                                 />
@@ -127,8 +127,8 @@ const Show = (props: Post) => {
                                   trigger="hover"
                                   stroke="bold"
                                   colors={{
-                                    primary: "#222222",
-                                    secondary: "#222222",
+                                    primary: "#000",
+                                    secondary: "#000",
                                   }}
                                   size={52}
                                 />
@@ -143,8 +143,8 @@ const Show = (props: Post) => {
                                   trigger="hover"
                                   stroke="bold"
                                   colors={{
-                                    primary: "#222222",
-                                    secondary: "#222222",
+                                    primary: "#000",
+                                    secondary: "#000",
                                   }}
                                   size={52}
                                 />
@@ -159,8 +159,8 @@ const Show = (props: Post) => {
                                   trigger="hover"
                                   stroke="bold"
                                   colors={{
-                                    primary: "#222222",
-                                    secondary: "#222222",
+                                    primary: "#000",
+                                    secondary: "#000",
                                   }}
                                   size={52}
                                 />
@@ -180,8 +180,8 @@ const Show = (props: Post) => {
                           src="https://cdn.lordicon.com/muyjobwf.json"
                           trigger="hover"
                           colors={{
-                            primary: "#222222",
-                            secondary: "#222222",
+                            primary: "#000",
+                            secondary: "#000",
                           }}
                           size={52}
                         />
@@ -196,8 +196,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/oxbjzlrk.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -209,8 +209,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/mknljqhi.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -222,8 +222,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/cqjfxkgf.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -235,8 +235,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/yiothpas.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -248,8 +248,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/eomzkbrc.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -261,8 +261,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/dpwabcjy.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -274,8 +274,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/rpcdmsys.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -287,8 +287,8 @@ const Show = (props: Post) => {
                         src="https://cdn.lordicon.com/pgofwoue.json"
                         trigger="hover"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
