@@ -3,14 +3,14 @@ import { LordIcon } from "../Common/lord-icon";
 
 const SearchNotFound = () => {
   return (
-    <div>
+    <div className="not_found">
       <LordIcon
         src="https://cdn.lordicon.com/iolpqlal.json"
         trigger="loop"
-        delay={1500}
+        delay={1000}
         colors={{
-          primary: "#222222",
-          secondary: "#222222",
+          primary: "#000",
+          secondary: "#000",
         }}
         size={200}
       />

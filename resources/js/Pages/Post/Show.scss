@@ -18,12 +18,13 @@
   }
 
   iframe {
-    border: 2px map-get($light_theme, "sub_bg") solid;
+    border: 2px var(--sub_bg) solid;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
+    transition: all 0.3s;
 
     // 色フィルター
-    filter: grayscale(60%) sepia(25%);
+    filter: var(--map_effect);
 
     @media (max-width: ($pc_small_width)) {
       margin-right: 0px;
@@ -49,12 +50,15 @@
         justify-content: right;
         text-decoration: none;
         text-decoration-line: none;
+        filter: var(--icon_color);
+        transition: all 0.3s;
 
         p {
           // margin-left: 20px;
           margin-top: 0px;
           margin-bottom: 0px;
           font-size: 20px;
+          color: #000;
 
           &:first-child {
             margin-top: 1px;
@@ -64,14 +68,14 @@
 
         .link_no_underline {
           text-decoration: none;
-          color: map-get($light_theme, "text");
+          color: var(--text);
           cursor: pointer;
         }
 
         .user_button {
           display: flex;
           align-items: center;
-          color: map-get($light_theme, "text");
+          color: var(--text);
           transition: all 0.3s;
 
           // &:hover {
@@ -85,6 +89,8 @@
         p {
           font-size: 30px;
           margin: 0px;
+          color: var(--text);
+          transition: all 0.3s;
         }
       }
 
@@ -93,6 +99,8 @@
         margin-bottom: 0px;
         padding: 10px;
         font-size: 20px;
+        color: var(--text);
+        transition: all 0.3s;
       }
 
       .route_state {
@@ -117,6 +125,7 @@
             list-style: none;
             display: inline-block;
             // margin-right: 5px;
+            filter: var(--icon_color);
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 
@@ -139,6 +148,7 @@
             list-style: none;
             display: inline-block;
             // margin-left: 10px;
+            filter: var(--icon_color);
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 
@@ -187,7 +197,7 @@
       flex: 1;
       // min-height: 380px;
       border-radius: 20px;
-      background-color: map-get($light_theme, "sub_bg");
+      background-color: var(--sub_bg);
       transition: all 0.3s;
       image-rendering: -webkit-optimize-contrast;
 

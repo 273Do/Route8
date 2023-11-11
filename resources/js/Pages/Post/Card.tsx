@@ -43,7 +43,7 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/uwbjfiwe.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
+                      primary: "#000",
                     }}
                     size={25}
                   />
@@ -58,7 +58,7 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                   trigger="morph"
                   state="morph-trash-full"
                   colors={{
-                    primary: "#f4ede4",
+                    primary: "#000",
                   }}
                   size={25}
                 />
@@ -69,7 +69,7 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                   trigger="morph"
                   state="morph-marked-bookmark"
                   colors={{
-                    primary: "#f4ede4",
+                    primary: "#000",
                   }}
                   size={25}
                 />
@@ -97,8 +97,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                             trigger="hover"
                             stroke="bold"
                             colors={{
-                              primary: "#f4ede4",
-                              secondary: "#f4ede4",
+                              primary: "#000",
+                              secondary: "#000",
                             }}
                             size={25}
                           />
@@ -118,8 +118,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                             trigger="hover"
                             stroke="bold"
                             colors={{
-                              primary: "#f4ede4",
-                              secondary: "#f4ede4",
+                              primary: "#000",
+                              secondary: "#000",
                             }}
                             size={25}
                           />
@@ -136,8 +136,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                             trigger="hover"
                             stroke="bold"
                             colors={{
-                              primary: "#f4ede4",
-                              secondary: "#f4ede4",
+                              primary: "#000",
+                              secondary: "#000",
                             }}
                             size={25}
                           />
@@ -150,8 +150,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                             trigger="hover"
                             stroke="bold"
                             colors={{
-                              primary: "#f4ede4",
-                              secondary: "#f4ede4",
+                              primary: "#000",
+                              secondary: "#000",
                             }}
                             size={25}
                           />
@@ -164,8 +164,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                             trigger="hover"
                             stroke="bold"
                             colors={{
-                              primary: "#f4ede4",
-                              secondary: "#f4ede4",
+                              primary: "#000",
+                              secondary: "#000",
                             }}
                             size={25}
                           />
@@ -183,8 +183,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                       src="https://cdn.lordicon.com/muyjobwf.json"
                       trigger="hover"
                       colors={{
-                        primary: "#f4ede4",
-                        secondary: "#f4ede4",
+                        primary: "#000",
+                        secondary: "#000",
                       }}
                       size={25}
                     />
@@ -199,8 +199,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/oxbjzlrk.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />
@@ -212,8 +212,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/mknljqhi.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />
@@ -225,8 +225,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/cqjfxkgf.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />
@@ -238,8 +238,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/yiothpas.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />
@@ -251,8 +251,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/eomzkbrc.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />
@@ -264,8 +264,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/dpwabcjy.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />
@@ -277,8 +277,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/rpcdmsys.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />
@@ -290,8 +290,8 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                     src="https://cdn.lordicon.com/pgofwoue.json"
                     trigger="hover"
                     colors={{
-                      primary: "#f4ede4",
-                      secondary: "#f4ede4",
+                      primary: "#000",
+                      secondary: "#000",
                     }}
                     size={25}
                   />

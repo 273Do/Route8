@@ -80,6 +80,12 @@ Route::group(["middleware" => ["auth"]], function() {
     //Delete
     Route::delete("/posts/{post}", [PostController::class, "delete"]);
 
+    //DarkTheme
+    Route::put("/{user}/dark_theme", [ProfileController::class, "darkTheme"]);
+    
+    //MapEffect
+    Route::put("/{user}/map_effect", [ProfileController::class, "mapEffect"]);
+
 });
 
 require __DIR__.'/auth.php';

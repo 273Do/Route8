@@ -59,9 +59,25 @@ const Create = (props: Post) => {
   };
 
   const handleSendPosts = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== "Enter") return;
+    // if (e.key !== "Enter") console.log("test");
     e.preventDefault();
-    post("/posts");
+    // if (e.detail !== 0)console.log("osareta");
+    //ここの条件に乗り物のor条件入れる
+    if (
+      e.key !== "Enter" &&
+      (data.walk_available ||
+        data.bicycle_available ||
+        data.car_available ||
+        data.bus_available ||
+        data.train_available ||
+        data.shinkansen_available ||
+        data.plane_available ||
+        data.ship_available)
+    )
+      post("/posts");
+    else {
+      console.log("test");
+    }
   };
 
   return (
@@ -160,8 +176,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/ingirgpt.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -186,8 +202,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/zawvkqfy.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -212,8 +228,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/jtslwgho.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -238,8 +254,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/sjtzcwfd.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -266,8 +282,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/ingirgpt.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -292,8 +308,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/zawvkqfy.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -318,8 +334,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/jtslwgho.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -344,8 +360,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/sjtzcwfd.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -380,8 +396,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/oxbjzlrk.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -403,8 +419,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/mknljqhi.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -426,8 +442,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/cqjfxkgf.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -449,8 +465,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/yiothpas.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -474,8 +490,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/eomzkbrc.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -496,8 +512,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/dpwabcjy.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -518,8 +534,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/rpcdmsys.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -540,8 +556,8 @@ const Create = (props: Post) => {
                         src="https://cdn.lordicon.com/pgofwoue.json"
                         trigger="click"
                         colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
+                          primary: "#000",
+                          secondary: "#000",
                         }}
                         size={52}
                       />
@@ -570,29 +586,33 @@ const Create = (props: Post) => {
                   </label>
                   {data.is_running ? (
                     <>
-                      <LordIcon
-                        src="https://cdn.lordicon.com/spukaklw.json"
-                        trigger="hover"
-                        colors={{
-                          primary: "#f4ede4",
-                          secondary: "#f4ede4",
-                        }}
-                        size={28}
-                      />
+                      <span className="change_before">
+                        <LordIcon
+                          src="https://cdn.lordicon.com/spukaklw.json"
+                          trigger="hover"
+                          colors={{
+                            primary: "#000",
+                            secondary: "#000",
+                          }}
+                          size={28}
+                        />
+                      </span>
                       <p>走行済</p>
                     </>
                   ) : (
                     <>
-                      <LordIcon
-                        src="https://cdn.lordicon.com/muyjobwf.json"
-                        trigger="hover"
-                        stroke="bold"
-                        colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
-                        }}
-                        size={28}
-                      />
+                      <span className="change_after">
+                        <LordIcon
+                          src="https://cdn.lordicon.com/muyjobwf.json"
+                          trigger="hover"
+                          stroke="bold"
+                          colors={{
+                            primary: "#000",
+                            secondary: "#000",
+                          }}
+                          size={28}
+                        />
+                      </span>
                       <p>未走行</p>
                     </>
                   )}
@@ -612,29 +632,33 @@ const Create = (props: Post) => {
                   </label>
                   {data.is_public ? (
                     <>
-                      <LordIcon
-                        src="https://cdn.lordicon.com/bnsmvaui.json"
-                        trigger="hover"
-                        colors={{
-                          primary: "#f4ede4",
-                          secondary: "#f4ede4",
-                        }}
-                        size={28}
-                      />
+                      <span className="change_before">
+                        <LordIcon
+                          src="https://cdn.lordicon.com/bnsmvaui.json"
+                          trigger="hover"
+                          colors={{
+                            primary: "#000",
+                            secondary: "#000",
+                          }}
+                          size={28}
+                        />
+                      </span>
                       <p>公開</p>
                     </>
                   ) : (
                     <>
-                      <LordIcon
-                        src="https://cdn.lordicon.com/bnsmvaui.json"
-                        trigger="hover"
-                        state="hover-eye-off"
-                        colors={{
-                          primary: "#222222",
-                          secondary: "#222222",
-                        }}
-                        size={28}
-                      />
+                      <span className="change_after">
+                        <LordIcon
+                          src="https://cdn.lordicon.com/bnsmvaui.json"
+                          trigger="hover"
+                          state="hover-eye-off"
+                          colors={{
+                            primary: "#000",
+                            secondary: "#000",
+                          }}
+                          size={28}
+                        />
+                      </span>
                       <p>下書き</p>
                     </>
                   )}

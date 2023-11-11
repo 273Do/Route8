@@ -31,7 +31,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                   src="https://cdn.lordicon.com/yymhadbu.json"
                   trigger="hover"
                   colors={{
-                    primary: "#222222",
+                    primary: "#000",
                   }}
                   size={28}
                 />
@@ -42,7 +42,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 <LordIcon
                   src="https://cdn.lordicon.com/ziafkkwv.json"
                   trigger="hover"
-                  colors={{ primary: "#222222" }}
+                  colors={{ primary: "#000" }}
                   size={28}
                 />
               </Link>
@@ -53,7 +53,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                   src="https://cdn.lordicon.com/prjooket.json"
                   trigger="morph"
                   state="morph-marked-bookmark"
-                  colors={{ primary: "#222222" }}
+                  colors={{ primary: "#000" }}
                   size={28}
                 />
               </NavLink>
@@ -63,7 +63,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 <LordIcon
                   src="https://cdn.lordicon.com/yxyampao.json"
                   trigger="hover"
-                  colors={{ primary: "#222222" }}
+                  colors={{ primary: "#000" }}
                   size={28}
                 />
               </NavLink>
@@ -74,7 +74,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 <LordIcon
                   src="https://cdn.lordicon.com/qtynovng.json"
                   trigger="hover"
-                  colors={{ primary: "#222222" }}
+                  colors={{ primary: "#000" }}
                   size={28}
                 />
               </NavLink>
@@ -96,7 +96,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"
                   colors={{
-                    primary: "#222222",
+                    primary: "#000",
                   }}
                   size={28}
                 />
@@ -107,7 +107,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 <LordIcon
                   src="https://cdn.lordicon.com/ziafkkwv.json"
                   trigger="hover"
-                  colors={{ primary: "#222222" }}
+                  colors={{ primary: "#000" }}
                   size={28}
                 />
               </Link>
@@ -118,7 +118,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                   src="https://cdn.lordicon.com/uwbjfiwe.json"
                   trigger="hover"
                   colors={{
-                    primary: "#222222",
+                    primary: "#000",
                   }}
                   size={28}
                 />
@@ -133,7 +133,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 trigger="morph"
                 state="morph-trash-full"
                 colors={{
-                  primary: "#222222",
+                  primary: "#000",
                 }}
                 size={28}
               />
@@ -144,7 +144,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 trigger="morph"
                 state="morph-marked-bookmark"
                 colors={{
-                  primary: "#222222",
+                  primary: "#000",
                 }}
                 size={28}
               />
@@ -166,7 +166,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"
                   colors={{
-                    primary: "#222222",
+                    primary: "#000",
                   }}
                   size={28}
                 />
@@ -189,7 +189,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"
                   colors={{
-                    primary: "#222222",
+                    primary: "#000",
                   }}
                   size={28}
                 />
@@ -201,7 +201,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 trigger="morph"
                 state="morph-trash-full"
                 colors={{
-                  primary: "#222222",
+                  primary: "#000",
                 }}
                 size={28}
               />

@@ -21,6 +21,11 @@
     justify-content: center; /* 横方向に中央配置 */
     flex-wrap: wrap;
 
+    .not_found {
+      filter: var(--icon_color);
+      transition: all 0.3s;
+    }
+
     .route_board {
       // height: 375px;
 
@@ -33,7 +38,7 @@
       }
 
       .isnot_public {
-        opacity: 0.85;
+        opacity: 0.8;
       }
 
       .route_card {
@@ -42,8 +47,8 @@
         // padding: 5px;
         margin: 30px 20px 0px 20px;
         border-radius: 20px;
-        color: map-get($light_theme, "sub_text");
-        background-color: map-get($light_theme, "sub_bg");
+        color: var(--sub_text);
+        background-color: var(--sub_bg);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         backface-visibility: hidden;
@@ -74,6 +79,7 @@
               list-style: none;
               display: inline-block;
               margin-right: 10px;
+              filter: var(--icon_sub_color);
               transition: all 0.3s;
               image-rendering: -webkit-optimize-contrast;
 
@@ -103,7 +109,8 @@
         -moz-border-radius: 20px;
 
         // 色フィルター
-        filter: grayscale(60%) sepia(25%);
+        filter: var(--map_effect);
+        transition: all 0.3s;
       }
 
       .route_footer {
@@ -129,6 +136,7 @@
             list-style: none;
             display: inline-block;
             margin-right: 5px;
+            filter: var(--icon_sub_color);
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 
@@ -155,6 +163,7 @@
             list-style: none;
             display: inline-block;
             margin-left: 10px;
+            filter: var(--icon_sub_color);
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 
@@ -187,6 +196,8 @@
             list-style: none;
             display: inline-block;
             margin-right: 5px;
+            filter: var(--icon_sub_color);
+            transition: all 0.3s;
 
             p {
               margin-top: 10px;
@@ -200,6 +211,8 @@
         font-size: 1.5rem;
         margin: 0 auto;
         margin-top: 5px;
+        color: var(--text);
+        transition: all 0.3s;
       }
     }
   }
