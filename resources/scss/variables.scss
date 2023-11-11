@@ -43,7 +43,9 @@ $sp-w: 450px; // スマホ
   --input_text: #f4ede4;
   --icon_color: invert(15%) sepia(20%) saturate(0%) hue-rotate(177deg) brightness(88%)
     contrast(102%);
-  --icon_sub_color:invert(93%) sepia(4%) saturate(634%) hue-rotate(336deg) brightness(104%) contrast(91%);
+  --icon_sub_color: invert(93%) sepia(4%) saturate(634%) hue-rotate(336deg) brightness(104%)
+    contrast(91%);
+  --map_effect: grayscale(60%) sepia(25%);
 }
 // light
 // filter: invert(93%) sepia(4%) saturate(634%) hue-rotate(336deg) brightness(104%) contrast(91%);

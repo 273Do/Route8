@@ -266,7 +266,7 @@ export default function Authenticated({ auth, header, children }: Props) {
         </Link>
       </header>
       <main>{children}</main>
-      <Footer user_theme={auth.user.dark_theme_enabled} user_effect={true} />
+      <Footer user_data={auth.user} />
     </div>
   );
 }

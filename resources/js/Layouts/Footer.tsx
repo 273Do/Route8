@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from "@inertiajs/inertia-react";
+import { Inertia } from "@inertiajs/inertia";
+// import { Auth, Post } from "../Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 
-const Footer = ({ user_theme, user_effect }: { user_theme: boolean; user_effect: boolean }) => {
-  const [theme, setTheme] = useState<string>(user_theme ? "dark" : "light"); // dark_theme_enabled に基づいて初期テーマを設定
+const Footer = ({ user_data }: { user_data: any }) => {
+  const [theme, setTheme] = useState<string>(user_data.dark_theme_enabled ? "dark" : "light");
+  const [effect, setEffect] = useState<string>(user_data.map_effect_enabled ? "ON" : "OFF");
   const root = document.documentElement;
 
   useEffect(() => {
@@ -40,7 +44,16 @@ const Footer = ({ user_theme, user_effect }: { user_theme: boolean; user_effect:
     }
   }, [theme]);
 
+  const {
+    data: themeData,
+    setData: setThemeData,
+    put: putTheme,
+  } = useForm({
+    theme: !user_data.dark_theme_enabled,
+  });
+
   const toggleTheme = () => {
+    putTheme(`/${user_data.id}/dark_theme`);
     if (theme === "light") {
       setTheme("dark");
     } else {
@@ -48,11 +61,23 @@ const Footer = ({ user_theme, user_effect }: { user_theme: boolean; user_effect:
     }
   };
 
+  useEffect(() => {
+    if (effect === "ON") root.style.setProperty("--map_effect", "grayscale(60%) sepia(25%)");
+    else if (effect === "OFF") root.style.setProperty("--map_effect", "grayscale(0%) sepia(0%)");
+  }, [effect]);
+
+  const {
+    data: effectData,
+    setData: setEffectData,
+    put: putEffect,
+  } = useForm({ effect: !user_data.map_effect_enabled });
+
   const toggleEffect = () => {
-    if (theme === "on") {
-      setTheme("off");
+    putEffect(`/${user_data.id}/map_effect`);
+    if (effect === "ON") {
+      setEffect("OFF");
     } else {
-      setTheme("on");
+      setEffect("ON");
     }
   };
 

@@ -63,18 +63,24 @@ class ProfileController extends Controller
     }
 
     //DarkTheme
-    public function darkTheme(User $user)
+    public function darkTheme(ProfileUpdateRequest $request, User $user)
     {
-        $user->dark_theme_enabled = !$user->dark_theme_enabled;
-        $user->save();
+        $input = $request->all();
+        $user -> dark_theme_enabled = $input["theme"];
+        $user -> save();
+        // $user->dark_theme_enabled = !$user->dark_theme_enabled;
+        // $user->save();
         // return redirect("/posts");
     }
 
     //MapEffect
-    public function mapEffect(User $user)
+    public function mapEffect(ProfileUpdateRequest $request, User $user)
     {
-        $user->map_effect_enabled = !$user->map_effect_enabled;
-        $user->save();
+        $input = $request->all();
+        $user -> map_effect_enabled = $input["effect"];
+        $user -> save();
+        // $user->map_effect_enabled = !$user->map_effect_enabled;
+        // $user->save();
         // return redirect("/posts");
     }
 }

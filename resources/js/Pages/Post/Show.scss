@@ -24,7 +24,7 @@
     transition: all 0.3s;
 
     // 色フィルター
-    filter: grayscale(60%) sepia(25%);
+    filter: var(--map_effect);
 
     @media (max-width: ($pc_small_width)) {
       margin-right: 0px;

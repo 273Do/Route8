@@ -109,7 +109,8 @@
         -moz-border-radius: 20px;
 
         // 色フィルター
-        filter: grayscale(60%) sepia(25%);
+        filter: var(--map_effect);
+        transition: all 0.3s;
       }
 
       .route_footer {
@@ -195,6 +196,8 @@
             list-style: none;
             display: inline-block;
             margin-right: 5px;
+            filter: var(--icon_sub_color);
+            transition: all 0.3s;
 
             p {
               margin-top: 10px;
