@@ -68,8 +68,8 @@ class ProfileController extends Controller
         $input = $request->all();
         $user -> dark_theme_enabled = $input["theme"];
         $user -> save();
+
         // $user->dark_theme_enabled = !$user->dark_theme_enabled;
-        // $user->save();
         // return redirect("/posts");
     }
 
@@ -80,7 +80,6 @@ class ProfileController extends Controller
         $user -> map_effect_enabled = $input["effect"];
         $user -> save();
         // $user->map_effect_enabled = !$user->map_effect_enabled;
-        // $user->save();
         // return redirect("/posts");
     }
 }
