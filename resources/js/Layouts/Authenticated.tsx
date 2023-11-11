@@ -55,7 +55,6 @@ export default function Authenticated({ auth, header, children }: Props) {
 
     setButtonDisabled(true);
 
-    // 1秒後にボタンを再び有効化
     setTimeout(() => {
       setButtonDisabled(false);
     }, 900);
