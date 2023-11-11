@@ -54,7 +54,6 @@
         transition: all 0.3s;
 
         p {
-          // margin-left: 20px;
           margin-top: 0px;
           margin-bottom: 0px;
           font-size: 20px;
@@ -130,7 +129,6 @@
             image-rendering: -webkit-optimize-contrast;
 
             &:hover {
-              // transform: scale(1.15);
               transform: translateY(-3px);
             }
           }
