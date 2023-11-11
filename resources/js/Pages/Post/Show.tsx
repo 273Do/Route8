@@ -4,6 +4,7 @@ import { Link } from "@inertiajs/inertia-react";
 import { Post } from "../Types";
 import { LordIcon } from "../Common/lord-icon";
 import TitleBar from "../../Layouts/TitleBar";
+import Chat from "./Chat";
 
 // RoutePage
 const Show = (props: Post) => {
@@ -298,7 +299,7 @@ const Show = (props: Post) => {
                 {/* <p>{post.situation.is_running}</p> */}
               </div>
             </div>
-            <div className="chat_area"></div>
+            <Chat post_data={post} user_data={props.auth} />
           </div>
         </div>
       </div>

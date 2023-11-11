@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ChatController;
 use Inertia\Inertia;
 
 /*
@@ -85,6 +86,9 @@ Route::group(["middleware" => ["auth"]], function() {
     
     //MapEffect
     Route::put("/{user}/map_effect", [ProfileController::class, "mapEffect"]);
+
+    //SendMessage
+    Route::post("/posts/{post}", [ChatController::class, 'sendMessage']);
 
 });
 
