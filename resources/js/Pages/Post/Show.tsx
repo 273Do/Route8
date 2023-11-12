@@ -16,12 +16,17 @@ const Show = (props: Post) => {
 
   const FormattedDate = (date: string) => {
     const dateTime = new Date(date);
-    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    const options = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
     const dateFormatter = new Intl.DateTimeFormat("ja-JP", options);
     const formattedDate = dateFormatter.format(dateTime);
     return formattedDate;
   };
-
   const putWeatherState = (weather: string): string => {
     let url: string = "";
     if (weather == "sunny") url = "https://cdn.lordicon.com/ingirgpt.json";
@@ -53,7 +58,6 @@ const Show = (props: Post) => {
           <div className="route_detail">
             <div className="route_explanation">
               <div className="explanation_header">
-                <p> {FormattedDate(post.created_at)}</p>
                 {/* <Link href={`/posts/user/${post.user.id}`} className="link_no_underline">
                   <p>{post.user.name}</p>
                 </Link> */}
@@ -65,9 +69,10 @@ const Show = (props: Post) => {
                       colors={{ primary: "#000" }}
                       size={23}
                     />
-                    <p>{post.user.name}</p>
+                    <p className="user_name">{post.user.name}</p>
                   </div>
                 </Link>
+                <p> {FormattedDate(post.created_at)}</p>
               </div>
 
               <div className="explanation_start_goal">
@@ -301,7 +306,7 @@ const Show = (props: Post) => {
                 {/* <p>{post.situation.is_running}</p> */}
               </div>
             </div>
-            <Message props={props.auth} post_id={post.id} messages={messages} />
+            <Message props={props.auth} post_data={post} messages={messages} />
           </div>
         </div>
       </div>
