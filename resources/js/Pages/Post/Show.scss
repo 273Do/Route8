@@ -78,10 +78,19 @@
           color: var(--text);
           transition: all 0.3s;
 
-          // &:hover {
-          //   // transform: scale(1.15);
-          //   transform: translateY(-5px);
-          // }
+          .user_name {
+            margin-right: 20px;
+          }
+
+          &:hover {
+            opacity: 0.5;
+            // transform: scale(1.15);
+            // transform: translateY(-5px);
+          }
+
+          .user_name {
+            margin-right: 20px;
+          }
         }
       }
 
@@ -167,6 +176,7 @@
           align-items: center;
           justify-content: center;
           padding: 0;
+          filter: var(--icon_color);
           // margin-left: 10px;
 
           transition: all 0.3s;
