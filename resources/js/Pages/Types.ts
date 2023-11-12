@@ -9,6 +9,7 @@ export interface Auth {
 export interface Post {
   auth: any;
   post: any;
+  messages: any;
   errors: any;
   id: number;
   title: string;

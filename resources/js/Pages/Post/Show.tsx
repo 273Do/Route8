@@ -4,12 +4,15 @@ import { Link } from "@inertiajs/inertia-react";
 import { Post } from "../Types";
 import { LordIcon } from "../Common/lord-icon";
 import TitleBar from "../../Layouts/TitleBar";
+import Message from "./Message";
 
 // RoutePage
 const Show = (props: Post) => {
   const { post } = props;
+  const { messages } = props;
   console.log(props.auth);
   console.log(post);
+  console.log(messages);
 
   const FormattedDate = (date: string) => {
     const dateTime = new Date(date);
@@ -298,7 +301,7 @@ const Show = (props: Post) => {
                 {/* <p>{post.situation.is_running}</p> */}
               </div>
             </div>
-            <div className="message_area"></div>
+            <Message messages={messages} />
           </div>
         </div>
       </div>

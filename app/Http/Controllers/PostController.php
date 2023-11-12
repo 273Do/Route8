@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Category;
+use App\Models\Message;
 use Inertia\Inertia;
 use App\Models\Post;
 use App\Models\Situation;
@@ -96,7 +97,10 @@ class PostController extends Controller
     public function show(Post $post)
     {
          // Eagerローディングを使って、Controller内でリレーション先のデータを紐付ける
-        return Inertia::render("Post/Show", ["post" => $post->load(["category", "vehicle", "situation",  "user"])]);
+        return Inertia::render("Post/Show", [
+            "post" => $post->load(["category", "vehicle", "situation",  "user"]),
+            "messages" => Message::with(["user", "post"])->where("post_id", $post->id)->get(),
+        ]);
         // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
     }
     
