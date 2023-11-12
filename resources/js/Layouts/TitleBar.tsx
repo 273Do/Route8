@@ -103,6 +103,19 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
               </Link>
             </li>
             <li>
+              {/* <Link href={urlPrev}> */}
+              <Link href={"/posts"}>
+                <LordIcon
+                  src="https://cdn.lordicon.com/yymhadbu.json"
+                  trigger="hover"
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={28}
+                />
+              </Link>
+            </li>
+            <li>
               <Link href={`/posts/user/${user_id}`}>
                 <LordIcon
                   src="https://cdn.lordicon.com/ziafkkwv.json"

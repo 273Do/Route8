@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -85,6 +86,9 @@ Route::group(["middleware" => ["auth"]], function() {
     
     //MapEffect
     Route::put("/{user}/map_effect", [ProfileController::class, "mapEffect"]);
+
+    //SendMessage
+    Route::post("/posts/{post}", [MessageController::class, "sendMessage"]);
 
 });
 
