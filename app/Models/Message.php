@@ -9,6 +9,12 @@ class Message extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "user_id",
+        "post_id",
+        "body",
+    ];
+
     public function user()   
     {
 

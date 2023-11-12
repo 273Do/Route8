@@ -209,7 +209,7 @@ class PostController extends Controller
 
         // $input = $request->all();
         // $post->fill($input)->save();
-        return redirect("/posts/" . $post->id);
+        // return redirect("/posts/" . $post->id);
     }
 
     //Delete

@@ -1,12 +1,14 @@
 export interface Auth {
   props: any;
   posts: any;
+  user: any;
   auth: any;
   page_title: string;
   arrow: boolean;
 }
 
 export interface Post {
+  map(arg0: (message: any) => void): unknown;
   auth: any;
   post: any;
   messages: any;

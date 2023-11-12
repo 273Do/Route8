@@ -301,7 +301,7 @@ const Show = (props: Post) => {
                 {/* <p>{post.situation.is_running}</p> */}
               </div>
             </div>
-            <Message messages={messages} />
+            <Message props={props.auth} post_id={post.id} messages={messages} />
           </div>
         </div>
       </div>
