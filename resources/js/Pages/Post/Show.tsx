@@ -298,7 +298,7 @@ const Show = (props: Post) => {
                 {/* <p>{post.situation.is_running}</p> */}
               </div>
             </div>
-            <div className="chat_area"></div>
+            <div className="message_area"></div>
           </div>
         </div>
       </div>
