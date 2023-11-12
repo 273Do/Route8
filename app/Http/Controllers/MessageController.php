@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use Inertia\Inertia;
 use App\Models\Post;
-use App\Models\User;
 
 class MessageController extends Controller
 {
