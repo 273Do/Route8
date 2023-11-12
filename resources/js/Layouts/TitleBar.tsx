@@ -24,6 +24,19 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
         <h1>{title}</h1>
         <nav>
           <ul>
+            <li className={`back_arrow ${arrow ? "" : "display_none"}`}>
+              <Link href={urlPrev}>
+                {/* <Link href="#" onClick={history.back()}> */}
+                <LordIcon
+                  src="https://cdn.lordicon.com/vduvxizq.json"
+                  trigger="hover"
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={28}
+                />
+              </Link>
+            </li>
             <li className={`${arrow ? "" : "display_none"}`}>
               {/* <Link href={urlPrev}> */}
               <Link href={"/posts"}>
