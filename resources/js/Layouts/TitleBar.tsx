@@ -37,6 +37,16 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 />
               </Link>
             </li>
+            <li className="create_icon">
+              <NavLink href={route("create")} active={route().current("create")}>
+                <LordIcon
+                  src="https://cdn.lordicon.com/qtynovng.json"
+                  trigger="hover"
+                  colors={{ primary: "#000" }}
+                  size={28}
+                />
+              </NavLink>
+            </li>
             <li className={`${arrow ? "" : "display_none"}`}>
               {/* <Link href={urlPrev}> */}
               <Link href={"/posts"}>
@@ -71,7 +81,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                 />
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink href={route("index")} active={route().current("index")}>
                 <LordIcon
                   src="https://cdn.lordicon.com/yxyampao.json"
@@ -80,18 +90,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow }: TitleBar) => {
                   size={28}
                 />
               </NavLink>
-            </li>
-
-            <li className="create_icon">
-              <NavLink href={route("create")} active={route().current("create")}>
-                <LordIcon
-                  src="https://cdn.lordicon.com/qtynovng.json"
-                  trigger="hover"
-                  colors={{ primary: "#000" }}
-                  size={28}
-                />
-              </NavLink>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
