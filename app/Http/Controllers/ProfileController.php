@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -66,8 +67,12 @@ class ProfileController extends Controller
     public function darkTheme(ProfileUpdateRequest $request, User $user)
     {
         $input = $request->all();
+        Log::info('Dark Theme Toggled', $input);
         $user -> dark_theme_enabled = $input["theme"];
         $user -> save();
+        // return redirect()->back();
+        // return Redirect::back();
+        return back();
 
         // $user->dark_theme_enabled = !$user->dark_theme_enabled;
         // return redirect("/posts");
