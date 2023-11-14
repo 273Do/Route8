@@ -61,16 +61,16 @@ const Footer = ({ user_data }: { user_data: any }) => {
     data: effectData,
     setData: setEffectData,
     put: putEffect,
-  } = useForm({ effect: user_data.map_effect_enabled });
+  } = useForm({ effect: !user_data.map_effect_enabled });
 
   const toggleEffect = () => {
-    putEffect(`/${user_data.id}/map_effect`);
     setEffectData("effect", !effectData.effect);
+    putEffect(`/${user_data.id}/map_effect`);
   };
 
   useEffect(() => {
-    if (effectData.effect) root.style.setProperty("--map_effect", "grayscale(60%) sepia(25%)");
-    else if (!effectData.effect) root.style.setProperty("--map_effect", "grayscale(0%) sepia(0%)");
+    if (!effectData.effect) root.style.setProperty("--map_effect", "grayscale(60%) sepia(25%)");
+    else if (effectData.effect) root.style.setProperty("--map_effect", "grayscale(0%) sepia(0%)");
   }, [effectData.effect]);
 
   return (
