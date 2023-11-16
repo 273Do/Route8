@@ -89,7 +89,7 @@ const Show = (props: Post) => {
                     <p className="user_name">{post.user.name}</p>
                   </div>
                 </Link>
-                <p className="post_date"> {FormattedDate(post.created_at)}</p>
+                <p> {FormattedDate(post.created_at)}</p>
               </div>
 
               <div className="explanation_start_goal">
