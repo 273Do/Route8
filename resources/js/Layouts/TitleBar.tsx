@@ -36,9 +36,8 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
         <h1>{title}</h1>
         <nav>
           <ul>
-            <li className={`back_arrow ${arrow ? "" : "display_none"}`}>
+            {/* <li className={`back_arrow ${arrow ? "" : "display_none"}`}>
               <Link href={urlPrev}>
-                {/* <Link href="#" onClick={history.back()}> */}
                 <LordIcon
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"
@@ -48,16 +47,16 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                   size={28}
                 />
               </Link>
-            </li>
+            </li> */}
             <li className="create_icon">
-              <NavLink href={route("create")} active={route().current("create")}>
+              <Link href={route("create")}>
                 <LordIcon
                   src="https://cdn.lordicon.com/qtynovng.json"
                   trigger="hover"
                   colors={{ primary: "#000" }}
                   size={28}
                 />
-              </NavLink>
+              </Link>
             </li>
             <li className={`${arrow ? "" : "display_none"}`}>
               {/* <Link href={urlPrev}> */}
@@ -83,7 +82,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
               </Link>
             </li>
             <li>
-              <NavLink href={route("create")} active={route().current("create")}>
+              <Link href={route("bookmarks")}>
                 <LordIcon
                   src="https://cdn.lordicon.com/prjooket.json"
                   trigger="morph"
@@ -91,7 +90,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                   colors={{ primary: "#000" }}
                   size={28}
                 />
-              </NavLink>
+              </Link>
             </li>
             {/* <li>
               <NavLink href={route("index")} active={route().current("index")}>
@@ -113,9 +112,8 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
         <h1>{title}</h1>
         <nav>
           <ul>
-            <li className="back_arrow">
+            {/* <li className="back_arrow">
               <Link href={urlPrev}>
-                {/* <Link href="#" onClick={history.back()}> */}
                 <LordIcon
                   src="https://cdn.lordicon.com/vduvxizq.json"
                   trigger="hover"
@@ -125,7 +123,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                   size={28}
                 />
               </Link>
-            </li>
+            </li> */}
             <li>
               {/* <Link href={urlPrev}> */}
               <Link href={"/posts"}>

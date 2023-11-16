@@ -51,6 +51,9 @@ Route::group(["middleware" => ["auth"]], function() {
     
     //CreatePage
     Route::get("/posts/create", [PostController::class, "create"])->name("create");
+
+    //BookmarkList
+    Route::get("/posts/bookmarks", [PostController::class, "bookmarkList"])->name("bookmarks");
     
     //Post
     Route::post("/posts",[PostController::class, "store"]);
