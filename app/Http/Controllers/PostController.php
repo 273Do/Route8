@@ -20,7 +20,10 @@ class PostController extends Controller
         // return Inertia::render("Post/Index");
         //  return Inertia::render("Post/Index",["posts" => $post->get()]);
         return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
-        ->where("is_public", 1)->get(), "page_title" => "Route", "arrow" => false]);
+        ->where("is_public", 1)->orderBy('created_at', 'desc')->get(),
+        "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
+        "page_title" => "Route",
+        "arrow" => false]);
         // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
         // ->where("is_public", 1)でis_publicが1(true)のもののみ返す．
     }
@@ -31,14 +34,16 @@ class PostController extends Controller
         if(!empty($word)){
             if($search_mode == "title" || $search_mode == "body"){
                 return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
-                ->where($search_mode, "like", "%".$word."%")->where("is_public", 1)->get(), 
-                 "page_title" => "Search ".ucfirst($search_mode).":".$word, 
+                ->where($search_mode, "like", "%".$word."%")->where("is_public", 1)->orderBy('created_at', 'desc')->get(), 
+                "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
+                "page_title" => "Search ".ucfirst($search_mode).":".$word, 
                 "arrow" => true]);
                 //  % を追加することで、指定したキーワードを含むすべてのレコードを取得．
             }else if($search_mode == "start" || $search_mode == "goal"){
                 return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
                 -> whereHas("situation", function($query) use ($search_mode, $word){ $query -> where($search_mode."_point", "like", "%".$word."%");})
-                ->where("is_public", 1)->get(), 
+                ->where("is_public", 1)->orderBy('created_at', 'desc')->get(), 
+                "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
                 "page_title" => "Search ".ucfirst($search_mode).":".$word, 
                 "arrow" => true]);
             }
@@ -52,7 +57,9 @@ class PostController extends Controller
     public function filterUser(User $user)
     {
         return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
-        ->where("user_id", $user->id)->get(), "page_title" => "User:".$user->name, "arrow" => true]);
+        ->where("user_id", $user->id)->get(),
+        "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
+        "page_title" => "User:".$user->name, "arrow" => true]);
         // userには指定したuser_idが入ってくる．暗黙の結合により，idに応じたUserテーブルから全てのデータを取ってくることができる．
     }
 
@@ -60,7 +67,9 @@ class PostController extends Controller
     public function filterCategory(Category $category)
     {
         return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
-        ->where("category_id", $category->id)->where("is_public", 1)->get(), "page_title" => "Category:".$category->category_name, "arrow" => true]);
+        ->where("category_id", $category->id)->where("is_public", 1)->get(),
+        "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
+        "page_title" => "Category:".$category->category_name, "arrow" => true]);
     }
 
     //filterWeather
@@ -70,6 +79,7 @@ class PostController extends Controller
             "posts" => Post::with(["category", "vehicle", "situation", "user"])
             ->whereHas('situation', function ($query) use ($situation, $weather) {$query->where("is_running", 1)->where("weather_".$situation."_id", $weather);})
             ->whereHas('category', function ($q) {$q->where("category_id", '<>', 2);})->where("is_public", 1)->get(), 
+            "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
             "page_title" => ucfirst($situation)." Weather:".ucfirst($weather), 
             "arrow" => true]);
     }
@@ -86,10 +96,11 @@ class PostController extends Controller
         // したがって、$query を使用してクエリを操作することで、特定の条件に一致する投稿を正確に取得できます。このようなクエリの組み立ては、Eloquentを効果的に活用するために一般的な手法です。
         // $query->where($vehicle, true)：これはサブクエリ内でのクエリビルダーの操作です。具体的には、$vehicle パラメータの値（例: "walk_available"）をカラム名として指定し、そのカラムが true の場合に一致する投稿を取得する条件を設定しています。この部分は動的にカラム名を指定できるため、異なる車両タイプに対応する条件を設定する際に非常に便利です。
         return Inertia::render("Post/Index", [
-             "posts" => Post::with(["category", "vehicle", "situation", "user"])
-             ->whereHas('vehicle', function ($query) use ($vehicle_available) {$query->where($vehicle_available, true);})->where("is_public", 1)->get(),
-             "page_title" => "Vehicle:".ucfirst($vehicle),
-             "arrow" => true
+            "posts" => Post::with(["category", "vehicle", "situation", "user"])
+            ->whereHas('vehicle', function ($query) use ($vehicle_available) {$query->where($vehicle_available, true);})->where("is_public", 1)->get(),
+            "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
+            "page_title" => "Vehicle:".ucfirst($vehicle),
+            "arrow" => true
         ]);
     }
     
@@ -99,6 +110,7 @@ class PostController extends Controller
          // Eagerローディングを使って、Controller内でリレーション先のデータを紐付ける
         return Inertia::render("Post/Show", [
             "post" => $post->load(["category", "vehicle", "situation",  "user"]),
+            "bookmark" => \Auth::user()->bookmark_posts()->where("post_id", $post->id)->get(),
             "messages" => Message::with(["user", "post"])->where("post_id", $post->id)->get(),
         ]);
         // "category", "user"はPost.phpのリレーションの変数の名前を入れる．
@@ -209,11 +221,11 @@ class PostController extends Controller
 
         // $input = $request->all();
         // $post->fill($input)->save();
-        // return redirect("/posts/" . $post->id);
+        return redirect("/posts/" . $post->id);
     }
 
     //Delete
-    public function delete(Post $post, Situation $situation, Vehicle $vehicle)
+    public function delete(Post $post)
     {
         $post -> situation() -> delete();
         $post -> vehicle() -> delete();

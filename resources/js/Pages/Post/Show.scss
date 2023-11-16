@@ -75,6 +75,7 @@
         .user_button {
           display: flex;
           align-items: center;
+          // margin-top: -30px;
           color: var(--text);
           transition: all 0.3s;
 
@@ -87,10 +88,11 @@
             // transform: scale(1.15);
             // transform: translateY(-5px);
           }
-
-          .user_name {
-            margin-right: 20px;
-          }
+        }
+        .post_date {
+          // justify-content: center;
+          // align-items: center;
+          // margin-top: 8px;
         }
       }
 

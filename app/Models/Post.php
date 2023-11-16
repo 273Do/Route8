@@ -55,4 +55,11 @@ class Post extends Model
         return $this->hasMany(Message::class);  
 
     }
+
+    public function bookmarks()
+    {
+
+        return $this->hasMany(Bookmark::class);
+
+    }
 }

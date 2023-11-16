@@ -5,14 +5,17 @@ import { Post } from "../Types";
 import { LordIcon } from "../Common/lord-icon";
 import TitleBar from "../../Layouts/TitleBar";
 import Message from "./Message";
+import { Inertia } from "@inertiajs/inertia";
 
 // RoutePage
 const Show = (props: Post) => {
   const { post } = props;
   const { messages } = props;
+  const { bookmark } = props;
   console.log(props.auth);
   console.log(post);
   console.log(messages);
+  console.log("bookmark", bookmark);
 
   const FormattedDate = (date: string) => {
     const dateTime = new Date(date);
@@ -27,6 +30,7 @@ const Show = (props: Post) => {
     const formattedDate = dateFormatter.format(dateTime);
     return formattedDate;
   };
+
   const putWeatherState = (weather: string): string => {
     let url: string = "";
     if (weather == "sunny") url = "https://cdn.lordicon.com/ingirgpt.json";
@@ -35,6 +39,17 @@ const Show = (props: Post) => {
     else if (weather == "snowy") url = "https://cdn.lordicon.com/sjtzcwfd.json";
     return url;
   };
+
+  // const [isBookmark, setIsBookmark] = useState<boolean>(
+  //   bookmark.some((item: { id: number }) => item.id === post.id)
+  // );
+
+  // const handleBookmark = (e: React.FormEvent<HTMLInputElement>, id: number) => {
+  //   e.preventDefault();
+  //   if (!bookmark) Inertia.post(`/posts/${id}/bookmark`);
+  //   else Inertia.delete(`/posts/${id}/unbookmark`);
+  //   setBookmark(!bookmark);
+  // };
 
   return (
     <Authenticated auth={props.auth} header={<h2>Index</h2>}>
@@ -45,6 +60,7 @@ const Show = (props: Post) => {
           post_id={post.id}
           user_id={props.auth.user.id}
           edit={props.auth.user.id == post.user.id ? true : false}
+          bookmark={bookmark}
         />
         <div className="route_page">
           <iframe
@@ -61,6 +77,7 @@ const Show = (props: Post) => {
                 {/* <Link href={`/posts/user/${post.user.id}`} className="link_no_underline">
                   <p>{post.user.name}</p>
                 </Link> */}
+
                 <Link href={`/posts/user/${post.user.id}`} className="link_no_underline">
                   <div className="user_button">
                     <LordIcon
@@ -72,7 +89,7 @@ const Show = (props: Post) => {
                     <p className="user_name">{post.user.name}</p>
                   </div>
                 </Link>
-                <p> {FormattedDate(post.created_at)}</p>
+                <p className="post_date"> {FormattedDate(post.created_at)}</p>
               </div>
 
               <div className="explanation_start_goal">

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { router } from "@inertiajs/react";
 import { Auth, Post } from "../Types";
-import { Link } from "@inertiajs/inertia-react";
+import { Link, useForm } from "@inertiajs/inertia-react";
 import { LordIcon } from "../Common/lord-icon";
+import { Inertia } from "@inertiajs/inertia";
 
 const Card = ({ props, post }: { props: Auth; post: Post }) => {
   const handleDeletePost = (id: number) => {
@@ -18,6 +19,17 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
     else if (weather == "rainy") url = "https://cdn.lordicon.com/jtslwgho.json";
     else if (weather == "snowy") url = "https://cdn.lordicon.com/sjtzcwfd.json";
     return url;
+  };
+
+  const [bookmark, setBookmark] = useState<boolean>(
+    props.bookmarks.some((bookmark: { id: number }) => bookmark.id === post.id)
+  );
+
+  const handleBookmark = (e: React.FormEvent<HTMLInputElement>, id: number) => {
+    e.preventDefault();
+    if (!bookmark) Inertia.post(`/posts/${id}/bookmark`);
+    else Inertia.delete(`/posts/${id}/unbookmark`);
+    setBookmark(!bookmark);
   };
 
   return (
@@ -63,11 +75,11 @@ const Card = ({ props, post }: { props: Auth; post: Post }) => {
                   size={25}
                 />
               </li>
-              <li>
+              <li onClick={(e) => handleBookmark(e, post.id)}>
                 <LordIcon
                   src="https://cdn.lordicon.com/prjooket.json"
                   trigger="morph"
-                  state="morph-marked-bookmark"
+                  state={`morph-${bookmark ? "un" : ""}marked-bookmark`}
                   colors={{
                     primary: "#000",
                   }}
