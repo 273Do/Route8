@@ -56,10 +56,10 @@ class Post extends Model
 
     }
 
-    public function uses()
+    public function bookmarks()
     {
 
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(Bookmark::class);
 
     }
 }

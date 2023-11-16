@@ -67,12 +67,10 @@ class ProfileController extends Controller
     public function darkTheme(ProfileUpdateRequest $request, User $user)
     {
         $input = $request->all();
-        Log::info('Dark Theme Toggled', $input);
         $user -> dark_theme_enabled = $input["theme"];
         $user -> save();
         // return redirect()->back();
         // return Redirect::back();
-        return back();
 
         // $user->dark_theme_enabled = !$user->dark_theme_enabled;
         // return redirect("/posts");

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "@inertiajs/inertia-react";
-import { Inertia } from "@inertiajs/inertia";
 // import { Auth, Post } from "../Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 

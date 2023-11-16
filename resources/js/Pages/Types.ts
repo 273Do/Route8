@@ -3,6 +3,7 @@ export interface Auth {
   posts: any;
   user: any;
   auth: any;
+  bookmarks: any;
   page_title: string;
   arrow: boolean;
 }
@@ -12,6 +13,7 @@ export interface Post {
   auth: any;
   post: any;
   messages: any;
+  bookmark: any;
   errors: any;
   id: number;
   title: string;
@@ -42,6 +44,7 @@ export interface TitleBar {
   user_id: number;
   edit: boolean;
   arrow: boolean;
+  bookmark:any;
 }
 
 import "react";

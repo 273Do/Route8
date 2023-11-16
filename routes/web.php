@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookmarkController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -89,6 +90,10 @@ Route::group(["middleware" => ["auth"]], function() {
 
     //SendMessage
     Route::post("/posts/{post}", [MessageController::class, "sendMessage"]);
+
+    //Bookmark
+    Route::post('/posts/{post}/bookmark', [BookmarkController::class, 'store'])->name('bookmark.store');
+    Route::delete('/posts/{post}/unbookmark', [BookmarkController::class, 'destroy'])->name('bookmark.destroy');
 
 });
 
