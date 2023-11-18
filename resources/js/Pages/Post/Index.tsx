@@ -5,6 +5,7 @@ import { Auth, Post } from "../Types";
 import TitleBar from "../../Layouts/TitleBar";
 import Card from "./Card";
 import SearchNotFound from "./SearchNotFound";
+import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 
 // IndexPage
 const Index = (props: Auth) => {
@@ -25,7 +26,9 @@ const Index = (props: Auth) => {
           ) : (
             <>
               {posts.map((post: Post) => (
-                <Card props={props} post={post} />
+                <ScrollRevealContainer>
+                  <Card props={props} post={post} />
+                </ScrollRevealContainer>
               ))}
             </>
           )}

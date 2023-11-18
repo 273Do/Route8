@@ -4,7 +4,7 @@
     // flex-flow: column;
   }
 
-  iframe,
+  .map_animation,
   .route_detail {
     width: 45%;
     height: 99%;
@@ -18,6 +18,8 @@
   }
 
   iframe {
+    width: 99.5%;
+    height: 100%;
     border: 2px var(--sub_bg) solid;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
