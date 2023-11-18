@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useForm } from "@inertiajs/inertia-react";
 import { Auth, Post } from "../Types";
+import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 
 const Message = ({
   props,
@@ -42,36 +43,36 @@ const Message = ({
   };
 
   return (
-    <div className="message_area">
-      <div className="chat_area">
-        <>
-          {messages.map((message: any) => (
-            <div
-              className={`message ${post_data.user.id == message.user.id ? "host_message" : ""}`}
-            >
-              <div className="message_header">
-                {/* <p>{message.id}</p>  
+      <div className="message_area">
+        <div className="chat_area">
+          <>
+            {messages.map((message: any) => (
+              <div
+                className={`message ${post_data.user.id == message.user.id ? "host_message" : ""}`}
+              >
+                <div className="message_header">
+                  {/* <p>{message.id}</p>  
               <p>{message.post_id}</p> */}
-                <p>{message.user.name}</p>
-                <p>{FormattedDate(message.created_at)}</p>
+                  <p>{message.user.name}</p>
+                  <p>{FormattedDate(message.created_at)}</p>
+                </div>
+                <p className="message_body">{message.body}</p>
               </div>
-              <p className="message_body">{message.body}</p>
-            </div>
-          ))}
-        </>
-      </div>
+            ))}
+          </>
+        </div>
 
-      <form className="create_message" onSubmit={handleSendMessage}>
-        <input
-          type="textarea"
-          className="input_message_area"
-          placeholder="メッセージを送信"
-          value={data.body}
-          onChange={(e) => setData("body", e.target.value)}
-        />
-        {/* <button type="submit">送信</button> */}
-      </form>
-    </div>
+        <form className="create_message" onSubmit={handleSendMessage}>
+          <input
+            type="textarea"
+            className="input_message_area"
+            placeholder="メッセージを送信"
+            value={data.body}
+            onChange={(e) => setData("body", e.target.value)}
+          />
+          {/* <button type="submit">送信</button> */}
+        </form>
+      </div>
   );
 };
 

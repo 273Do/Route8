@@ -5,6 +5,7 @@ import { router } from "@inertiajs/react";
 import { TitleBar } from "../Pages/Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 import { Inertia } from "@inertiajs/inertia";
+import ScrollRevealContainer from "../Pages/Common/ScrollRevealContainer";
 
 // HomePage
 const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: TitleBar) => {
@@ -32,11 +33,12 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
 
   if (page == "Route") {
     return (
-      <div className="title_bar">
-        <h1>{title}</h1>
-        <nav>
-          <ul>
-            {/* <li className={`back_arrow ${arrow ? "" : "display_none"}`}>
+      <ScrollRevealContainer move="top">
+        <div className="title_bar">
+          <h1>{title}</h1>
+          <nav>
+            <ul>
+              {/* <li className={`back_arrow ${arrow ? "" : "display_none"}`}>
               <Link href={urlPrev}>
                 <LordIcon
                   src="https://cdn.lordicon.com/vduvxizq.json"
@@ -48,51 +50,51 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                 />
               </Link>
             </li> */}
-            <li className="create_icon">
-              <Link href={route("create")}>
-                <LordIcon
-                  src="https://cdn.lordicon.com/qtynovng.json"
-                  trigger="hover"
-                  colors={{ primary: "#000" }}
-                  size={28}
-                />
-              </Link>
-            </li>
-            <li className={`${arrow ? "" : "display_none"}`}>
-              {/* <Link href={urlPrev}> */}
-              <Link href={"/posts"}>
-                <LordIcon
-                  src="https://cdn.lordicon.com/yymhadbu.json"
-                  trigger="hover"
-                  colors={{
-                    primary: "#000",
-                  }}
-                  size={28}
-                />
-              </Link>
-            </li>
-            <li className={`${arrow ? "display_none" : ""}`}>
-              <Link href={`/posts/user/${user_id}`}>
-                <LordIcon
-                  src="https://cdn.lordicon.com/ziafkkwv.json"
-                  trigger="hover"
-                  colors={{ primary: "#000" }}
-                  size={28}
-                />
-              </Link>
-            </li>
-            <li>
-              <Link href={route("bookmarks")}>
-                <LordIcon
-                  src="https://cdn.lordicon.com/prjooket.json"
-                  trigger="morph"
-                  state="morph-marked-bookmark"
-                  colors={{ primary: "#000" }}
-                  size={28}
-                />
-              </Link>
-            </li>
-            {/* <li>
+              <li className="create_icon">
+                <Link href={route("create")}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/qtynovng.json"
+                    trigger="hover"
+                    colors={{ primary: "#000" }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li className={`${arrow ? "" : "display_none"}`}>
+                {/* <Link href={urlPrev}> */}
+                <Link href={"/posts"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/yymhadbu.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#000",
+                    }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li className={`${arrow ? "display_none" : ""}`}>
+                <Link href={`/posts/user/${user_id}`}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/ziafkkwv.json"
+                    trigger="hover"
+                    colors={{ primary: "#000" }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link href={route("bookmarks")}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/prjooket.json"
+                    trigger="morph"
+                    state="morph-marked-bookmark"
+                    colors={{ primary: "#000" }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              {/* <li>
               <NavLink href={route("index")} active={route().current("index")}>
                 <LordIcon
                   src="https://cdn.lordicon.com/yxyampao.json"
@@ -102,12 +104,13 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                 />
               </NavLink>
             </li> */}
-          </ul>
-        </nav>
-      </div>
+            </ul>
+          </nav>
+        </div>
+      </ScrollRevealContainer>
     );
   } else if (page == "show") {
-    return (
+    return (<ScrollRevealContainer move="top">
       <div className="title_bar">
         <h1>{title}</h1>
         <nav>
@@ -186,10 +189,10 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
             </li>
           </ul>
         </nav>
-      </div>
+      </div></ScrollRevealContainer>
     );
   } else if (page == "create") {
-    return (
+    return (<ScrollRevealContainer move="top">
       <div className="title_bar">
         <h1>{title}</h1>
         <nav>
@@ -209,10 +212,10 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
             </li>
           </ul>
         </nav>
-      </div>
+      </div></ScrollRevealContainer>
     );
   } else if (page == "edit") {
-    return (
+    return (<ScrollRevealContainer move="top">
       <div className="title_bar">
         <h1>{title}</h1>
         <nav>
@@ -243,7 +246,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
             </li>
           </ul>
         </nav>
-      </div>
+      </div></ScrollRevealContainer>
     );
   }
 };
