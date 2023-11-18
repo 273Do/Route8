@@ -62,8 +62,7 @@ const Create = (props: Post) => {
   const handleSendPosts = (e: React.KeyboardEvent<HTMLInputElement>) => {
     // if (e.key !== "Enter") console.log("test");
     e.preventDefault();
-    // if (e.detail !== 0)console.log("osareta");
-    //ここの条件に乗り物のor条件入れる
+
     if (
       e.key !== "Enter" &&
       (data.walk_available ||
