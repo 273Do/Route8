@@ -18,21 +18,21 @@ const Index = (props: Auth) => {
     <Authenticated auth={props.auth} header={<h2>Index</h2>}>
       <div className="main_contents">
         <TitleBar page={"Route"} title={page_title} user_id={props.auth.user.id} arrow={arrow} />
-        <div className="route_list">
-          {posts == 0 ? (
-            <>
-              <SearchNotFound />
-            </>
-          ) : (
-            <>
-              {posts.map((post: Post) => (
-                <ScrollRevealContainer>
+        <ScrollRevealContainer>
+          <div className="route_list">
+            {posts == 0 ? (
+              <>
+                <SearchNotFound />
+              </>
+            ) : (
+              <>
+                {posts.map((post: Post) => (
                   <Card props={props} post={post} />
-                </ScrollRevealContainer>
-              ))}
-            </>
-          )}
-        </div>
+                ))}
+              </>
+            )}
+          </div>
+        </ScrollRevealContainer>
       </div>
     </Authenticated>
   );
