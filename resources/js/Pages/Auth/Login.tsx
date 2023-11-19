@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Button from "@/Components/Button";
-// import Checkbox from "@/Components/Checkbox";
+import Checkbox from "@/Components/Checkbox";
 import Guest from "@/Layouts/Guest";
 import Input from "@/Components/Input";
 // import Label from "@/Components/Label";
@@ -159,6 +159,12 @@ export default function Login({ status, canResetPassword }: Props) {
                   handleChange={onHandleChange}
                 />
                 <label>Password</label>
+              </div>
+              <div>
+                <label>
+                  <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
+                  <span className="remember">Remember</span>
+                </label>
               </div>
               <Button className="submit_btn" processing={processing}>
                 Login

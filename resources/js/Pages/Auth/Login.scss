@@ -52,7 +52,8 @@ body {
           width: 100%;
           height: 50px;
           border-bottom: 1px solid var(--sub_bg);
-          margin: 30px 0;
+          margin-top: 30px;
+          margin-bottom: 10px;
 
           lord-icon {
             position: absolute;
@@ -106,12 +107,21 @@ body {
           }
         }
 
+        div {
+          label {
+            .remember {
+              color: var(--text);
+            }
+          }
+        }
+
         .submit_btn {
           width: 100%;
           height: 45px;
           background: none;
           border: none;
           outline: none;
+          margin-top: 10px;
           margin-bottom: 10px;
           border-radius: 20px;
           border: 2px solid var(--sub_bg);
@@ -133,7 +143,7 @@ body {
           transition: all 0.3s;
 
           &:hover {
-            transform: translateY(-5px);
+            opacity: 0.5;
           }
         }
         .forgot_password {
