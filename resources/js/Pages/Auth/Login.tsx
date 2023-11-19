@@ -1,126 +1,179 @@
 import React, { useEffect } from "react";
 import Button from "@/Components/Button";
-import Checkbox from "@/Components/Checkbox";
+// import Checkbox from "@/Components/Checkbox";
 import Guest from "@/Layouts/Guest";
 import Input from "@/Components/Input";
-import Label from "@/Components/Label";
+// import Label from "@/Components/Label";
+import { LordIcon } from "../Common/lord-icon";
+import ScrollRevealContainer from "../Common/ScrollRevealContainer";
+import R8Logo from "../../../img/Route8.png";
 import ValidationErrors from "@/Components/ValidationErrors";
 import { Head, Link, useForm } from "@inertiajs/inertia-react";
-
 interface Props {
-    status: string;
-    canResetPassword: boolean;
+  status: string;
+  canResetPassword: boolean;
 }
 
 export default function Login({ status, canResetPassword }: Props) {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        email: "",
-        password: "",
-        remember: false,
-    });
+  const { data, setData, post, processing, errors, reset } = useForm({
+    email: "",
+    password: "",
+    remember: false,
+  });
 
-    useEffect(() => {
-        return () => {
-            reset("password");
-        };
-    }, []);
-
-    const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setData(
-            event.target.name as "email" | "password" | "remember",
-            event.target.type === "checkbox"
-                ? event.target.checked
-                : event.target.value,
-        );
+  useEffect(() => {
+    return () => {
+      reset("password");
     };
+  }, []);
 
-    const submit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+  const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setData(
+      event.target.name as "email" | "password" | "remember",
+      event.target.type === "checkbox" ? event.target.checked : event.target.value
+    );
+  };
 
-        post(route("login"));
-    };
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    return (
-        <Guest>
-            <Head title="ログイン" />
+    post(route("login"));
+  };
 
-            {status && (
-                <div className="mb-4 font-medium text-sm text-green-600">
-                    {status}
-                </div>
+  return (
+    <Guest>
+      <Head title="ログイン" />
+
+      {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+
+      <ValidationErrors errors={errors} />
+
+      {/* <div>
+        <div className="text-right">
+          <Link
+            href={route("register")}
+            className="underline mb-2 text-sm text-gray-600 hover:text-gray-900"
+          >
+            新規登録はこちら
+          </Link>
+        </div>
+
+        <form onSubmit={submit}>
+          <div>
+            <Label forInput="email" value="Email" />
+
+            <Input
+              type="text"
+              name="email"
+              value={data.email}
+              className="mt-1 block w-full"
+              autoComplete="username"
+              isFocused={true}
+              handleChange={onHandleChange}
+            />
+          </div>
+
+          <div className="mt-4">
+            <Label forInput="password" value="Password" />
+
+            <Input
+              type="password"
+              name="password"
+              value={data.password}
+              className="mt-1 block w-full"
+              autoComplete="current-password"
+              handleChange={onHandleChange}
+            />
+          </div>
+
+          <div className="block mt-4">
+            <label className="flex items-center">
+              <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
+
+              <span className="ml-2 text-sm text-gray-600">ログイン情報を記憶する</span>
+            </label>
+          </div>
+
+          <div className="flex items-center justify-end mt-4">
+            {canResetPassword && (
+              <Link
+                href={route("password.request")}
+                className="underline text-sm text-gray-600 hover:text-gray-900"
+              >
+                パスワードを忘れた方はこちら
+              </Link>
             )}
 
-            <ValidationErrors errors={errors} />
+            <Button className="ml-4 bg-gray-900" processing={processing}>
+              ログイン
+            </Button>
+          </div>
+        </form>
+      </div> */}
 
-            <div className="text-right">
-                <Link
-                    href={route("register")}
-                    className="underline mb-2 text-sm text-gray-600 hover:text-gray-900"
-                >
-                    新規登録はこちら
-                </Link>
+      <ScrollRevealContainer className="login_area" move="left">
+        <div className="main_login_area">
+          <div className="login">
+            <div className="login_header">
+              <img src={R8Logo} alt="Route8Logo" />
+              <h2>Route8</h2>
             </div>
-
             <form onSubmit={submit}>
-                <div>
-                    <Label forInput="email" value="Email" />
+              <div className="input_box">
+                <LordIcon
+                  src="https://cdn.lordicon.com/bkjyrmiv.json"
+                  trigger="loop"
+                  delay={1000}
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={25}
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  value={data.email}
+                  className="email"
+                  // autoComplete="username"
+                  isFocused={false}
+                  handleChange={onHandleChange}
+                />
+                <label>Email</label>
+              </div>
+              <div className="input_box">
+                <LordIcon
+                  src="https://cdn.lordicon.com/lsyjcyze.json"
+                  trigger="loop"
+                  delay={1000}
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={25}
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  value={data.password}
+                  className="password"
+                  // autoComplete="current-password"
+                  handleChange={onHandleChange}
+                />
+                <label>Password</label>
+              </div>
+              <Button className="submit_btn" processing={processing}>
+                Login
+              </Button>
 
-                    <Input
-                        type="text"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        handleChange={onHandleChange}
-                    />
-                </div>
-
-                <div className="mt-4">
-                    <Label forInput="password" value="Password" />
-
-                    <Input
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        handleChange={onHandleChange}
-                    />
-                </div>
-
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            value={data.remember}
-                            handleChange={onHandleChange}
-                        />
-
-                        <span className="ml-2 text-sm text-gray-600">
-                            ログイン情報を記憶する
-                        </span>
-                    </label>
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route("password.request")}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            パスワードを忘れた方はこちら
-                        </Link>
-                    )}
-
-                    <Button
-                        className="ml-4 bg-gray-900"
-                        processing={processing}
-                    >
-                        ログイン
-                    </Button>
-                </div>
+              <Link href={route("register")}>Register</Link>
+              {canResetPassword && (
+                <Link className="forgot_password" href={route("password.request")}>
+                  Forgot Password
+                </Link>
+              )}
             </form>
-        </Guest>
-    );
+          </div>
+        </div>
+      </ScrollRevealContainer>
+    </Guest>
+  );
 }

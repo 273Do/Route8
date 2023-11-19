@@ -2,46 +2,47 @@ import React, { useEffect } from "react";
 import Button from "@/Components/Button";
 import Guest from "@/Layouts/Guest";
 import Input from "@/Components/Input";
-import Label from "@/Components/Label";
+// import Label from "@/Components/Label";
+import { LordIcon } from "../Common/lord-icon";
+import ScrollRevealContainer from "../Common/ScrollRevealContainer";
+import R8Logo from "../../../img/Route8.png";
 import ValidationErrors from "@/Components/ValidationErrors";
 import { Head, Link, useForm } from "@inertiajs/inertia-react";
 
 export default function Register() {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
-    });
+  const { data, setData, post, processing, errors, reset } = useForm({
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+  });
 
-    useEffect(() => {
-        return () => {
-            reset("password", "password_confirmation");
-        };
-    }, []);
-
-    const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setData(
-            event.target.name as "email" | "password" | "name",
-            event.target.type === "checkbox"
-                ? event.target.checked + ""
-                : event.target.value,
-        );
+  useEffect(() => {
+    return () => {
+      reset("password", "password_confirmation");
     };
+  }, []);
 
-    const submit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+  const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setData(
+      event.target.name as "email" | "password" | "name",
+      event.target.type === "checkbox" ? event.target.checked + "" : event.target.value
+    );
+  };
 
-        post(route("register"));
-    };
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    return (
-        <Guest>
-            <Head title="新規登録" />
+    post(route("register"));
+  };
 
-            <ValidationErrors errors={errors} />
+  return (
+    <Guest>
+      <Head title="新規登録" />
 
-            <form onSubmit={submit}>
+      <ValidationErrors errors={errors} />
+
+      {/* <form onSubmit={submit}>
                 <div>
                     <Label forInput="name" value="Name" />
 
@@ -116,7 +117,103 @@ export default function Register() {
                         新規登録する
                     </Button>
                 </div>
+            </form> */}
+
+      <ScrollRevealContainer className="login_area" move="left">
+        <div className="main_login_area">
+          <div className="login">
+            <div className="login_header">
+              <img src={R8Logo} alt="Route8Logo" />
+              <h2>Route8</h2>
+            </div>
+            <form onSubmit={submit}>
+              <div className="input_box">
+                <LordIcon
+                  src="https://cdn.lordicon.com/gfgzffjw.json"
+                  trigger="loop"
+                  delay={1000}
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={25}
+                />
+                <Input
+                  type="text"
+                  name="name"
+                  value={data.name}
+                  autoComplete="name"
+                  isFocused={false}
+                  handleChange={onHandleChange}
+                />
+                <label>Name</label>
+              </div>
+              <div className="input_box">
+                <LordIcon
+                  src="https://cdn.lordicon.com/bkjyrmiv.json"
+                  trigger="loop"
+                  delay={1000}
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={25}
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  value={data.email}
+                  autoComplete="username"
+                  handleChange={onHandleChange}
+                  required
+                />
+                <label>Email</label>
+              </div>
+              <div className="input_box">
+                <LordIcon
+                  src="https://cdn.lordicon.com/lsyjcyze.json"
+                  trigger="loop"
+                  delay={1000}
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={25}
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  value={data.password}
+                  className="password"
+                  // autoComplete="current-password"
+                  handleChange={onHandleChange}
+                />
+                <label>Password</label>
+              </div>
+              <div className="input_box">
+                <LordIcon
+                  src="https://cdn.lordicon.com/jswiqvbr.json"
+                  trigger="loop"
+                  delay={1000}
+                  colors={{
+                    primary: "#000",
+                  }}
+                  size={25}
+                />
+                <Input
+                  type="password"
+                  name="password_confirmation"
+                  value={data.password_confirmation}
+                  handleChange={onHandleChange}
+                />
+                <label>Confirm Password</label>
+              </div>
+              <Button className="submit_btn" processing={processing}>
+                Register
+              </Button>
+
+              <Link href={route("login")}>Login</Link>
             </form>
-        </Guest>
-    );
+          </div>
+        </div>
+      </ScrollRevealContainer>
+    </Guest>
+  );
 }

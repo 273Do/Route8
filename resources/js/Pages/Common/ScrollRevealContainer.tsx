@@ -24,6 +24,10 @@ const ScrollRevealContainer: FC<ScrollRevealContainerProps> = ({ className, chil
       });
   }, [sectionRef]);
 
-  return <section className={`${className}`} ref={sectionRef}>{children}</section>;
+  return (
+    <section className={`${className}`} ref={sectionRef}>
+      {children}
+    </section>
+  );
 };
 export default ScrollRevealContainer;

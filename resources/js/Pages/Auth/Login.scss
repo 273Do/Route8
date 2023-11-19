@@ -1,0 +1,151 @@
+body {
+  // height: 100vh;
+  // margin: 0;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+}
+
+.login_area {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .main_login_area {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    // height: calc(100% - 30px);
+    margin: 25px;
+    border: 2px solid var(--sub_bg);
+    border-radius: 40px;
+
+    display: flex;
+    flex-direction: column; /* 子要素を縦方向に並べる */
+    align-items: center; /* 子要素を中央に配置 */
+
+    .login {
+      width: 100%;
+      max-width: 600px; /* 例として最大幅を設定 */
+      padding: 20px;
+      box-sizing: border-box; /* paddingが要素の幅に含まれるようにする */
+      margin-top: 30px;
+
+      .login_header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          margin-bottom: 10px;
+          height: 50px;
+        }
+
+        h2 {
+          color: var(--text);
+          font-family: "Objective-Medium", "NotoSansJP-Medium";
+        }
+      }
+
+      form {
+        .input_box {
+          position: relative;
+          width: 100%;
+          height: 50px;
+          border-bottom: 1px solid var(--sub_bg);
+          margin: 30px 0;
+
+          lord-icon {
+            position: absolute;
+            right: 8px;
+            bottom: 16px;
+            filter: var(--icon_color);
+            line-height: 57px;
+          }
+
+          input {
+            width: 90%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            color: var(--text);
+            font-family: "Objective-Medium", "NotoSansJP-Medium";
+            padding: 0 35px 0 5px;
+
+            &:-webkit-autofill {
+              box-shadow: 0 0 0px 1000px var(--bg) inset;
+            }
+
+            &:focus,
+            &:valid {
+              ~ label {
+                top: -5px;
+              }
+            }
+          }
+
+          label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: var(--text);
+            font-weight: 500;
+            pointer-events: none;
+            transition: 0.5s;
+          }
+
+          .icon {
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: var(--text);
+            line-height: 57px;
+          }
+        }
+
+        .submit_btn {
+          width: 100%;
+          height: 45px;
+          background: none;
+          border: none;
+          outline: none;
+          margin-bottom: 10px;
+          border-radius: 20px;
+          border: 2px solid var(--sub_bg);
+          cursor: pointer;
+          font-size: 1em;
+          color: var(--text);
+          font-weight: 500;
+          transition: all 0.3s;
+
+          &:hover {
+            background-color: var(--sub_bg);
+            color: var(--sub_text);
+          }
+        }
+
+        a {
+          text-decoration: none;
+          color: var(--text);
+          transition: all 0.3s;
+
+          &:hover {
+            transform: translateY(-5px);
+          }
+        }
+        .forgot_password {
+          margin-left: 20%;
+        }
+      }
+    }
+  }
+}
+
+// .form-box h2 {
+//   font-size: 2em;
+//   color: var(--text);
+//   text-align: center;
+// }
