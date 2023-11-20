@@ -11,8 +11,8 @@ import ScrollRevealContainer from "../Pages/Common/ScrollRevealContainer";
 const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: TitleBar) => {
   const urlPrev = usePage().props.urlPrev as string;
 
-  console.log("URL:", urlPrev);
-  console.log(page, title, post_id, edit);
+  //console.log("URL:", urlPrev);
+  //console.log(page, title, post_id, edit);
 
   const handleDeletePost = (id: number) => {
     router.delete(`/posts/${id}`, {
@@ -110,12 +110,13 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
       </ScrollRevealContainer>
     );
   } else if (page == "show") {
-    return (<ScrollRevealContainer move="top">
-      <div className="title_bar">
-        <h1>{title}</h1>
-        <nav>
-          <ul>
-            {/* <li className="back_arrow">
+    return (
+      <ScrollRevealContainer move="top">
+        <div className="title_bar">
+          <h1>{title}</h1>
+          <nav>
+            <ul>
+              {/* <li className="back_arrow">
               <Link href={urlPrev}>
                 <LordIcon
                   src="https://cdn.lordicon.com/vduvxizq.json"
@@ -127,126 +128,131 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                 />
               </Link>
             </li> */}
-            <li>
-              {/* <Link href={urlPrev}> */}
-              <Link href={"/posts"}>
+              <li>
+                {/* <Link href={urlPrev}> */}
+                <Link href={"/posts"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/yymhadbu.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#000",
+                    }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link href={`/posts/user/${user_id}`}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/ziafkkwv.json"
+                    trigger="hover"
+                    colors={{ primary: "#000" }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li className={`${edit ? "" : "display_none"}`}>
+                <Link href={`/posts/${post_id}/edit`}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/uwbjfiwe.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#000",
+                    }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li
+                className={`${edit ? "" : "display_none"}`}
+                onClick={() => handleDeletePost(post_id)}
+              >
                 <LordIcon
-                  src="https://cdn.lordicon.com/yymhadbu.json"
-                  trigger="hover"
+                  src="https://cdn.lordicon.com/wpyrrmcq.json"
+                  trigger="morph"
+                  state="morph-trash-full"
                   colors={{
                     primary: "#000",
                   }}
                   size={28}
                 />
-              </Link>
-            </li>
-            <li>
-              <Link href={`/posts/user/${user_id}`}>
+              </li>
+              <li onClick={(e) => handleBookmark(e, post_id)}>
                 <LordIcon
-                  src="https://cdn.lordicon.com/ziafkkwv.json"
-                  trigger="hover"
-                  colors={{ primary: "#000" }}
-                  size={28}
-                />
-              </Link>
-            </li>
-            <li className={`${edit ? "" : "display_none"}`}>
-              <Link href={`/posts/${post_id}/edit`}>
-                <LordIcon
-                  src="https://cdn.lordicon.com/uwbjfiwe.json"
-                  trigger="hover"
+                  src="https://cdn.lordicon.com/prjooket.json"
+                  trigger="morph"
+                  state={`morph-${isBookmark ? "un" : ""}marked-bookmark`}
                   colors={{
                     primary: "#000",
                   }}
                   size={28}
                 />
-              </Link>
-            </li>
-            <li
-              className={`${edit ? "" : "display_none"}`}
-              onClick={() => handleDeletePost(post_id)}
-            >
-              <LordIcon
-                src="https://cdn.lordicon.com/wpyrrmcq.json"
-                trigger="morph"
-                state="morph-trash-full"
-                colors={{
-                  primary: "#000",
-                }}
-                size={28}
-              />
-            </li>
-            <li onClick={(e) => handleBookmark(e, post_id)}>
-              <LordIcon
-                src="https://cdn.lordicon.com/prjooket.json"
-                trigger="morph"
-                state={`morph-${isBookmark ? "un" : ""}marked-bookmark`}
-                colors={{
-                  primary: "#000",
-                }}
-                size={28}
-              />
-            </li>
-          </ul>
-        </nav>
-      </div></ScrollRevealContainer>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </ScrollRevealContainer>
     );
   } else if (page == "create") {
-    return (<ScrollRevealContainer move="top">
-      <div className="title_bar">
-        <h1>{title}</h1>
-        <nav>
-          <ul>
-            <li className="back_arrow">
-              <Link href={urlPrev}>
-                {/* <Link href="#" onClick={history.back()}> */}
-                <LordIcon
-                  src="https://cdn.lordicon.com/vduvxizq.json"
-                  trigger="hover"
-                  colors={{
-                    primary: "#000",
-                  }}
-                  size={28}
-                />
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div></ScrollRevealContainer>
+    return (
+      <ScrollRevealContainer move="top">
+        <div className="title_bar">
+          <h1>{title}</h1>
+          <nav>
+            <ul>
+              <li className="back_arrow">
+                <Link href={urlPrev}>
+                  {/* <Link href="#" onClick={history.back()}> */}
+                  <LordIcon
+                    src="https://cdn.lordicon.com/vduvxizq.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#000",
+                    }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </ScrollRevealContainer>
     );
   } else if (page == "edit") {
-    return (<ScrollRevealContainer move="top">
-      <div className="title_bar">
-        <h1>{title}</h1>
-        <nav>
-          <ul>
-            <li className="back_arrow">
-              <Link href={urlPrev}>
-                {/* <Link href="#" onClick={history.back()}> */}
+    return (
+      <ScrollRevealContainer move="top">
+        <div className="title_bar">
+          <h1>{title}</h1>
+          <nav>
+            <ul>
+              <li className="back_arrow">
+                <Link href={urlPrev}>
+                  {/* <Link href="#" onClick={history.back()}> */}
+                  <LordIcon
+                    src="https://cdn.lordicon.com/vduvxizq.json"
+                    trigger="hover"
+                    colors={{
+                      primary: "#000",
+                    }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li onClick={() => handleDeletePost(post_id)}>
                 <LordIcon
-                  src="https://cdn.lordicon.com/vduvxizq.json"
-                  trigger="hover"
+                  src="https://cdn.lordicon.com/wpyrrmcq.json"
+                  trigger="morph"
+                  state="morph-trash-full"
                   colors={{
                     primary: "#000",
                   }}
                   size={28}
                 />
-              </Link>
-            </li>
-            <li onClick={() => handleDeletePost(post_id)}>
-              <LordIcon
-                src="https://cdn.lordicon.com/wpyrrmcq.json"
-                trigger="morph"
-                state="morph-trash-full"
-                colors={{
-                  primary: "#000",
-                }}
-                size={28}
-              />
-            </li>
-          </ul>
-        </nav>
-      </div></ScrollRevealContainer>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </ScrollRevealContainer>
     );
   }
 };

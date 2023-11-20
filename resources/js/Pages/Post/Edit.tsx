@@ -8,7 +8,7 @@ import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 
 const Edit = (props: Post) => {
   const { post } = props;
-  console.log(post);
+  //console.log(post);
   const { data, setData, put } = useForm({
     // 投稿
     title: post.title,
@@ -74,11 +74,11 @@ const Edit = (props: Post) => {
     )
       put(`/posts/${post.id}`);
     else {
-      console.log("test");
+      //console.log("test");
     }
   };
 
-  console.log(data.category_id);
+  //console.log(data.category_id);
 
   return (
     <Authenticated auth={props.auth} header={<h2>Edit</h2>}>

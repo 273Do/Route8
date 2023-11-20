@@ -13,10 +13,10 @@ const Show = (props: Post) => {
   const { post } = props;
   const { messages } = props;
   const { bookmark } = props;
-  console.log(props.auth);
-  console.log(post);
-  console.log(messages);
-  console.log("bookmark", bookmark);
+  //console.log(props.auth);
+  //console.log(post);
+  //console.log(messages);
+  //console.log("bookmark", bookmark);
 
   const FormattedDate = (date: string) => {
     const dateTime = new Date(date);

@@ -8,7 +8,7 @@ import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 
 const Create = (props: Post) => {
   const { categories } = props;
-  console.log(props);
+  //console.log(props);
   const { data, setData, post } = useForm({
     // 投稿
     title: "",
@@ -60,7 +60,7 @@ const Create = (props: Post) => {
   };
 
   const handleSendPosts = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // if (e.key !== "Enter") console.log("test");
+    // if (e.key !== "Enter") //console.log("test");
     e.preventDefault();
 
     if (
@@ -76,7 +76,7 @@ const Create = (props: Post) => {
     )
       post("/posts");
     else {
-      console.log("test");
+      //console.log("test");
     }
   };
 

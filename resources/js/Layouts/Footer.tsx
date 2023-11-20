@@ -53,7 +53,7 @@ const Footer = ({ user_data }: { user_data: any }) => {
         "invert(15%) sepia(20%) saturate(0%) hue-rotate(177deg) brightness(88%) contrast(102%)"
       );
     }
-    console.log("themeData.theme", themeData.theme);
+    //console.log("themeData.theme", themeData.theme);
   }, [themeData.theme]);
 
   const {
@@ -111,7 +111,7 @@ const Footer = ({ user_data }: { user_data: any }) => {
 //   document
 //     .querySelector("footer nav ul li")
 //     .classList.toggle("light_mode_text");
-//   console.log("test");
+//   //console.log("test");
 // }
 
 export default Footer;

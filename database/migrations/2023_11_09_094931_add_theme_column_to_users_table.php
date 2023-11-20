@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table -> boolean('dark_theme_enabled')->default(false);
+            $table -> boolean('dark_theme_enabled')->default(true);
             $table -> boolean('map_effect_enabled')->default(true);
         });
     }

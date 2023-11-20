@@ -29,8 +29,8 @@ export default function Authenticated({ auth, header, children }: Props) {
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log("test1", /^\s*$/.test(searchWord));
-    console.log("test2", searchWord.trim());
+    //console.log("test1", /^\s*$/.test(searchWord));
+    //console.log("test2", searchWord.trim());
     if (e.key == "Enter" && /^\s*$/.test(searchWord) == false) {
       e.preventDefault();
       navigateTo(`/posts/search/${searchMode}/${searchWord.trim()}`);
@@ -42,7 +42,7 @@ export default function Authenticated({ auth, header, children }: Props) {
   //   else if (searchMode == Mode[1]) setSearchMode(Mode[2]);
   //   else if (searchMode == Mode[2]) setSearchMode(Mode[3]);
   //   else if (searchMode == Mode[3]) setSearchMode(Mode[0]);
-  //   console.log(searchMode);
+  //   //console.log(searchMode);
   // };
 
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
