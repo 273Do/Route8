@@ -4,6 +4,7 @@
         "dev": "vite",
         "build": "vite build",
         "watch": "vite build --watch"
+        "heroku-postbuild": "npm run build"
     },
     "devDependencies": {
         "@headlessui/react": "^1.4.2",
