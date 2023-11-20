@@ -29,8 +29,6 @@ export default function Authenticated({ auth, header, children }: Props) {
   };
 
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    //console.log("test1", /^\s*$/.test(searchWord));
-    //console.log("test2", searchWord.trim());
     if (e.key == "Enter" && /^\s*$/.test(searchWord) == false) {
       e.preventDefault();
       navigateTo(`/posts/search/${searchMode}/${searchWord.trim()}`);
