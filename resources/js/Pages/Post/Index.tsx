@@ -9,7 +9,7 @@ import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 
 // IndexPage
 const Index = (props: Auth) => {
-  const { posts, page_title, arrow } = props;
+  const { posts, page_title, arrow, range } = props;
   //console.log(props);
   //console.log(page_title);
   //console.log("テーマ", props.auth.user.dark_theme_enabled);
@@ -17,7 +17,7 @@ const Index = (props: Auth) => {
   return (
     <Authenticated auth={props.auth} header={<h2>Index</h2>}>
       <div className="main_contents">
-        <TitleBar page={"Route"} title={page_title} user_id={props.auth.user.id} arrow={arrow} />
+        <TitleBar page={"Route"} title={page_title} user_id={props.auth.user.id} arrow={arrow} range_value={range} />
         <ScrollRevealContainer>
           <div className="route_list">
             {posts == 0 ? (

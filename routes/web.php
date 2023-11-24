@@ -56,7 +56,7 @@ Route::group(["middleware" => ["auth"]], function() {
     Route::get("/posts/bookmarks", [PostController::class, "bookmarkList"])->name("bookmarks");
 
     //RecommendPage
-    Route::get("/posts/recommend",[PostController::class, "recommendRoute"])->name("recommend");
+    Route::get("/posts/recommend/{range}",[PostController::class, "recommendRoute"])->name("recommend");
     
     //Post
     Route::post("/posts",[PostController::class, "store"]);

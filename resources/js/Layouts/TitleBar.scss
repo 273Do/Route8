@@ -26,6 +26,12 @@
           transform: rotate(180deg) translateY(5px);
         }
       }
+      
+      .range_bar{
+        display:flex;
+        justify-contrast:center;
+        align-items:center;
+      }
 
       li {
         list-style: none;
@@ -39,6 +45,39 @@
           // transform: scale(1.15);
           transform: translateY(-5px);
         }
+        
+        /* ベーススタイルに Track も合わせて設定 */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  width: 100px;
+  /* Track のスタイル */
+  background: #000;
+  height: 2.5px;
+  border-radius: 8px;
+}
+ 
+/* Thumb: Chrome, Safari, Opera, Edge Chromium */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  width: 10px;
+  background: #000;
+  border-radius: 50%;
+}
+ 
+/* Thumb: Firefox */
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  height: 10px;
+  width: 10px;
+  background: #000;
+  filter: var(--icon_color);
+  border-radius: 50%;
+}
       }
 
       .display_none {

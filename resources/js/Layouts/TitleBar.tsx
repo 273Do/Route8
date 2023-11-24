@@ -8,7 +8,7 @@ import { Inertia } from "@inertiajs/inertia";
 import ScrollRevealContainer from "../Pages/Common/ScrollRevealContainer";
 
 // HomePage
-const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: TitleBar) => {
+const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, bookmark }: TitleBar) => {
   const urlPrev = usePage().props.urlPrev as string;
 
   //console.log("URL:", urlPrev);
@@ -30,6 +30,16 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
     else Inertia.delete(`/posts/${id}/unbookmark`);
     setIsBookmark(!isBookmark);
   };
+  
+  const [range, setRange] = useState<number>(title == "Recommend" ? range_value : 0);
+  
+  const handleMouseUp = () => {
+    // console.log('Mouse up! Value:', range);
+    // 他の処理をここに追加することができます
+    Inertia.get(`/posts/recommend/${range}`);
+  };
+  
+  // const handleChangeRange = ()
 
   if (page == "Route") {
     return (
@@ -50,6 +60,10 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                 />
               </Link>
             </li> */}
+            <li className={`range_bar ${title == "Recommend" ? "" : "display_none"}`}>
+            <label htmlFor="range">{range}km</label>
+                <input type="range" id="range" name="cowbell" min="2" max="20" value={range} onChange={(e) =>setRange(Number(e.target.value))} onMouseUp={() => handleMouseUp()}/>
+              </li>
               <li className="create_icon">
                 <Link href={route("create")}>
                   <LordIcon
@@ -84,7 +98,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                 </Link>
               </li>
               <li>
-                <Link href={route("recommend")}>
+                <Link href={"/posts/recommend/2"}>
                   <LordIcon
                     src="https://cdn.lordicon.com/gboqysvk.json"
                     trigger="hover"
@@ -155,6 +169,16 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                 <Link href={`/posts/user/${user_id}`}>
                   <LordIcon
                     src="https://cdn.lordicon.com/ziafkkwv.json"
+                    trigger="hover"
+                    colors={{ primary: "#000" }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li>
+                <Link href={"/posts/recommend/2"}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/gboqysvk.json"
                     trigger="hover"
                     colors={{ primary: "#000" }}
                     size={28}

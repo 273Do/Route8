@@ -115,7 +115,7 @@ class PostController extends Controller
     }
 
     //RecommendPage
-    public function recommendRoute()
+    public function recommendRoute($range)
     {
 
         // $baseMapUrl = 'https://www.google.com/maps/embed?pb=...'; // 基準のマップURL
@@ -135,7 +135,7 @@ class PostController extends Controller
 
         // Recommend ファサードを使用して最も近いマップの URL を取得
         $recommend = new Recommend();
-        $closestMap = $recommend->recommend($baseMapUrl, $allMapUrls, 7.5);
+        $closestMap = $recommend->recommend($baseMapUrl, $allMapUrls, $range);
 
         //  foreach($closestMap as $value){
         // echo $closestMap;
@@ -152,7 +152,8 @@ class PostController extends Controller
         return Inertia::render("Post/Index", ["posts" => $posts,
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
         "page_title" => "Recommend",
-        "arrow" => true]);
+        "arrow" => true,
+        "range" => $range]);
     }
     
     //RoutePage

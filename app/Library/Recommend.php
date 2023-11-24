@@ -21,7 +21,7 @@ class Recommend extends Facade
             list($targetLat, $targetLon) = $this->extractLocationFromUrl($mapUrl);
             $distance = $this->calculateDistance($baseLat, $baseLon, $targetLat, $targetLon);
 
-            if ($distance <= $thresholdDistanceKm * 1000) {
+            if ($distance <= $thresholdDistanceKm * 1) {
                 //  echo "++++++++++++";
                 //  echo $distance;
                 $distances[] = ['url' => $mapUrl, 'distance' => $distance];
@@ -71,7 +71,7 @@ foreach ($distances as $distance) {
     // Example: parse the latitude and longitude from the URL
 
     // Extracting latitude and longitude from the "pb" parameter
-    preg_match('/!1d([\d.]+)!2d([\d.]+)/', $mapUrl, $matches);
+    preg_match('/!2d([\d.]+)!3d([\d.]+)/', $mapUrl, $matches);
 
     if (count($matches) >= 3) {
         // Latitude and longitude found in the matches
