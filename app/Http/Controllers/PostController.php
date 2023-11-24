@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\Situation;
 use App\Models\Vehicle;
 use App\Models\User;
+use App\Library\Recommend;
 
 class PostController extends Controller
 {
@@ -57,7 +58,7 @@ class PostController extends Controller
     public function filterUser(User $user)
     {
         return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
-        ->where("user_id", $user->id)->get(),
+        ->where("user_id", $user->id)->orderBy('created_at', 'desc')->get(),
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
         "page_title" => "User:".$user->name, "arrow" => true]);
         // userには指定したuser_idが入ってくる．暗黙の結合により，idに応じたUserテーブルから全てのデータを取ってくることができる．
@@ -110,6 +111,47 @@ class PostController extends Controller
         return Inertia::render("Post/Index", ["posts" => \Auth::user()->bookmark_posts()->with(["category", "vehicle", "situation", "user"])->orderBy('created_at', 'desc')->get(),
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
         "page_title" => "Bookmarks",
+        "arrow" => true]);
+    }
+
+    //RecommendPage
+    public function recommendRoute()
+    {
+
+        // $baseMapUrl = 'https://www.google.com/maps/embed?pb=...'; // 基準のマップURL
+        $baseMapUrl = \Auth::user() -> posts() -> latest() -> value('map_url');
+        $baseTitle = \Auth::user() -> posts() -> latest() -> value('title');
+
+        // すべての map_url を取得
+        $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
+
+        // foreach($allMapUrls as $value){
+        // echo $value;
+        //  echo "\n";}
+
+        // echo $baseMapUrl;
+        // echo $baseTitle;
+        // echo  $allMapUrls;
+
+        // Recommend ファサードを使用して最も近いマップの URL を取得
+        $recommend = new Recommend();
+        $closestMap = $recommend->recommend($baseMapUrl, $allMapUrls, 7.5);
+
+        //  foreach($closestMap as $value){
+        // echo $closestMap;
+        //  echo "\n";
+        //  }
+
+        // 最も近いマップが存在する場合は、そのマップの URL を使って投稿を取得
+        if (!empty($closestMap)) {
+            $posts = Post::with(["category", "vehicle", "situation", "user"])
+                ->whereIn("map_url", $closestMap)->where("is_public", 1)
+                ->get();
+        } else $posts = [];
+
+        return Inertia::render("Post/Index", ["posts" => $posts,
+        "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
+        "page_title" => "Recommend",
         "arrow" => true]);
     }
     

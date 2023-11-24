@@ -84,6 +84,16 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, bookmark }: Titl
                 </Link>
               </li>
               <li>
+                <Link href={route("recommend")}>
+                  <LordIcon
+                    src="https://cdn.lordicon.com/gboqysvk.json"
+                    trigger="hover"
+                    colors={{ primary: "#000" }}
+                    size={28}
+                  />
+                </Link>
+              </li>
+              <li>
                 <Link href={route("bookmarks")}>
                   <LordIcon
                     src="https://cdn.lordicon.com/prjooket.json"
