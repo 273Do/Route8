@@ -120,7 +120,7 @@ class PostController extends Controller
 
         // $baseMapUrl = 'https://www.google.com/maps/embed?pb=...'; // 基準のマップURL
         $baseMapUrl = \Auth::user() -> posts() -> latest() -> value('map_url');
-        $baseTitle = \Auth::user() -> posts() -> latest() -> value('title');
+        // $baseTitle = \Auth::user() -> posts() -> latest() -> value('title');
 
         // すべての map_url を取得
         // $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
