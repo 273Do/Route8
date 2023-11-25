@@ -10,7 +10,7 @@ import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 // IndexPage
 const Index = (props: Auth) => {
   const { posts, page_title, arrow, range } = props;
-  //console.log(props);
+  console.log(props);
   //console.log(page_title);
   //console.log("テーマ", props.auth.user.dark_theme_enabled);
 

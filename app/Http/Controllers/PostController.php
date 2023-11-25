@@ -123,7 +123,8 @@ class PostController extends Controller
         $baseTitle = \Auth::user() -> posts() -> latest() -> value('title');
 
         // すべての map_url を取得
-        $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
+        // $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
+        $allMapUrls = Post::where('user_id', '!=', \Auth::user()->id)->where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
 
         // foreach($allMapUrls as $value){
         // echo $value;
@@ -138,16 +139,37 @@ class PostController extends Controller
         $closestMap = $recommend->recommend($baseMapUrl, $allMapUrls, $range);
 
         //  foreach($closestMap as $value){
-        // echo $closestMap;
+        // echo $value;
         //  echo "\n";
         //  }
 
         // 最も近いマップが存在する場合は、そのマップの URL を使って投稿を取得
         if (!empty($closestMap)) {
-            $posts = Post::with(["category", "vehicle", "situation", "user"])
-                ->whereIn("map_url", $closestMap)->where("is_public", 1)
-                ->get();
+            // $posts = Post::with(["category", "vehicle", "situation", "user"])
+            //     ->whereIn("map_url", $closestMap)->where("is_public", 1)
+            //     ->get();
+            //     dd($posts); 
+            
+//             $posts = Post::with(["category", "vehicle", "situation", "user"])
+//     ->whereIn("map_url", $closestMap)
+//     ->where("is_public", 1)
+//     ->get();
+
+// // $posts を $closestMap の順番に並び替える
+// $posts = $posts->sortBy(function ($post) use ($closestMap) {
+//     return array_search($post->map_url, $closestMap);
+// });
+
+// dd($posts->toArray());
+
+$posts = Post::with(["category", "vehicle", "situation", "user"])
+    ->whereIn("map_url", $closestMap)
+    ->where("is_public", 1)
+    ->orderByRaw("FIELD(map_url, '" . implode("','", $closestMap) . "')")
+    ->get();
+
         } else $posts = [];
+    
 
         return Inertia::render("Post/Index", ["posts" => $posts,
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),

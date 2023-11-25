@@ -31,6 +31,7 @@
         display:flex;
         justify-contrast:center;
         align-items:center;
+        margin-bottom: 3px;
       }
 
       li {
@@ -55,7 +56,7 @@ input[type="range"] {
   width: 100px;
   /* Track のスタイル */
   background: #000;
-  height: 2.5px;
+  height: 1.5px;
   border-radius: 8px;
 }
  

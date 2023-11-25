@@ -33,18 +33,30 @@ class Recommend extends Facade
         }
 
         // Sort by distance
-        usort($distances, function ($a, $b) {
-            // echo "///////";
-            // echo $a['distance'] - $b['distance'];
-            return $a['distance'] - $b['distance'];
-        });
+        // usort($distances, function ($a, $b) {
+        //     // echo "///////";
+        //     // echo $a['distance'] - $b['distance'];
+        //     // echo "\n";
+        //     return $a['distance'] - $b['distance'];
+        // });
+        
+        // 距離が近い順に並び替え
+        $distancesArray = array_column($distances, 'distance');
+        array_multisort($distancesArray, SORT_ASC, $distances);
+        
+        //   foreach($distances as $disMap){
+        // echo $disMap["url"];
+        //  echo "\n";
+        //  echo $disMap["distance"];
+        //  echo "\n";
+        //  }
 
         // Select the closest map
         // $closestMap = $distances[2]['url'];
-        $closestMaps = [];
-foreach ($distances as $distance) {
-    $closestMaps[] = $distance['url'];
-}
+        // $closestMaps = [];
+    foreach ($distances as $distance) {
+       $closestMaps[] = $distance['url'];
+    }
 
         return $closestMaps;
     }
