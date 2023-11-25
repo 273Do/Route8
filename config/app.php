@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    // Recommend機能
+    'Recommend' => App\Library\Recommend::class,
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

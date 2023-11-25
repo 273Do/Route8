@@ -44,6 +44,7 @@ export interface TitleBar {
   user_id: number;
   edit: boolean;
   arrow: boolean;
+  range_value: number;
   bookmark:any;
 }
 
