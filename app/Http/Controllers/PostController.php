@@ -123,8 +123,8 @@ class PostController extends Controller
         // $baseTitle = \Auth::user() -> posts() -> latest() -> value('title');
 
         // すべての map_url を取得
-        // $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
-        $allMapUrls = Post::where('user_id', '!=', \Auth::user()->id)->where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
+        $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
+        // $allMapUrls = Post::where('user_id', '!=', \Auth::user()->id)->where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
 
         // foreach($allMapUrls as $value){
         // echo $value;
@@ -174,7 +174,7 @@ $posts = Post::with(["category", "vehicle", "situation", "user"])
         return Inertia::render("Post/Index", ["posts" => $posts,
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
         "page_title" => "Recommend",
-        "arrow" => true,
+        "arrow" => false,
         "range" => $range]);
     }
     
