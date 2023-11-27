@@ -232,7 +232,7 @@ Route8 を利用するためのアカウント登録機能とログイン機能�
 <P>Goal：投稿のゴール地点で検索</P>
 <img src="./resources/readme_img/search3.png" style="border-radius:10px;">
 <P>Body：投稿の内容で検索</P>
-<img src="./resources/readme_img/search4.png" style="border-radius:10px;">s
+<img src="./resources/readme_img/search4.png" style="border-radius:10px;">
 
 ### 7. ブックマーク機能
 
