@@ -74,7 +74,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
                   />
                 </Link>
               </li>
-              <li className={`${arrow ? "" : "display_none"}`}>
+              <li className={`${arrow || title == "Recommend" ? "" : "display_none"}`}>
                 {/* <Link href={urlPrev}> */}
                 <Link href={"/posts"}>
                   <LordIcon
@@ -97,7 +97,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
                   />
                 </Link>
               </li>
-              <li>
+              <li className={`${title == "Recommend" ? "display_none" : ""}`}>
                 <Link href={"/posts/recommend/2"}>
                   <LordIcon
                     src="https://cdn.lordicon.com/gboqysvk.json"
