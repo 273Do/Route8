@@ -80,11 +80,14 @@ Route8 は走行時の状態や移動手段なども合わせて経路を共有�
 
 <H3>FE
 <a href="https://skillicons.dev">
-   <img src="https://skillicons.dev/icons?i=typescript,react,sass"/><img style="margin-left:7px; height:48px; border-radius:10px;" src="./resources/readme_img/inertiajs.png" />
+   <img src="https://skillicons.dev/icons?i=typescript,react,sass"/>
+    <img style="margin-left:7px; height:48px; border-radius:10px;" src="./resources/readme_img/inertiajs.png" />
 </a>
 <h3>BE
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=php,laravel"/><img style="margin-left:7px; height:48px; border-radius:10px;" src="./resources/readme_img/breeze.png" /><img style="margin-left:7px; height:48px; border-radius:10px;" src="./resources/readme_img/inertiajs.png" />
+    <img src="https://skillicons.dev/icons?i=php,laravel"/>
+    <img style="margin-left:7px; height:48px; border-radius:10px;" src="./resources/readme_img/breeze.png" />
+    <img style="margin-left:7px; height:48px; border-radius:10px;" src="./resources/readme_img/inertiajs.png" />
   </a>
 <h3>DB
 <a href="https://skillicons.dev">
