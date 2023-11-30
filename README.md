@@ -135,6 +135,9 @@ Route8 を利用するためのアカウント登録機能とログイン機能�
 各投稿をクリックすると，より詳細な経路の情報を閲覧できます．
 <img src="./resources/readme_img/route_screen.png">
 
+経路詳細画面の投稿者名をクリックするとそのユーザーが投稿した経路を表示できます．
+<img src="./resources/readme_img/user_route.png">
+
 <hr>
 
 #### 各アイコン
