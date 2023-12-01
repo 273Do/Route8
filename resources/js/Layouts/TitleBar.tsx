@@ -74,7 +74,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
                   />
                 </Link>
               </li>
-              <li className={`${arrow || title == "Recommend" ? "" : "display_none"}`}>
+              <li className={`${arrow || title == "Recommend" || title == "Bookmarks" ? "" : "display_none"}`}>
                 {/* <Link href={urlPrev}> */}
                 <Link href={"/posts"}>
                   <LordIcon
@@ -107,7 +107,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
                   />
                 </Link>
               </li>
-              <li>
+              <li className={`${title == "Bookmarks" ? "display_none" : ""}`}>
                 <Link href={route("bookmarks")}>
                   <LordIcon
                     src="https://cdn.lordicon.com/prjooket.json"

@@ -111,7 +111,7 @@ class PostController extends Controller
         return Inertia::render("Post/Index", ["posts" => \Auth::user()->bookmark_posts()->with(["category", "vehicle", "situation", "user"])->orderBy('created_at', 'desc')->get(),
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
         "page_title" => "Bookmarks",
-        "arrow" => true]);
+        "arrow" => false]);
     }
 
     //RecommendPage
