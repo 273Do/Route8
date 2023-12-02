@@ -8,6 +8,9 @@ import { Inertia } from "@inertiajs/inertia";
 import R8Logo from "../../img/Route8.png";
 import { LordIcon } from "../Pages/Common/lord-icon";
 import Footer from "./Footer";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 interface Props {
   auth: any;
   header: React.ReactNode;
@@ -58,6 +61,26 @@ export default function Authenticated({ auth, header, children }: Props) {
       setButtonDisabled(false);
     }, 900);
   };
+
+  const showSwal = () => {
+    withReactContent(Swal).fire({
+      background: "transparent",
+      confirmButtonColor:"#222",
+      title: 
+      <>
+      <h2 style={{color:"#f4ede4"}}>License</h2>
+      <p style={{textDecoration:"none", color:"#f4ede4"}}><a href="https://lordicon.com/" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>Icons by Lordicon.com</a></p>
+      <p style={{textDecoration:"none", color:"#f4ede4"}}>Source is on <a href="https://github.com/273Do/Route8" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>GitHub</a></p>
+      <p style={{color:"#f4ede4"}}>The explanation is on <a href="https://qiita.com/273Do/items/15ab0361b020d68cc4eb" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>Qiita</a></p>
+      </>,
+      footer:
+      <>
+      <p style={{color:"#f4ede4"}}>This site was created by 273Do.</p>
+      <p style={{color:"#f4ede4"}}>この作成物および同梱物を使用したことによって生じたすべての障害・損害・不具合等に関しては，私と私の関係者および私の所属するいかなる団体・組織とも，一切の責任を負いません．各自の責任においてご使用ください．</p>
+      </>,
+      // html:;
+    })
+  }
 
   return (
     // <div className="min-h-screen bg-gray-100">
@@ -227,7 +250,7 @@ export default function Authenticated({ auth, header, children }: Props) {
     <div className="contents">
       <header>
         <div>
-          <img src={R8Logo} alt="Route8Logo" />
+          <img src={R8Logo} alt="Route8Logo" onClick={showSwal}/>
         </div>
         {/* <form action="#" className="search_form" onSubmit={handleSearch}> */}
         <div className="search_form" onKeyDown={handleSearch}>
