@@ -78,6 +78,8 @@ Route8 は走行時の状態や移動手段なども合わせて経路を共有�
 
 ## 🚙 開発環境・使用技術・ツール
 
+<H3>開発期間：2ヶ月</H3>
+
 <H3>FE
 <a href="https://skillicons.dev">
    <img src="https://skillicons.dev/icons?i=typescript,react,sass"/>
