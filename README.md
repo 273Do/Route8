@@ -188,7 +188,7 @@ Route8 を利用するためのアカウント登録機能とログイン機能�
   </tr>
 </table>
 
-### 3. 経路作成・共有・編集
+### 3. 経路作成・編集・削除
 
 メイン画面の右上にある + ボタンをクリックします．<br>
 各項目を入力，選択することで経路を共有準備をします．<br>
@@ -197,6 +197,10 @@ Route8 を利用するためのアカウント登録機能とログイン機能�
 <!-- <details><summary> 画面詳細 </summary> -->
 <img src="./resources/readme_img/create_screen.png" style="border-radius:20px;">
 <!-- </details> -->
+
+削除アイコンで投稿の削除ができます．
+
+<img src="./resources/readme_img/delete.gif" style="border-radius:20px;">
 
 ### 4. リコメンド機能
 
