@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('post_id')->constrained("posts");
-            $table->foreignId('user_id')->constrained("users");
+            $table->foreignId('post_id')->constrained("posts")->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained("users")->cascadeOnDelete();
             // $table->primary(['post_id', 'user_id']);  
             $table->unique(['post_id', 'user_id']);
             $table->timestamps();

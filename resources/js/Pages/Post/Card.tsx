@@ -4,11 +4,26 @@ import { Auth, Post } from "../Types";
 import { Link, useForm } from "@inertiajs/inertia-react";
 import { LordIcon } from "../Common/lord-icon";
 import { Inertia } from "@inertiajs/inertia";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const Card = ({ props, post }: { props: Auth; post: Post }) => {
   const handleDeletePost = (id: number) => {
-    router.delete(`/posts/${id}`, {
-      onBefore: () => confirm("本当に削除しますか？"),
+     withReactContent(Swal).fire({
+      icon:"warning",
+      background: "transparent",
+      showCancelButton:true,
+      confirmButtonColor:"#222",
+      cancelButtonColor:"#222",
+      title: 
+      <>
+      <h2 style={{color:"#f4ede4"}}>投稿を削除しますか？</h2>
+      <p style={{color:"#f4ede4"}}>{post.title}</p>
+      </>,
+      footer:<p style={{color:"#f4ede4"}}>この動作は取り消せません</p>,
+    }).then((result) => {
+    if (result.dismiss === Swal.DismissReason.cancel) Inertia.get("/posts");
+     else router.delete(`/posts/${id}`);
     });
   };
 

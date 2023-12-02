@@ -6,6 +6,8 @@ import { TitleBar } from "../Pages/Types";
 import { LordIcon } from "../Pages/Common/lord-icon";
 import { Inertia } from "@inertiajs/inertia";
 import ScrollRevealContainer from "../Pages/Common/ScrollRevealContainer";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 // HomePage
 const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, bookmark }: TitleBar) => {
@@ -15,8 +17,21 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
   //console.log(page, title, post_id, edit);
 
   const handleDeletePost = (id: number) => {
-    router.delete(`/posts/${id}`, {
-      onBefore: () => confirm("本当に削除しますか？"),
+    withReactContent(Swal).fire({
+      icon:"warning",
+      background: "transparent",
+      showCancelButton:true,
+      confirmButtonColor:"#222",
+      cancelButtonColor:"#222",
+      title: 
+      <>
+      <h2 style={{color:"#f4ede4"}}>投稿を削除しますか？</h2>
+      <p style={{color:"#f4ede4"}}>{title}</p>
+      </>,
+      footer:<p style={{color:"#f4ede4"}}>この動作は取り消せません</p>,
+      preConfirm: () => {
+        router.delete(`/posts/${id}`)
+      },
     });
   };
 
