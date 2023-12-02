@@ -66,19 +66,18 @@ export default function Authenticated({ auth, header, children }: Props) {
     withReactContent(Swal).fire({
       background: "transparent",
       confirmButtonColor:"#222",
-      title: 
+      title: <h2 style={{color:"#f4ede4"}}>License</h2>,
+      html:
       <>
-      <h2 style={{color:"#f4ede4"}}>License</h2>
-      <p style={{textDecoration:"none", color:"#f4ede4"}}><a href="https://lordicon.com/" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>Icons by Lordicon.com</a></p>
-      <p style={{textDecoration:"none", color:"#f4ede4"}}>Source is on <a href="https://github.com/273Do/Route8" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>GitHub</a></p>
-      <p style={{color:"#f4ede4"}}>The explanation is on <a href="https://qiita.com/273Do/items/15ab0361b020d68cc4eb" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>Qiita</a></p>
+      <h3 style={{textDecoration:"none", color:"#f4ede4"}}><a href="https://lordicon.com/" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>Icons by Lordicon.com</a></h3>
+      <h3 style={{textDecoration:"none", color:"#f4ede4"}}>Source is on <a href="https://github.com/273Do/Route8" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>GitHub</a></h3>
+      <h3 style={{color:"#f4ede4"}}>The explanation is on <a href="https://qiita.com/273Do/items/15ab0361b020d68cc4eb" target="_blank" rer="noopener noreferrer" style={{color:"#f4ede4"}}>Qiita</a></h3>
       </>,
       footer:
       <>
       <p style={{color:"#f4ede4"}}>This site was created by 273Do.</p>
       <p style={{color:"#f4ede4"}}>この作成物および同梱物を使用したことによって生じたすべての障害・損害・不具合等に関しては，私と私の関係者および私の所属するいかなる団体・組織とも，一切の責任を負いません．各自の責任においてご使用ください．</p>
       </>,
-      // html:;
     })
   }
 
