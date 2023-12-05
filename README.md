@@ -206,8 +206,9 @@ Route8 を利用するためのアカウント登録機能とログイン機能�
 
 ### 4. リコメンド機能
 
-自身が最後に投稿した経路に付近の投稿を表示します．<br>
-右上のバーから 1km 単位，2~20km での範囲選択ができます．
+旗アイコンをクリックすると自身が最後に投稿した経路付近の投稿を表示します．<br>
+右上のバーから 1km 単位，2~20km での範囲選択ができます．<br>
+また，各経路詳細画面にて旗アイコンをクリックするとその経路に対してリコメンド機能が動作します．
 <img src="./resources/readme_img/recommend1.png" style="border-radius:10px;">
 <img src="./resources/readme_img/recommend2.png" style="border-radius:10px;">
 <img src="./resources/readme_img/recommend3.png" style="border-radius:10px;">
