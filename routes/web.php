@@ -58,6 +58,9 @@ Route::group(["middleware" => ["auth"]], function() {
     //RecommendPage
     Route::get("/posts/recommend/{range}",[PostController::class, "recommendRoute"])->name("recommend");
     
+    //RecommendExpansion
+    Route::get("/posts/recommend/{post}/{range}",[PostController::class, "recommendExpansion"]);
+    
     //Post
     Route::post("/posts",[PostController::class, "store"]);
     

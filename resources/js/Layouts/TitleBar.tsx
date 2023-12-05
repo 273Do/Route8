@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 // HomePage
-const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, bookmark }: TitleBar) => {
+const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, bookmark, recommend_post_id }: TitleBar) => {
   const urlPrev = usePage().props.urlPrev as string;
 
   //console.log("URL:", urlPrev);
@@ -50,8 +50,8 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
   
   const handleMouseUp = () => {
     // console.log('Mouse up! Value:', range);
-    // 他の処理をここに追加することができます
-    Inertia.get(`/posts/recommend/${range}`);
+    if(recommend_post_id == "none") Inertia.get(`/posts/recommend/${range}`);
+    else Inertia.get(`/posts/recommend/${recommend_post_id}/${range}`);
   };
   
   // const handleChangeRange = ()
@@ -75,8 +75,8 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
                 />
               </Link>
             </li> */}
-            <li className={`range_bar ${title == "Recommend" ? "" : "display_none"}`}>
-            <label htmlFor="range">{range}km</label>
+              <li className={`range_bar ${title == "Recommend" ? "" : "display_none"}`}>
+                <label htmlFor="range">{range}km</label>
                 <input type="range" id="range" name="cowbell" min="2" max="20" value={range} onChange={(e) =>setRange(Number(e.target.value))} onMouseUp={() => handleMouseUp()}/>
               </li>
               <li className="create_icon">
@@ -191,7 +191,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
                 </Link>
               </li>
               <li>
-                <Link href={"/posts/recommend/2"}>
+                <Link href={`/posts/recommend/${post_id}/2`}>
                   <LordIcon
                     src="https://cdn.lordicon.com/gboqysvk.json"
                     trigger="hover"
