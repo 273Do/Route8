@@ -6,6 +6,8 @@ export interface Auth {
   bookmarks: any;
   page_title: string;
   arrow: boolean;
+  range: number;
+  recommend_post_id:number | string;
 }
 
 export interface Post {
@@ -46,6 +48,7 @@ export interface TitleBar {
   arrow: boolean;
   range_value: number;
   bookmark:any;
+  recommend_post_id:number | string;
 }
 
 import "react";
