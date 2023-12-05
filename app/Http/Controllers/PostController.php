@@ -117,57 +117,40 @@ class PostController extends Controller
     //RecommendPage
     public function recommendRoute($range)
     {
-
-        // $baseMapUrl = 'https://www.google.com/maps/embed?pb=...'; // 基準のマップURL
+        // 基準のマップURLを格納
         $baseMapUrl = \Auth::user() -> posts() -> latest() -> value('map_url');
-        // $baseTitle = \Auth::user() -> posts() -> latest() -> value('title');
 
-        // すべての map_url を取得
+        // 結果を返す
+        return $this->returnRecommend($baseMapUrl, $range);
+    }
+
+    //RecommendExpansion
+    function recommendExpansion(Post $post, $range)
+    {
+        $baseMapUrl = $post -> map_url;
+
+        return $this->returnRecommend($baseMapUrl, $range);
+
+    }
+
+    function returnRecommend($baseMapUrl, $range)
+    {
+         // すべての map_url を取得して配列に格納
         $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
-        // $allMapUrls = Post::where('user_id', '!=', \Auth::user()->id)->where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
 
-        // foreach($allMapUrls as $value){
-        // echo $value;
-        //  echo "\n";}
-
-        // echo $baseMapUrl;
-        // echo $baseTitle;
-        // echo  $allMapUrls;
-
-        // Recommend ファサードを使用して最も近いマップの URL を取得
+        // 使用して最も近いマップのURLを取得
         $recommend = new Recommend();
         $closestMap = $recommend->recommend($baseMapUrl, $allMapUrls, $range);
 
-        //  foreach($closestMap as $value){
-        // echo $value;
-        //  echo "\n";
-        //  }
-
         // 最も近いマップが存在する場合は、そのマップの URL を使って投稿を取得
         if (!empty($closestMap)) {
-            // $posts = Post::with(["category", "vehicle", "situation", "user"])
-            //     ->whereIn("map_url", $closestMap)->where("is_public", 1)
-            //     ->get();
-            //     dd($posts); 
-            
-//             $posts = Post::with(["category", "vehicle", "situation", "user"])
-//     ->whereIn("map_url", $closestMap)
-//     ->where("is_public", 1)
-//     ->get();
 
-// // $posts を $closestMap の順番に並び替える
-// $posts = $posts->sortBy(function ($post) use ($closestMap) {
-//     return array_search($post->map_url, $closestMap);
-// });
-
-// dd($posts->toArray());
-
-$posts = Post::with(["category", "vehicle", "situation", "user"])
-    ->whereIn("map_url", $closestMap)
-    ->where("is_public", 1)
-    ->orderByRaw("FIELD(map_url, '" . implode("','", $closestMap) . "')")
-    ->get();
-
+        //近い順位並び替える
+        $posts = Post::with(["category", "vehicle", "situation", "user"])
+         ->whereIn("map_url", $closestMap)
+         ->where("is_public", 1)
+         ->orderByRaw("FIELD(map_url, '" . implode("','", $closestMap) . "')")
+         ->get();
         } else $posts = [];
     
 

@@ -191,7 +191,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
                 </Link>
               </li>
               <li>
-                <Link href={"/posts/recommend/2"}>
+                <Link href={`/posts/recommend/${post_id}/2`}>
                   <LordIcon
                     src="https://cdn.lordicon.com/gboqysvk.json"
                     trigger="hover"
