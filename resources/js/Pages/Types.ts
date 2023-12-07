@@ -8,6 +8,7 @@ export interface Auth {
   arrow: boolean;
   range: number;
   recommend_post_id:number | string;
+  meta:any;
 }
 
 export interface Post {
@@ -37,6 +38,7 @@ export interface Post {
   situation: any;
   categories: any;
   category: any;
+  data:any;
 }
 
 export interface TitleBar {

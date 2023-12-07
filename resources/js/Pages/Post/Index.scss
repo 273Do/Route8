@@ -10,28 +10,32 @@
     // flex-grow: 1;
     overflow-y: scroll;
     overflow-x: hidden;
+    max-width: 1300px;
 
     @media (max-height: ($pc_small)) {
       height: calc(114vh - 420px);
     }
+    @media (max-width: ($pc_small_width)) {
+      max-width: 665px;
+    }
      @media (max-width: ($sp-w)) {
      
-   // 70% バージョン
-   $scale: 0.78;
-   // ページを 70% のサイズに縮小
-   transform: scale($scale);
-   // デフォルトでは中央に寄ってしまうので、左上を起点に拡縮するように指定
-   transform-origin: left top;
-   // ブラウザサイズと画面サイズを一致
-  //  height: calc(100% / $scale);
-   width: calc(100% / $scale);
-   height: calc(133vh - 372px);
-  //  height: calc(140vh - 420px);
-  //  height: calc(150vh - 420px);
+    // 70% バージョン
+    $scale: 0.78;
+    // ページを 70% のサイズに縮小
+    transform: scale($scale);
+    // デフォルトでは中央に寄ってしまうので、左上を起点に拡縮するように指定
+     transform-origin: left top;
+     // ブラウザサイズと画面サイズを一致
+    //  height: calc(100% / $scale);
+    width: calc(100% / $scale);
+    height: calc(133vh - 372px);
+    max-width: 580px;
+    //  height: calc(140vh - 420px);
+    //  height: calc(150vh - 420px);
       
     }
 
-    max-width: 1920px;
     margin: 0 auto; /* 左右の余白を自動的に均等に設定して中央配置 */
     display: flex;
     justify-content: center; /* 横方向に中央配置 */
@@ -229,6 +233,31 @@
         margin-top: 5px;
         color: var(--text);
         transition: all 0.3s;
+      }
+    }
+  
+    .pagination{
+      display: flex;
+     justify-content: space-between;
+     align-items: center;
+      transition: all 0.3s;
+      ul{
+        display: flex;
+        
+        li{
+          list-style:none;
+          margin-left: 10px;
+          margin-right: 10px;
+
+          &:first-child{
+            margin-left: 0px;
+          }
+
+          p{
+            color:var(--text);
+            cursor: pointer;
+          }
+        }
       }
     }
   }
