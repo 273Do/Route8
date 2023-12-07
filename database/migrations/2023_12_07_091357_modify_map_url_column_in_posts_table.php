@@ -14,10 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('map_url', 1000);
-            $table->foreignId('user_id')->constrained("users");
-            $table->foreignId('category_id')->constrained("categories");
-            // ->cascadeOnDelete()
+            //
+            $table->string('map_url', 1200)->change();
         });
     }
 
@@ -30,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
+            $table->string('map_url', 600)->change();
         });
     }
 };
