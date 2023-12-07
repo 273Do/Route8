@@ -46,7 +46,7 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
     setIsBookmark(!isBookmark);
   };
   
-  const [range, setRange] = useState<number>(title == "Recommend" ? range_value : 0);
+  const [range, setRange] = useState<number>(title.indexOf('Recommend') != -1 ? range_value : 0);
   
   const handleMouseUp = () => {
     // console.log('Mouse up! Value:', range);
@@ -76,8 +76,8 @@ const TitleBar = ({ page, title, post_id, user_id, edit, arrow, range_value, boo
               </Link>
             </li> */}
               <li className={`range_bar ${title.indexOf('Recommend') != -1 ? "" : "display_none"}`}>
-                <label htmlFor="range">{range_value}km</label>
-                <input type="range" id="range" name="cowbell" min="2" max="20" value={range_value} onChange={(e) =>setRange(Number(e.target.value))} onMouseUp={() => handleMouseUp()}/>
+                <label htmlFor="range">{range}km</label>
+                <input type="range" id="range" name="cowbell" min="2" max="20" value={range} onChange={(e) =>setRange(Number(e.target.value))} onMouseUp={() => handleMouseUp()}/>
               </li>
               <li className="create_icon">
                 <Link href={route("create")}>
