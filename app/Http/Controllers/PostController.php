@@ -149,7 +149,8 @@ class PostController extends Controller
         $posts = Post::with(["category", "vehicle", "situation", "user"])
          ->whereIn("map_url", $closestMap)
          ->where("is_public", 1)
-         ->orderByRaw("FIELD(map_url, '" . implode("','", $closestMap) . "')")
+        //  ->orderByRaw("FIELD(map_url, '" . implode("','", $closestMap) . "')")
+         ->orderByRaw("ARRAY_POSITION(ARRAY['" . implode("','", $closestMap) . "'], map_url)")
          ->get();
         } else $posts = [];
     
