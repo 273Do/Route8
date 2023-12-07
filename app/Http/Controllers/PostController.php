@@ -121,19 +121,20 @@ class PostController extends Controller
         $baseMapUrl = \Auth::user() -> posts() -> latest() -> value('map_url');
 
         // 結果を返す
-        return $this->returnRecommend($baseMapUrl, $range, "none");
+        return $this->returnRecommend($baseMapUrl, $range, "none", "");
     }
 
     //RecommendExpansion
     function recommendExpansion(Post $post, $range)
     {
         $baseMapUrl = $post -> map_url;
+        $baseMapTitle = $post -> title;
 
-        return $this->returnRecommend($baseMapUrl, $range, $post -> id);
+        return $this->returnRecommend($baseMapUrl, $range, $post -> id, ":".$baseMapTitle);
 
     }
 
-    function returnRecommend($baseMapUrl, $range, $post_id)
+    function returnRecommend($baseMapUrl, $range, $post_id, $baseMapTitle)
     {
          // すべての map_url を取得して配列に格納
         $allMapUrls = Post::where('map_url', '!=', $baseMapUrl)->pluck('map_url')->toArray();
@@ -157,7 +158,7 @@ class PostController extends Controller
 
         return Inertia::render("Post/Index", ["posts" => $posts,
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
-        "page_title" => "Recommend",
+        "page_title" => "Recommend".$baseMapTitle,
         "arrow" => false,
         "range" => $range,
         "recommend_post_id" => $post_id]);
