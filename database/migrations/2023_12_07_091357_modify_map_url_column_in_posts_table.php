@@ -13,9 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
+        // 一度カラムを削除
         Schema::table('posts', function (Blueprint $table) {
-            //
-            $table->string('map_url', 1200)->change();
+            $table->dropColumn('map_url');
+        });
+
+        // カラムを再度追加
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('map_url', 1200)->after('is_public');
         });
     }
 
