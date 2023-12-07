@@ -682,7 +682,7 @@ const Create = (props: Post) => {
                     0 < data.body.length &&
                     data.body.length <= 300 &&
                     0 < data.map_url.length &&
-                    data.map_url.length <= 600 &&
+                    data.map_url.length <= 1200 &&
                     0 < data.start_point.length &&
                     data.start_point.length <= 12 &&
                     0 < data.goal_point.length &&
