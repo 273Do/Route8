@@ -128,9 +128,9 @@ class PostController extends Controller
     function recommendExpansion(Post $post, $range)
     {
         $baseMapUrl = $post -> map_url;
-        $baseMapTitle = $post -> title;
+        $baseMapTitle = ":".$post -> title;
 
-        return $this->returnRecommend($baseMapUrl, $range, $post -> id, ":".$baseMapTitle);
+        return $this->returnRecommend($baseMapUrl, $range, $post -> id, $baseMapTitle);
 
     }
 
@@ -154,7 +154,6 @@ class PostController extends Controller
          ->orderByRaw("ARRAY_POSITION(ARRAY['" . implode("','", $closestMap) . "'], map_url)")
          ->get();
         } else $posts = [];
-    
 
         return Inertia::render("Post/Index", ["posts" => $posts,
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
