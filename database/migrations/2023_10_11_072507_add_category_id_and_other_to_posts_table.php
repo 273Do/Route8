@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('map_url', 1200)->change();
+            $table->string('map_url', 1200);
             $table->foreignId('user_id')->constrained("users");
             $table->foreignId('category_id')->constrained("categories");
             // ->cascadeOnDelete()
