@@ -10,13 +10,13 @@ import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 
 // IndexPage
 const Index = (props: Auth) => {
-  const { posts, page_title, arrow, range, recommend_post_id, meta } = props;
+  const { posts, page_title, arrow, range, recommend_post_id } = props;
   console.log(props);
 
   const loadData = (page: any) => {
     Inertia.get(route(route().current()), { page });
   };
-  
+
   const renderPageNumbers = () => {
     const totalPages = posts.last_page;
     const currentPage = posts.current_page;
@@ -52,42 +52,35 @@ const Index = (props: Auth) => {
           recommend_post_id={recommend_post_id}
         />
         <ScrollRevealContainer>
-          <div className="route_list">
+          <div className="all_list">
             {posts == 0 ? (
               <>
                 <SearchNotFound />
               </>
             ) : (
               <>
-                {posts.data.map((post: Post) => (
-                  <Card props={props} post={post} />
-                ))}
-                
-                
-                
-                 {posts && (
-        <div className="pagination">
-          <ul>
-            {/* 前のページへのボタン */}
-            {posts.current_page > 1 && (
-              <li onClick={() => loadData(posts.current_page - 1)}>
-                <p>&lt;</p>
-              </li>
-            )}
-
-            {/* ページ数の表示 */}
-            {renderPageNumbers()}
-
-            {/* 次のページへのボタン */}
-            {posts.current_page < posts.last_page && (
-              <li onClick={() => loadData(posts.current_page + 1)}>
-                <p>&gt;</p>
-              </li>
-            )}
-          </ul>
-        </div>
-      )}
-             
+                <div className="route_list">
+                  {posts.data.map((post: Post) => (
+                    <Card props={props} post={post} />
+                  ))}
+                </div>
+                {posts && (
+                  <div className="pagination">
+                    <ul>
+                      {posts.current_page > 1 && (
+                        <li onClick={() => loadData(posts.current_page - 1)}>
+                          <p>&lt;</p>
+                        </li>
+                      )}
+                      {renderPageNumbers()}
+                      {posts.current_page < posts.last_page && (
+                        <li onClick={() => loadData(posts.current_page + 1)}>
+                          <p>&gt;</p>
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
               </>
             )}
           </div>

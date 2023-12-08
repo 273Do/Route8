@@ -140,6 +140,11 @@ Route8 を利用するためのアカウント登録機能とログイン機能�
 経路詳細画面の投稿者名をクリックするとそのユーザーが投稿した経路を表示できます．
 <img src="./resources/readme_img/user_route.png">
 
+ページネーションも実装しています．<br>
+1ページ当たり10投稿まで表示されます．<br>
+下のページ番号から移動することができます．<br>
+<img src="./resources/readme_img/pagination.png">
+
 <hr>
 
 #### 各アイコン
