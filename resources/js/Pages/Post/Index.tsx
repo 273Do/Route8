@@ -16,6 +16,29 @@ const Index = (props: Auth) => {
   const loadData = (page: any) => {
     Inertia.get(route(route().current()), { page });
   };
+  
+  const renderPageNumbers = () => {
+    const totalPages = posts.last_page;
+    const currentPage = posts.current_page;
+
+    let startPage = Math.max(1, currentPage - 4);
+    let endPage = Math.min(totalPages, startPage + 9);
+
+    if (totalPages > 10 && currentPage < 6) {
+      endPage = 10;
+    } else if (totalPages > 10 && currentPage >= totalPages - 4) {
+      startPage = totalPages - 9;
+    }
+
+    return [...Array(endPage - startPage + 1).keys()].map((index) => {
+      const page = startPage + index;
+      return (
+        <li key={page} onClick={() => loadData(page)}>
+          <p>{page}</p>
+        </li>
+      );
+    });
+  };
 
   return (
     <Authenticated auth={props.auth} header={<h2>Index</h2>}>
@@ -39,17 +62,32 @@ const Index = (props: Auth) => {
                 {posts.data.map((post: Post) => (
                   <Card props={props} post={post} />
                 ))}
-                {posts && (
-                  <div className="pagination">
-                    <ul>
-                      {[...Array(posts.last_page).keys()].map((page) => (
-                        <li key={page + 1} onClick={() => loadData(page + 1)}>
-                          <p>{page + 1}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                
+                
+                
+                 {posts && (
+        <div className="pagination">
+          <ul>
+            {/* 前のページへのボタン */}
+            {posts.current_page > 1 && (
+              <li onClick={() => loadData(posts.current_page - 1)}>
+                <p>&lt;</p>
+              </li>
+            )}
+
+            {/* ページ数の表示 */}
+            {renderPageNumbers()}
+
+            {/* 次のページへのボタン */}
+            {posts.current_page < posts.last_page && (
+              <li onClick={() => loadData(posts.current_page + 1)}>
+                <p>&gt;</p>
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
+             
               </>
             )}
           </div>
