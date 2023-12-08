@@ -11,7 +11,7 @@ import ScrollRevealContainer from "../Common/ScrollRevealContainer";
 // IndexPage
 const Index = (props: Auth) => {
   const { posts, page_title, arrow, range, recommend_post_id } = props;
-  console.log(props);
+  // console.log(props);
 
   const loadData = (page: any) => {
     Inertia.get(route(route().current()), { page });
