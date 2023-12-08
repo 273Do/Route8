@@ -21,7 +21,7 @@ class PostController extends Controller
         // return Inertia::render("Post/Index");
         //  return Inertia::render("Post/Index",["posts" => $post->get()]);
         return Inertia::render("Post/Index", ["posts" => Post::with(["category", "vehicle", "situation",  "user"])
-        ->where("is_public", 1)->orderBy('created_at', 'desc')->paginate(20),
+        ->where("is_public", 1)->orderBy('created_at', 'desc')->paginate(10),
         "bookmarks" => \Auth::user()->bookmark_posts()->orderBy('created_at', 'desc')->get(),
         "page_title" => "Route",
         "arrow" => false,]);
