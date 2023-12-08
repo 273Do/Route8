@@ -37,6 +37,7 @@ export interface Post {
   situation: any;
   categories: any;
   category: any;
+  data:any;
 }
 
 export interface TitleBar {

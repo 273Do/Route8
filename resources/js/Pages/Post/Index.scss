@@ -1,7 +1,11 @@
 .main_contents {
   height: 100%;
 
-  .route_list,
+  .all_list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .all_list,
   .route_page {
     position: relative;
     pointer-events: auto;
@@ -10,98 +14,158 @@
     // flex-grow: 1;
     overflow-y: scroll;
     overflow-x: hidden;
+    max-width: 1980px;
 
     @media (max-height: ($pc_small)) {
       height: calc(114vh - 420px);
     }
-     @media (max-width: ($sp-w)) {
-     
-   // 70% バージョン
-   $scale: 0.78;
-   // ページを 70% のサイズに縮小
-   transform: scale($scale);
-   // デフォルトでは中央に寄ってしまうので、左上を起点に拡縮するように指定
-   transform-origin: left top;
-   // ブラウザサイズと画面サイズを一致
-  //  height: calc(100% / $scale);
-   width: calc(100% / $scale);
-   height: calc(133vh - 372px);
-  //  height: calc(140vh - 420px);
-  //  height: calc(150vh - 420px);
-      
+    @media (max-width: ($pc_small_width)) {
+      // max-width: 665px;
     }
-
-    max-width: 1920px;
-    margin: 0 auto; /* 左右の余白を自動的に均等に設定して中央配置 */
-    display: flex;
-    justify-content: center; /* 横方向に中央配置 */
-    flex-wrap: wrap;
+    @media (max-width: ($sp-w)) {
+      // 70% バージョン
+      $scale: 0.78;
+      // ページを 70% のサイズに縮小
+      transform: scale($scale);
+      // デフォルトでは中央に寄ってしまうので、左上を起点に拡縮するように指定
+      transform-origin: left top;
+      // ブラウザサイズと画面サイズを一致
+      //  height: calc(100% / $scale);
+      width: calc(100% / $scale);
+      height: calc(133vh - 372px);
+      max-width: 580px;
+      //  height: calc(140vh - 420px);
+      //  height: calc(150vh - 420px);
+    }
 
     .not_found {
       filter: var(--icon_color);
       transition: all 0.3s;
     }
 
-    .route_board {
-      // height: 375px;
+    .route_list {
+      margin: 0 auto; /* 左右の余白を自動的に均等に設定して中央配置 */
+      display: flex;
+      justify-content: center; /* 横方向に中央配置 */
+      flex-wrap: wrap;
 
-      .link_no_underline {
-        text-decoration: none;
-      }
+      .route_board {
+        // height: 375px;
 
-      .display_none {
-        display: none;
-      }
-
-      .isnot_public {
-        opacity: 0.8;
-      }
-
-      .route_card {
-        width: 580px;
-        height: 325px;
-        // padding: 5px;
-        margin: 30px 20px 0px 20px;
-        border-radius: 20px;
-        color: var(--sub_text);
-        background-color: var(--sub_bg);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-
-        transition: all 0.3s;
-
-        &:hover {
-          // transform: scale(1.03);
-          // opacity: 0.9;
-          transform: translateY(-5px);
+        .link_no_underline {
+          text-decoration: none;
         }
 
-        .route_header {
+        .display_none {
+          display: none;
+        }
+
+        .isnot_public {
+          opacity: 0.8;
+        }
+
+        .route_card {
+          width: 580px;
+          height: 325px;
+          // padding: 5px;
+          margin: 30px 20px 0px 20px;
+          border-radius: 20px;
+          color: var(--sub_text);
+          background-color: var(--sub_bg);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+
+          transition: all 0.3s;
+
+          &:hover {
+            // transform: scale(1.03);
+            // opacity: 0.9;
+            transform: translateY(-5px);
+          }
+
+          .route_header {
+            display: flex;
+            justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
+            align-items: center;
+            height: 40px;
+            margin: 15px 10px 0px 10px;
+            position: "fixed";
+            z-index: 10;
+
+            ul {
+              margin-bottom: 8px;
+              margin-right: -10px;
+
+              li {
+                list-style: none;
+                display: inline-block;
+                margin-right: 10px;
+                filter: var(--icon_sub_color);
+                transition: all 0.3s;
+                image-rendering: -webkit-optimize-contrast;
+
+                &:hover {
+                  // transform: scale(1.15);
+                  transform: translateY(-5px);
+                }
+              }
+
+              .display_none {
+                display: none;
+              }
+            }
+          }
+        }
+
+        iframe {
+          width: 560px;
+          height: 245px;
+          margin-left: 10px;
+          pointer-events: none;
+          justify-content: space-between;
+          align-items: center;
+
+          border-radius: 20px;
+          -webkit-border-radius: 20px;
+          -moz-border-radius: 20px;
+
+          // 色フィルター
+          filter: var(--map_effect);
+          transition: all 0.3s;
+        }
+
+        .route_footer {
           display: flex;
           justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
           align-items: center;
-          height: 40px;
-          margin: 15px 10px 0px 10px;
+          height: 35px;
+          margin: 0px 10px 0px 10px;
           position: "fixed";
           z-index: 10;
 
-          ul {
-            margin-bottom: 8px;
-            margin-right: -10px;
+          .display_none {
+            display: none;
+          }
+
+          .route_weather {
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            // margin-left: 10px;
 
             li {
               list-style: none;
               display: inline-block;
-              margin-right: 10px;
+              margin-right: 5px;
               filter: var(--icon_sub_color);
               transition: all 0.3s;
               image-rendering: -webkit-optimize-contrast;
 
               &:hover {
                 // transform: scale(1.15);
-                transform: translateY(-5px);
+                transform: translateY(-3px);
               }
             }
 
@@ -109,126 +173,95 @@
               display: none;
             }
           }
-        }
-      }
+          .route_vehicle {
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            // margin-left: 10px;
+            // margin-right: 10px;
+            // margin-bottom: 8px;
+            margin-left: 5px;
 
-      iframe {
-        width: 560px;
-        height: 245px;
-        margin-left: 10px;
-        pointer-events: none;
-        justify-content: space-between;
-        align-items: center;
+            li {
+              list-style: none;
+              display: inline-block;
+              margin-left: 10px;
+              filter: var(--icon_sub_color);
+              transition: all 0.3s;
+              image-rendering: -webkit-optimize-contrast;
 
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
+              &:hover {
+                // transform: scale(1.15);
+                transform: translateY(-3px);
+              }
+            }
 
-        // 色フィルター
-        filter: var(--map_effect);
-        transition: all 0.3s;
-      }
-
-      .route_footer {
-        display: flex;
-        justify-content: space-between; /* ヘッダー内の要素を水平中央に配置 */
-        align-items: center;
-        height: 35px;
-        margin: 0px 10px 0px 10px;
-        position: "fixed";
-        z-index: 10;
-
-        .display_none {
-          display: none;
-        }
-
-        .route_weather {
-          align-items: center;
-          justify-content: center;
-          padding: 0;
-          // margin-left: 10px;
-
-          li {
-            list-style: none;
-            display: inline-block;
-            margin-right: 5px;
-            filter: var(--icon_sub_color);
-            transition: all 0.3s;
-            image-rendering: -webkit-optimize-contrast;
-
-            &:hover {
-              // transform: scale(1.15);
-              transform: translateY(-3px);
+            .display_none {
+              display: none;
             }
           }
 
-          .display_none {
-            display: none;
-          }
-        }
-        .route_vehicle {
-          align-items: center;
-          justify-content: center;
-          padding: 0;
-          // margin-left: 10px;
-          // margin-right: 10px;
-          // margin-bottom: 8px;
-          margin-left: 5px;
+          .isnot_running {
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            // margin-left: 10px;
 
-          li {
-            list-style: none;
-            display: inline-block;
-            margin-left: 10px;
-            filter: var(--icon_sub_color);
             transition: all 0.3s;
             image-rendering: -webkit-optimize-contrast;
 
-            &:hover {
-              // transform: scale(1.15);
-              transform: translateY(-3px);
-            }
-          }
+            // &:hover {
+            //     // transform: scale(1.15);
+            //     transform: translateY(-3px);
+            // }
 
-          .display_none {
-            display: none;
+            li {
+              list-style: none;
+              display: inline-block;
+              margin-right: 5px;
+              filter: var(--icon_sub_color);
+              transition: all 0.3s;
+
+              p {
+                margin-top: 10px;
+              }
+            }
           }
         }
 
-        .isnot_running {
-          align-items: center;
-          justify-content: center;
-          padding: 0;
-          // margin-left: 10px;
-
+        .card_title {
+          text-align: center;
+          font-size: 1.5rem;
+          margin: 0 auto;
+          margin-top: 5px;
+          color: var(--text);
           transition: all 0.3s;
-          image-rendering: -webkit-optimize-contrast;
-
-          // &:hover {
-          //     // transform: scale(1.15);
-          //     transform: translateY(-3px);
-          // }
-
-          li {
-            list-style: none;
-            display: inline-block;
-            margin-right: 5px;
-            filter: var(--icon_sub_color);
-            transition: all 0.3s;
-
-            p {
-              margin-top: 10px;
-            }
-          }
         }
       }
+    }
 
-      .card_title {
-        text-align: center;
-        font-size: 1.5rem;
-        margin: 0 auto;
-        margin-top: 5px;
-        color: var(--text);
-        transition: all 0.3s;
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+      ul {
+        display: flex;
+
+        li {
+          list-style: none;
+          margin-left: 10px;
+          margin-right: 10px;
+
+          &:first-child {
+            margin-left: 0px;
+          }
+
+          p {
+            color: var(--text);
+            cursor: pointer;
+          }
+        }
       }
     }
   }
