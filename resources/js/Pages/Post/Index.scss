@@ -15,14 +15,17 @@
     overflow-y: scroll;
     overflow-x: hidden;
     max-width: 1980px;
+    justify-content: center;
 
     @media (max-height: ($pc_small)) {
       height: calc(114vh - 420px);
     }
     @media (max-width: ($pc_small_width)) {
+      display: block;
       // max-width: 665px;
     }
     @media (max-width: ($sp-w)) {
+      display: block;
       // 70% バージョン
       $scale: 0.78;
       // ページを 70% のサイズに縮小
