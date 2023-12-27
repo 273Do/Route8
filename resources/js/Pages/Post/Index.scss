@@ -5,11 +5,16 @@
     flex-direction: column;
     align-items: center;
   }
+  
+  .route_page{
+    display: flex;
+  }
+  
   .all_list,
   .route_page {
     position: relative;
     pointer-events: auto;
-    display: flex;
+    // display: flex;
     height: calc(108vh - 380px);
     // flex-grow: 1;
     overflow-y: scroll;
@@ -43,6 +48,8 @@
 
     .not_found {
       filter: var(--icon_color);
+      display: flex;
+      justify-content: center;
       transition: all 0.3s;
     }
 
